@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+<!-- 2021-06-27 Sun 11:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exkurs: Persistent Data Structures</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Christopher Karow, Johannes Brauer" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<link rel="stylesheet" type="text/css" href="mycss/mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Exkurs: Persistent Data Structures
+<br />
+<span class="subtitle">Reaktive Programmierung</span>
+</h1>
+
+<div id="outline-container-org2a61836" class="outline-2">
+<h2 id="org2a61836">Ziele</h2>
+<div class="outline-text-2" id="text-org2a61836">
+<p>
+Antwort auf die Frage: Wie kann die Manipulation von mutationsfreien
+  Datenstrukturen, wie sie in funktionalen Programmiersprachen
+  überlich sind, effizient implementiert werden?
+</p>
+</div>
+</div>
+<div id="outline-container-org7e98fba" class="outline-2">
+<h2 id="org7e98fba">Funktionale Datenstrukturen</h2>
+<div class="outline-text-2" id="text-org7e98fba">
+</div>
+<div id="outline-container-org1ff17e4" class="outline-3">
+<h3 id="org1ff17e4">Imperative Datenstrukturen</h3>
+<div class="outline-text-3" id="text-org1ff17e4">
+<ul class="org-ul">
+<li>Änderungen an <i>imperativen Datenstrukturen</i> basieren auf dem Prinzip
+der Mutation.</li>
+<li><p>
+Was ist das Resultat des folgenden C-Programms?
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #808080;">#include</span> <span style="color: #707183;">&lt;</span><span style="color: #008000;">stdio.h</span><span style="color: #707183;">&gt;</span>
+ 
+<span style="color: #6434A3;">int</span> <span style="color: #006699;">main</span> <span style="color: #707183;">()</span> <span style="color: #707183;">{</span>
+
+   <span style="color: #8D8D84;">/* </span><span style="color: #8D8D84; font-style: italic;">Deklaration und Initialisierung eines Arrays </span><span style="color: #8D8D84;">*/</span>
+   <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">v</span><span style="color: #7388D6;">[</span> 5 <span style="color: #7388D6;">]</span> = <span style="color: #7388D6;">{</span>100, 101, 102, 103, 104<span style="color: #7388D6;">}</span>; 
+   <span style="color: #6434A3;">int</span> <span style="color: #BA36A5;">j</span>;
+   
+   <span style="color: #8D8D84;">/* </span><span style="color: #8D8D84; font-style: italic;">Ausgabe der Array-Elemente</span><span style="color: #8D8D84;">*/</span>
+   <span style="color: #0000FF;">for</span> <span style="color: #7388D6;">(</span>j = 0; j &lt; 5; j++ <span style="color: #7388D6;">)</span> <span style="color: #7388D6;">{</span>
+      printf<span style="color: #909183;">(</span><span style="color: #008000;">"Element[%d] = %d\n"</span>, j, v<span style="color: #709870;">[</span>j<span style="color: #709870;">]</span> <span style="color: #909183;">)</span>;
+   <span style="color: #7388D6;">}</span>
+   
+   <span style="color: #8D8D84;">/* </span><span style="color: #8D8D84; font-style: italic;">&#196;nderung eines Array-Elements und erneute Ausgabe</span><span style="color: #8D8D84;">*/</span>
+   v<span style="color: #7388D6;">[</span>4<span style="color: #7388D6;">]</span> = 0;
+   <span style="color: #0000FF;">for</span> <span style="color: #7388D6;">(</span>j = 0; j &lt; 5; j++ <span style="color: #7388D6;">)</span> <span style="color: #7388D6;">{</span>
+      printf<span style="color: #909183;">(</span><span style="color: #008000;">"Element[%d] = %d\n"</span>, j, v<span style="color: #709870;">[</span>j<span style="color: #709870;">]</span> <span style="color: #909183;">)</span>;
+   <span style="color: #7388D6;">}</span>
+
+   <span style="color: #0000FF;">return</span> 0;
+<span style="color: #707183;">}</span>
+</pre>
+</div></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+Ausgabe in der Shell
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  $<span style="color: #BA36A5;">gcc</span> -o main *.c
+  $<span style="color: #BA36A5;">main</span>
+  Element<span style="color: #707183;">[</span>0<span style="color: #707183;">]</span> = 100
+  Element<span style="color: #707183;">[</span>1<span style="color: #707183;">]</span> = 101
+  Element<span style="color: #707183;">[</span>2<span style="color: #707183;">]</span> = 102
+  Element<span style="color: #707183;">[</span>3<span style="color: #707183;">]</span> = 103
+  Element<span style="color: #707183;">[</span>4<span style="color: #707183;">]</span> = 104
+  Element<span style="color: #707183;">[</span>0<span style="color: #707183;">]</span> = 100
+  Element<span style="color: #707183;">[</span>1<span style="color: #707183;">]</span> = 101
+  Element<span style="color: #707183;">[</span>2<span style="color: #707183;">]</span> = 102
+  Element<span style="color: #707183;">[</span>3<span style="color: #707183;">]</span> = 103
+  Element<span style="color: #707183;">[</span>4<span style="color: #707183;">]</span> = 0
+</pre>
+</div></li>
+<li>Stichwort: Place oriented Programming</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge196e93" class="outline-3">
+<h3 id="orge196e93">Funktionale Datenstrukturen</h3>
+<div class="outline-text-3" id="text-orge196e93">
+<ul class="org-ul">
+<li>Funktionale Datenstrukturen sind nicht änderbar.</li>
+<li><p>
+Beispiel in Clojure
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">Deklaration und Initialisierung eines "Arrays" (vector)</span>
+  <span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">v</span> <span style="color: #7388D6;">[</span>100, 101, 102, 103, 104<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+
+  <span style="color: #8D8D84;">;;</span><span style="color: #8D8D84; font-style: italic;">Ausgabe der Array-Elemente</span>
+  v
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; [100 101 102 103 104]</span>
+
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">&#196;nderung eines Array-Elements</span>
+  <span style="color: #707183;">(</span><span style="color: #006FE0;">assoc</span> v 4 0<span style="color: #707183;">)</span>
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; [100 101 102 103 0]</span>
+
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">erneute Ausgabe von v</span>
+  v
+  <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; [100 101 102 103 104]</span>
+</pre>
+</div>
+
+<pre class="example">
+#'user/v[100 101 102 103 104][100 101 102 103 0][100 101 102 103 104]
+</pre></li>
+
+<li>Welche Frage drängt sich hier auf?</li>
+</ul>
+</div>
+<div id="outline-container-org0824cc8" class="outline-4">
+<h4 id="org0824cc8">Effiziente Implementierung</h4>
+<div class="outline-text-4" id="text-org0824cc8">
+<ul class="org-ul">
+<li>Ideen basieren auf Okasakis Buch <i>Purely Functional Data Structures</i>
+<a class="org-ref-reference" href="#/slide-bibliography">[Okasaki1999]</a></li>
+<li>Jede Operation, die den Wert einer Datenstruktur ändert, erzeugt ein
+neues Exemplar von ihr.</li>
+<li>Da nach der Ausführung von Änderungsoperationen, die vorangegangen
+Versionen der Datenstruktur existieren, spricht man auch von
+<i>persistenten Datenstrukturen</i>.</li>
+<li>Das einfache Anlegen von Kopien führt nicht zu akzeptablen Laufzeiten.</li>
+<li>Die Lösung besteht in der Verwendung von Baumstrukturen, die ermöglichen
+<ul class="org-ul">
+<li>Redundanzen der „Kopien“ so weit wie möglich zu vermeiden und</li>
+<li>trotzdem einen schnellen Zugriff auf die Elemente bereit zu
+stellen.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0370e69" class="outline-4">
+<h4 id="org0370e69">Exemplarische Darstellung für Vektoren in Clojure</h4>
+<div class="outline-text-4" id="text-org0370e69">
+<ul class="org-ul">
+<li>Verwendet werden Strukturen, die Binärbäumen ähneln.</li>
+<li>Die internen Knoten enthalten keine Daten, sondern nur Verweise auf
+(maximal zwei) Nachfolger-Knoten.</li>
+<li>Die Blätter enthalten maximal zwei Elemente der Datenstruktur &#x2013; des
+Vektors.</li>
+<li>Die Blätter sind nach den Indizes geordnet.</li>
+<li>Das folgende Bild zeigt einen Vektor mit den ganzzahligen Werten 0
+bis 8.</li>
+</ul>
+<p>
+(Diese und die folgenden Abbildungen sind aus <a href="https://hypirion.com/musings/understanding-persistent-vector-pt-1">Polymatheia</a> entnommen.)
+</p>
+
+<div class="figure">
+<p><img src="./Abbildungen/vec0.png" alt="vec0.png" width="600px" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Wollte man die Zahl 9 dem Vektor hinzufügen, entstünde in der
+„imperativen Welt“ das folgende Bild:</li>
+</ul>
+
+<div class="figure">
+<p><img src="./Abbildungen/vec1.png" alt="vec1.png" width="400px" />
+</p>
+</div>
+<ul class="org-ul">
+<li>Die vorherige Version des Vektors wäre nicht mehr existent.</li>
+<li>Um Persistenz zu erreichen und den Kopieraufwand zu minimieren
+werden Pfadkopien eingesetzt.</li>
+</ul>
+</div>
+<div id="outline-container-org20221c8" class="outline-5">
+<h5 id="org20221c8">Die Änderungsoperation</h5>
+<div class="outline-text-5" id="text-org20221c8">
+<ul class="org-ul">
+<li>Um ein Vektorelement zu ändern, verfolgt man den Pfad bis zu dem
+Element, das geändert werden soll.</li>
+<li>Dabei werden alle Knoten des Pfads kopiert.</li>
+<li><p>
+Schließlich wird der Blattknoten kopiert und das Element durch das
+neue ersetzt.
+</p>
+<div class="nebeneinander">
+<ul class="org-ul">
+<li><p>
+Beispiel:
+</p>
+<pre class="example">
+(def brown [0 1 2 3 4 5 6 7 8])
+(def blue (assoc brown 5 'beef))
+</pre></li>
+<li>Rückgabewert ist der neue Pfad.</li>
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec2.png" alt="vec2.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc2f6b5a" class="outline-5">
+<h5 id="orgc2f6b5a">Anhängen eines Elements</h5>
+<div class="outline-text-5" id="text-orgc2f6b5a">
+<ul class="org-ul">
+<li>Drei Fälle sind zu unterscheiden:
+<ol class="org-ol">
+<li>Im Blatt ganz rechts ist noch Platz für das neue Element.</li>
+<li>Es gibt noch unbelegte Zweige aber kein Platz im Blatt ganz rechts.</li>
+<li>Der existierende Baum ist bereits vollständig belegt.</li>
+</ol></li>
+</ul>
+<p>
+<b>Fall 1</b>
+</p>
+<ul class="org-ul">
+<li><p>
+Vorgehensweise entspricht weitgehend der Änderungsoperation.
+</p>
+<div class="nebeneinander">
+<ul class="org-ul">
+<li><p>
+Beispiel:
+</p>
+<pre class="example">
+(conj [0 1 2 3 4] 5)
+</pre></li>
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec3.png" alt="vec3.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div></li>
+</ul>
+<p>
+<b>Fall 2</b>
+</p>
+<div class="nebeneinander">
+<ul class="org-ul">
+<li>Neue Knoten werden bei Bedarf erzeugt.</li>
+<li>Kopierte Knoten sind blau, neu erzeugte Knoten rosa dargestellt.</li>
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec4.png" alt="vec4.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div>
+<p>
+<b>Fall 3</b>
+</p>
+<div class="nebeneinander">
+<ul class="org-ul">
+<li>Die neue Wurzel ist violett, die übrigen neu erzeugten Knoten sind
+wieder rosa dargestellt.</li>
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec5.png" alt="vec5.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div>
+</div>
+</div>
+<div id="outline-container-org353469b" class="outline-5">
+<h5 id="org353469b">Entfernen von Elementen</h5>
+<div class="outline-text-5" id="text-org353469b">
+<ul class="org-ul">
+<li>Hier sind ähnliche Überlegungen wie beim Hinzufügen von Elementen
+anzustellen.</li>
+<li>Die gezeigten Beispiel decken nur einen kleinen Bereich des Themas
+<i>funktionale Datenstrukturen</i> ab.</li>
+<li>Weitere Beispiele in <a href="https://hypirion.com/musings/understanding-persistent-vector-pt-1">Polymatheia</a>.</li>
+<li>Umfassende Darstellung in <a class="org-ref-reference" href="#/slide-bibliography">[Okasaki1999]</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org222f095" class="outline-3">
+<h3 id="org222f095">Effizienzbetrachtung</h3>
+<div class="outline-text-3" id="text-org222f095">
+<ul class="org-ul">
+<li>Die geschilderten Operationen haben für imperative Datenstrukturen
+die Laufzeitkomplexität \(O(1)\).</li>
+<li>Für die oben benutzten Binärbäume gilt \(O(log_2 n)\).</li>
+<li>Um sich an \(O(1)\) anzunähern, könnten die Binärbäume durch
+Mehrwegbäume ersetzt werden.</li>
+<li>Clojure benutzt einen Verzweigungsgrad von 32.</li>
+<li>Bei einer Anzahl von Elementen kleiner \(10^9\) ist die Baumtiefe
+nicht größer als 6.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org38453b6" class="outline-2">
+<h2 id="bibliography">Literaturverzeichnis</h2>
+<div class="outline-text-2" id="text-bibliography">
+<ul class='org-ref-bib'><li><a id="Okasaki1999">[Okasaki1999] Chris Okasaki, Purely Functional Data Structures, Cambridge University Press (1999).</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Datum: 27. 06. 2021</p>
+<p class="author">Autor: Christopher Karow, Johannes Brauer</p>
+<p class="date">Created: 2021-06-27 Sun 11:57</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

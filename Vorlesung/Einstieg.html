@@ -1,0 +1,1644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+<!-- 2021-06-27 Sun 12:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Einstieg</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Christopher Karow, Johannes Brauer" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<link rel="stylesheet" type="text/css" href="mycss/mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Einstieg
+<br />
+<span class="subtitle">Reaktive Programmierung</span>
+</h1>
+
+<div id="outline-container-org4e3d0cc" class="outline-2">
+<h2 id="org4e3d0cc">Ziele</h2>
+<div class="outline-text-2" id="text-org4e3d0cc">
+<ul class="org-ul">
+<li>Kennenlernen wichtiger Grundbegriffe der (funktional-)reaktiven Programmierung</li>
+<li>Studium eines Beispiel ein reaktiven Anwendung geschrieben in
+ClojureScript</li>
+<li>Drum zuvor einen Crash-Kurs in Clojure/ClojureScript</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org09b0ce3" class="outline-2">
+<h2 id="org09b0ce3">Grundbegriffe</h2>
+<div class="outline-text-2" id="text-org09b0ce3">
+<ul class="org-ul">
+<li>Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</li>
+<li>Warum sollte man Anwendungen funktional programmieren?</li>
+<li>Was ist eine Einseiten-Webanwendung (single page application)?</li>
+<li>Was ist eine domänenspezifische Sprache (domain specific language, DSL)?</li>
+</ul>
+</div>
+<div id="outline-container-org04f0607" class="outline-3">
+<h3 id="org04f0607">Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</h3>
+<div class="outline-text-3" id="text-org04f0607">
+<ul class="org-ul">
+<li>Funktional-reaktive Programmierung keine neue Idee
+<a class="org-ref-reference" href="#/slide-bibliography">[Wan2000Functional]</a>.
+<ul class="org-ul">
+<li>Nutzung einer internen (Haskell) DSL</li>
+</ul></li>
+<li>Populär geworden durch das Javascript-Framework <i><a href="https://reactjs.org">React</a></i> von Facebook</li>
+<li>Bevorzugte Verwendung für die Erstellung von Einzelseiten-Webanwendungen (single
+page applications)</li>
+</ul>
+</div>
+<div id="outline-container-org3d49f77" class="outline-4">
+<h4 id="org3d49f77">Reaktive Systeme</h4>
+<div class="outline-text-4" id="text-org3d49f77">
+<ul class="org-ul">
+<li>ereignis-getriebene Anwendungen</li>
+<li>kontinuierliche Interaktion mit ihrer Umgebung
+um z.&nbsp;B.
+<ul class="org-ul">
+<li>die Aktualisierung des Anwendungszustands,</li>
+<li>die Anzeige von Daten zu erledigen</li>
+<li>interaktivste Komponente einer Anwendung häufig die
+Benutzungsoberfläche: Reaktion auf verschiedene Ereignisse wie
+Mausklicks, Tastatureingaben oder die Betätigung von Schaltflächen</li>
+</ul></li>
+<li>Herausforderungen reaktiver Systeme:
+<ul class="org-ul">
+<li>inhärent nebenläufig:
+<ul class="org-ul">
+<li>Reaktion auf asynchron auftretende Ereignisse verschiedener Herkunft</li>
+<li>Darstellung sich verändernder Daten</li>
+</ul></li>
+</ul></li>
+</ul>
+<ul class="org-ul">
+<li>invertierte Kontrollstruktur:
+<ul class="org-ul">
+<li>Anwendung steuert sich nicht selbst, sondern die Ermittlung der
+nächsten auszuführenden Berechnung wird durch externe Ereignisse
+oder Systeme bestimmt.</li>
+<li>häufig anzutreffende Lösung: Bereitstellung von Routinen, sog.
+Rückruffunktionen  (callback functions), die beim Auftreten
+bestimmter Ereignisse aktiviert werden und in der Regel
+zustandsändernde Operationen ausführen.</li>
+<li>„Callback-Hölle“: viele isolierte Programmfragmente verändern
+dieselben Daten</li>
+</ul></li>
+<li>Die geschilderten Probleme legen nahe, funktionale
+Programmiertechniken in Betracht zu ziehen.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3723dd6" class="outline-4">
+<h4 id="org3723dd6">Manifesto</h4>
+<div class="outline-text-4" id="text-org3723dd6">
+<p>
+<a href="https://www.reactivemanifesto.org">The Reactive Manifesto</a> definiert Eigenschaften reaktiver Systeme.
+</p>
+
+<p>
+Reaktive Systeme sind
+</p>
+<dl class="org-dl">
+<dt>responsive</dt><dd>reagieren „zeitnah”</dd>
+<dt>resilient</dt><dd>bleiben responsive auch im Fehlerfall</dd>
+<dt>elastic</dt><dd>bleiben responsive auch unter Last</dd>
+<dt>message driven</dt><dd>basieren auch asynchronem Nachrichtenaustausch</dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="outline-container-org11b4f12" class="outline-3">
+<h3 id="org11b4f12">Warum sollte man Anwendungen funktional programmieren?</h3>
+<div class="outline-text-3" id="text-org11b4f12">
+<ul class="org-ul">
+<li>Functional Programming is Fun</li>
+<li>Functional Programming is Growing</li>
+<li>Two Ways are Better than One</li>
+<li>Functional Programming Makes You Look Smart</li>
+<li>You Will Learn Monads</li>
+<li>Functional Code is Shorter</li>
+<li>Functional Code is Simple</li>
+<li>Functional Programming will Improve All of Your Programming</li>
+<li>Functional Programming has a Long and Storied History</li>
+<li>Functional Programming Makes Concurrency Easier</li>
+<li>Functional Programming Embodies Good Software Practices</li>
+</ul>
+<p>
+Auszug aus <a href="https://purelyfunctional.tv/article/why-functional-programming/">Why Functional Programming?</a>
+</p>
+</div>
+<div id="outline-container-orgd8ce849" class="outline-4">
+<h4 id="orgd8ce849">Allgegenwart der funktionalen Programmierung</h4>
+<div class="outline-text-4" id="text-orgd8ce849">
+<ul class="org-ul">
+<li>Lambda-Ausdrücke in Sprachen wie Java und C#</li>
+<li>Verwendung der klassischen Funktionen höherer Ordnung</li>
+<li><a href="https://www.microsoft.com/en-us/research/blog/lambda-the-ultimatae-excel-worksheet-function/?utm_medium=email&amp;utm_source=topic+optin&amp;utm_campaign=awareness&amp;utm_content=20210605+prog+nl&amp;mkt_tok=MTA3LUZNUy0wNzAAAAF9fBlyJQS_qtVQAhDVF9A7lES2hn7eXuPdOx-C747RTs1JPbn4TCDNnRkbkTsq_2grHRHSooeCqYxV8rY1_NLXy1YCYUZ6Saet_QdiICN30B7M0A">LAMBDA: The ultimate Excel worksheet function</a></li>
+<li>Ein paar Beispiele zu Java &#x2026;</li>
+</ul>
+</div>
+<div id="outline-container-org2879b56" class="outline-5">
+<h5 id="org2879b56">Finde Hamburg</h5>
+<div class="outline-text-5" id="text-org2879b56">
+<p>
+Statt einer imperativen Lösung
+</p>
+<div class="small">
+<div class="org-src-container">
+<pre class="src src-java">  <span style="color: #6434A3;">boolean</span> <span style="color: #BA36A5;">found</span> = <span style="color: #D0372D;">false</span>;
+  <span style="color: #0000FF;">for</span><span style="color: #707183;">(</span><span style="color: #6434A3;">String</span> <span style="color: #BA36A5;">city</span> : cities<span style="color: #707183;">)</span> <span style="color: #707183;">{</span>
+    <span style="color: #0000FF;">if</span><span style="color: #7388D6;">(</span>city.equals<span style="color: #909183;">(</span><span style="color: #008000;">"Hamburg"</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> <span style="color: #7388D6;">{</span>
+      found = <span style="color: #D0372D;">true</span>;
+      <span style="color: #0000FF;">break</span>;
+    <span style="color: #7388D6;">}</span>
+  <span style="color: #707183;">}</span>
+  System.out.println<span style="color: #707183;">(</span><span style="color: #008000;">"Found Hamburg?:"</span> + found<span style="color: #707183;">)</span>;
+</pre>
+</div>
+
+</div>
+<p>
+besser
+</p>
+<div class="small">
+<div class="org-src-container">
+<pre class="src src-java">  System.out.println<span style="color: #707183;">(</span><span style="color: #008000;">"Found Hamburg?:"</span> + cities.contains<span style="color: #7388D6;">(</span><span style="color: #008000;">"Hamburg"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>;
+</pre>
+</div>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org282bc46" class="outline-5">
+<h5 id="org282bc46">Beispiel: Rabattiere alle Preise aus einer Liste, &#x2026;</h5>
+<div class="outline-text-5" id="text-org282bc46">
+<p>
+die größer als 20 sind, um 10% und summiere sie auf.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #0000FF;">final</span> <span style="color: #6434A3;">List</span><span style="color: #707183;">&lt;</span><span style="color: #6434A3;">BigDecimal</span><span style="color: #707183;">&gt;</span> <span style="color: #BA36A5;">prices</span> = Arrays.asList<span style="color: #707183;">(</span>
+  <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"10"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"30"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"17"</span><span style="color: #7388D6;">)</span>,
+  <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"20"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"15"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"18"</span><span style="color: #7388D6;">)</span>,
+  <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"45"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"12"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>;
+
+<span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">L&#246;sung f&#252;r Java &lt; 8</span>
+<span style="color: #6434A3;">BigDecimal</span> <span style="color: #BA36A5;">totalOfDiscountedPrices</span> = <span style="color: #D0372D;">BigDecimal</span>.ZERO;
+
+<span style="color: #0000FF;">for</span><span style="color: #707183;">(</span><span style="color: #6434A3;">BigDecimal</span> <span style="color: #BA36A5;">price</span> : prices<span style="color: #707183;">)</span> <span style="color: #707183;">{</span>
+  <span style="color: #0000FF;">if</span><span style="color: #7388D6;">(</span>price.compareTo<span style="color: #909183;">(</span>BigDecimal.valueOf<span style="color: #709870;">(</span>20<span style="color: #709870;">)</span><span style="color: #909183;">)</span> &gt; 0<span style="color: #7388D6;">)</span>
+    totalOfDiscountedPrices =
+       totalOfDiscountedPrices.add<span style="color: #7388D6;">(</span>price.multiply<span style="color: #909183;">(</span>BigDecimal.valueOf<span style="color: #709870;">(</span>0.9<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span>;
+<span style="color: #707183;">}</span>
+
+<span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">L&#246;sung f&#252;r Java &gt;= 8</span>
+<span style="color: #0000FF;">final</span> <span style="color: #6434A3;">BigDecimal</span> <span style="color: #BA36A5;">totalOfDiscountedPrices</span> =
+  prices.stream<span style="color: #707183;">()</span>
+        .filter<span style="color: #707183;">(</span>price -&gt; price.compareTo<span style="color: #7388D6;">(</span>BigDecimal.valueOf<span style="color: #909183;">(</span>20<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> &gt; 0<span style="color: #707183;">)</span>
+        .map<span style="color: #707183;">(</span>price -&gt; price.multiply<span style="color: #7388D6;">(</span>BigDecimal.valueOf<span style="color: #909183;">(</span>0.9<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+        .reduce<span style="color: #707183;">(</span><span style="color: #D0372D;">BigDecimal</span>.ZERO, BigDecimal::add<span style="color: #707183;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9bb074d" class="outline-5">
+<h5 id="org9bb074d">Registrierung eines <i>event listeners</i> in <i>Swing</i></h5>
+<div class="outline-text-5" id="text-org9bb074d">
+<ul class="org-ul">
+<li>Swing ist eine Java-Bibliothek für die Programmierung graphischer
+Benutzungsoberflächen.</li>
+<li>Um herauszufinden, was ein Benutzer getan hat, werden event
+listeners registriert.</li>
+<li><p>
+Benutzung einer anonymen, inneren Klasse, um die Betätigung einer
+Schaltfläche mit einem Verhalten zu verknüpfen:
+</p>
+<div class="small">
+<div class="org-src-container">
+<pre class="src src-java">button.addActionListener<span style="color: #707183;">(</span><span style="color: #0000FF;">new</span> <span style="color: #6434A3;">ActionListener</span><span style="color: #7388D6;">()</span> 
+                           <span style="color: #7388D6;">{</span> <span style="color: #0000FF;">public</span> <span style="color: #6434A3;">void</span> <span style="color: #006699;">actionPerformed</span><span style="color: #909183;">(</span><span style="color: #6434A3;">ActionEvent</span> <span style="color: #BA36A5;">event</span><span style="color: #909183;">)</span> <span style="color: #909183;">{</span>
+                                System.out.println<span style="color: #709870;">(</span><span style="color: #008000;">"button clicked"</span><span style="color: #709870;">)</span>;
+    <span style="color: #909183;">}</span>
+<span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>;
+</pre>
+</div>
+
+</div></li>
+<li>Erzeugung eines neuen Objekts, das das <code>ActionListener</code>-Interface
+implementiert.</li>
+<li>Das Interface besitzt eine einzige Methode, <code>actionPerformed</code>, die
+durch Betätigung der Schaltfläche aktiviert wird.</li>
+</ul>
+<ul class="org-ul">
+<li>Anonyme innere Klassen wurden eingeführt, um es Java-Programmierern
+zu erleichtern, Verhalten zu repräsentieren und als Argumente
+weitergeben zu können.</li>
+<li>Dennoch wird im Beispiel immer noch viel „Boilerplate“-Code für eine
+einzige Zeile relevanten Codes verlangt.</li>
+<li>Der Code ist auch irreführend. Die Absicht ist ja nicht ein Objekt
+zu übergeben, sondern Verhalten.</li>
+<li><p>
+Abhilfe: Benutzung eines Lambda-Ausdrucks:
+</p>
+<div class="small">
+<div class="org-src-container">
+<pre class="src src-java">button.addActionListener<span style="color: #707183;">(</span>event -&gt; System.out.println<span style="color: #7388D6;">(</span><span style="color: #008000;">"button clicked"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>;
+</pre>
+</div>
+
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd818f9a" class="outline-4">
+<h4 id="orgd818f9a">Eine Bezahl-App</h4>
+<div class="outline-text-4" id="text-orgd818f9a">
+<p>
+Entwicklung beschrieben durch Wille Faler in
+<a href="https://dzone.com/articles/one-night-clojure-makes-scala">https://dzone.com/articles/one-night-clojure-makes-scala</a>
+</p>
+
+<p>
+„A simple metric generated with cloc“:
+</p>
+
+<ul class="org-ul">
+<li>Java version: 755 lines of code (LOC)</li>
+
+<li>Scala version: 200 LOC's</li>
+
+<li>Clojure version: 57 LOC's</li>
+</ul>
+</div>
+
+<div id="outline-container-org75152d4" class="outline-5">
+<h5 id="org75152d4">Funktionale Programmierung im Lichte der Evolution</h5>
+<div class="outline-text-5" id="text-org75152d4">
+<p>
+(vgl. <a href="https://cscalfani.medium.com/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536">So You Want to be a Functional Programmer (Part 1)</a>)
+</p>
+
+<div class="figure">
+<p><img src="./Abbildungen/fpprogrammer.png" alt="fpprogrammer.png" width="650px" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9a812ad" class="outline-3">
+<h3 id="org9a812ad">Was ist eine Einseiten-Webanwendung (single page application)?</h3>
+<div class="outline-text-3" id="text-org9a812ad">
+<ul class="org-ul">
+<li>Klassische Webseiten
+<ul class="org-ul">
+<li>Inhalte  verteilt auf mehrere, untereinander verlinkte Einzelseiten.</li>
+<li>Benutzerinteraktionen (z.&nbsp;B. Betätigung von Schaltflächen,
+Klicken auf Links): Neu laden der angeforderten Seite</li>
+</ul></li>
+<li>Einseiten-Webanwendung (single page application, SPA)
+<ul class="org-ul">
+<li>Alles spielt sich auf einer HTML-Seite ab.</li>
+<li>Benutzerinteraktionen führen nur zum Ersetzen von Teilbereichen</li>
+<li>Anwendungslogik entweder vollständig im Browser realisiert oder
+verteilt auf Frontend und Backend.</li>
+</ul></li>
+
+<li>Recht guter Überblick: <a href="https://de.wikipedia.org/wiki/Single-Page-Webanwendung">https://de.wikipedia.org/wiki/Single-Page-Webanwendung</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org16e8218" class="outline-3">
+<h3 id="org16e8218">Was ist eine domänenspezifische Sprache?</h3>
+<div class="outline-text-3" id="text-org16e8218">
+<ul class="org-ul">
+<li>viele Wege einem Rechner zu sagen, was er tun soll
+<ul class="org-ul">
+<li>MATLAB-Programme für Ingenieure</li>
+<li>SQL für einen Datenbankadministrator</li>
+<li>Ein Entwickler von integrierten Schaltungen beschreibt diese
+grafisch in Form von klassischen Schaltplänen oder &#x2013; z.&nbsp;B. zum
+Zwecke ihrer Simulation &#x2013; mit einer text-basierten Hardware-Beschreibungssprache</li>
+<li>Ein Buchhalter löst seine Probleme mit Formeln innerhalb einer
+Tabellenkalkulation.</li>
+</ul></li>
+<li>Jeder benutzt eine „Sprache“, die auf seinen Problembereich
+zugeschnitten ist, eine domänenspezifische Sprache (DSL, domain specific language).</li>
+<li>Eine DSL besitzt eine auf den jeweiligen Einsatzzweck zugeschnittene
+Syntax und Semantik.</li>
+<li>Darin unterscheiden sich DSLs von Programmiersprachen, die als
+Universalsprachen konzipiert sind.</li>
+<li>Kennen Sie Beispiele von DSLs?</li>
+</ul>
+<ul class="org-ul">
+<li>HTML, CSS</li>
+<li>XML</li>
+<li><a href="https://reactjs.org/docs/introducing-jsx.html">JSX</a></li>
+</ul>
+</div>
+<div id="outline-container-org36be0d1" class="outline-4">
+<h4 id="org36be0d1">Die Überbrückung der „Abstraktionslücke“</h4>
+<div class="outline-text-4" id="text-org36be0d1">
+
+<div class="figure">
+<p><img src="./Abbildungen/Abstraktionsluecke.png" alt="Abstraktionsluecke.png" width="650px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org742d59a" class="outline-4">
+<h4 id="org742d59a">interne versus externe DSLs</h4>
+<div class="outline-text-4" id="text-org742d59a">
+<ul class="org-ul">
+<li>Diese Begriffe beziehen sich auf das Verhältnis zur Wirtssprache, in
+der die in der DSL beschriebenen Komponenten verwendet bzw. in die
+sie eingebettet werden.</li>
+<li>Meist handelt es sich hierbei um eine universelle Programmiersprache.</li>
+<li>Bei internen DSLs stellt die Wirtssprache die Mittel zur Definition
+einer DSL und ihrer Verwendung bereit.</li>
+<li>Syntax durch die syntaktischen Grundschemata der Wirtssprache vorgegeben</li>
+<li>Vorteil: Nutzung ihrer Infrastruktur, also insbesondere Werkzeuge
+der Entwicklungsumgebung.</li>
+<li>Eine externe DSL hingegen erlaubt, die Syntax vollkommen unabhängig
+von der der Wirtssprache zu definieren.</li>
+<li>keine Unterstützung die Entwicklungsumgebung</li>
+<li>Parsen von DSL-Texten Code-Generierung müssen für eine externe DSL
+gesondert entwickelt werden.</li>
+<li>Tiefergehende Klassifikationen von DSLs findet man u.&nbsp;,a. bei
+Debasish Ghosh (<a class="org-ref-reference" href="#/slide-bibliography">[Gh11]</a>) und Martin Fowler (<a class="org-ref-reference" href="#/slide-bibliography">[Fow10]</a>).</li>
+<li>In den Sprachen der Lisp-Familie ist die Verwendung von internen
+DSLs in Form von Lisp-Makros eine seit Jahrzehnten geübte Praxis.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0b493d6" class="outline-2">
+<h2 id="org0b493d6">Clojure</h2>
+<div class="outline-text-2" id="text-org0b493d6">
+</div>
+<div id="outline-container-org4369870" class="outline-3">
+<h3 id="org4369870">Eigenschaften von Clojure</h3>
+<div class="outline-text-3" id="text-org4369870">
+<p>
+Clojure &#x2026;
+</p>
+<ul class="org-ul">
+<li>ist &#x2013; wie Racket &#x2013; ein Lisp-Dialekt.</li>
+<li>läuft auf der Java Virtual Machine.</li>
+<li>besitzt ein strenges, dynamisches, implizites Typsystem.</li>
+<li>ermöglicht verschiedene Programmierstile (imperativ, <b>funktional</b>,
+objektorientiert, &#x2026;).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga181411" class="outline-3">
+<h3 id="orga181411">Web-Seiten zu Clojure</h3>
+<div class="outline-text-3" id="text-orga181411">
+<ul class="org-ul">
+<li><a href="http://clojure.org">Hauptseite</a></li>
+<li><a href="http://clojure.org/features">Features</a></li>
+<li>Dokumentation
+<ul class="org-ul">
+<li><a href="http://clojuredocs.org">clojuredocs</a></li>
+<li><a href="https://clojure.org/reference/reader">Sprachreferenz</a></li>
+</ul></li>
+<li><a href="http://groups.google.com/group/clojure">Google Gruppe</a></li>
+<li>Tutorials
+<ul class="org-ul">
+<li><a href="https://clojure.org/guides/getting_started">Getting Started</a></li>
+<li><a href="https://learnxinyminutes.com/docs/clojure/">Learn Clojure in 5 minutes</a></li>
+<li><a href="http://www.braveclojure.com">CLOJURE for the BRAVE and TRUE</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1ebd89d" class="outline-3">
+<h3 id="org1ebd89d">Benutzung von Clojure</h3>
+<div class="outline-text-3" id="text-org1ebd89d">
+<ul class="org-ul">
+<li><a href="https://repl.it/languages/clojure">Online Clojure IDE</a></li>
+<li>Command line tool: <code>clj</code></li>
+<li><a href="https://clojure.org/community/tools">Clojure Tools</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdabef57" class="outline-3">
+<h3 id="orgdabef57">Die Read-Eval-Print-Loop</h3>
+<div class="outline-text-3" id="text-orgdabef57">
+<p>
+Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
+</p>
+<ul class="org-ul">
+<li>Read: lies einen Ausdruck</li>
+<li>Eval(uate): werte ihn aus</li>
+<li>Print: gib das Ergebnis aus</li>
+</ul>
+
+<div class="figure">
+<p><img src="./Abbildungen/ReadEvalPrint.png" alt="ReadEvalPrint.png" width="650px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org954410f" class="outline-3">
+<h3 id="org954410f">Beispiele für Funktionsdefinitionen</h3>
+<div class="outline-text-3" id="text-org954410f">
+<p>
+<b>Clojure</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">sum</span>
+      <span style="color: #7388D6;">(</span><span style="color: #0000FF;">fn</span> <span style="color: #909183;">[</span>lvz<span style="color: #909183;">]</span>
+        <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span>
+          <span style="color: #709870;">(</span><span style="color: #006FE0;">empty?</span> lvz<span style="color: #709870;">)</span> 0
+          <span style="color: #D0372D;">:else</span> <span style="color: #709870;">(</span>+ <span style="color: #907373;">(</span><span style="color: #006FE0;">first</span> lvz<span style="color: #907373;">)</span> <span style="color: #907373;">(</span>sum <span style="color: #6276BA;">(</span><span style="color: #006FE0;">rest</span> lvz<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#'user/sum
+</pre>
+
+
+<p>
+<b>Racket</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">sum</span>
+         <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">[</span>lvz<span style="color: #909183;">]</span>
+           <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span>
+             <span style="color: #709870;">[</span><span style="color: #907373;">(</span>empty? lvz<span style="color: #907373;">)</span> 0<span style="color: #709870;">]</span>
+             <span style="color: #709870;">[</span>else <span style="color: #907373;">(</span>+ <span style="color: #6276BA;">(</span>first lvz<span style="color: #6276BA;">)</span> <span style="color: #6276BA;">(</span>sum <span style="color: #858580;">(</span>rest lvz<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+<b>Clojure</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">filter</span> 
+      <span style="color: #7388D6;">(</span><span style="color: #0000FF;">fn</span> <span style="color: #909183;">[</span>praed? lst<span style="color: #909183;">]</span>
+        <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span> 
+          <span style="color: #709870;">(</span><span style="color: #006FE0;">empty?</span> lst<span style="color: #709870;">)</span> <span style="color: #709870;">()</span> 
+          <span style="color: #709870;">(</span>praed? <span style="color: #907373;">(</span><span style="color: #006FE0;">first</span> lst<span style="color: #907373;">)</span><span style="color: #709870;">)</span> <span style="color: #709870;">(</span><span style="color: #006FE0;">cons</span> <span style="color: #907373;">(</span><span style="color: #006FE0;">first</span> lst<span style="color: #907373;">)</span> <span style="color: #907373;">(</span><span style="color: #006FE0;">filter</span> praed? <span style="color: #6276BA;">(</span><span style="color: #006FE0;">rest</span> lst<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+          <span style="color: #D0372D;">:else</span> <span style="color: #709870;">(</span><span style="color: #006FE0;">filter</span> praed? <span style="color: #907373;">(</span><span style="color: #006FE0;">rest</span> lst<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>   
+</pre>
+</div>
+
+<pre class="example">
+#'user/filterWARNING: filter already refers to: #'clojure.core/filter in namespace: user, being replaced by: #'user/filter
+</pre>
+
+
+<p>
+<b>Racket</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #006699;">filter</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">lambda</span> <span style="color: #909183;">[</span>praed? lst<span style="color: #909183;">]</span>
+    <span style="color: #909183;">(</span><span style="color: #0000FF;">cond</span> 
+      <span style="color: #709870;">[</span><span style="color: #907373;">(</span>empty? lst<span style="color: #907373;">)</span> empty<span style="color: #709870;">]</span>
+      <span style="color: #709870;">[</span><span style="color: #907373;">(</span>praed? <span style="color: #6276BA;">(</span>first lst<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span> <span style="color: #907373;">(</span>cons <span style="color: #6276BA;">(</span>first lst<span style="color: #6276BA;">)</span> <span style="color: #6276BA;">(</span>filter praed? <span style="color: #858580;">(</span>rest lst<span style="color: #858580;">)</span><span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span>
+      <span style="color: #709870;">[</span>else <span style="color: #907373;">(</span>filter praed? <span style="color: #6276BA;">(</span>rest lst<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span> 
+</pre>
+</div>
+</div>
+<div id="outline-container-org46ba886" class="outline-4">
+<h4 id="org46ba886">Kurzformen</h4>
+<div class="outline-text-4" id="text-org46ba886">
+<p>
+<b>Clojure</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">sum</span>
+   <span style="color: #7388D6;">[</span>lvz<span style="color: #7388D6;">]</span>
+   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">cond</span>
+     <span style="color: #909183;">(</span><span style="color: #006FE0;">empty?</span> lvz<span style="color: #909183;">)</span> 0
+     <span style="color: #D0372D;">:else</span> <span style="color: #909183;">(</span>+ <span style="color: #709870;">(</span><span style="color: #006FE0;">first</span> lvz<span style="color: #709870;">)</span> <span style="color: #709870;">(</span>sum <span style="color: #907373;">(</span><span style="color: #006FE0;">rest</span> lvz<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#'user/sum
+</pre>
+
+
+<p>
+<b>Racket</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #0000FF;">define</span> <span style="color: #7388D6;">(</span><span style="color: #006699;">sum</span> lvz<span style="color: #7388D6;">)</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">cond</span>
+    <span style="color: #909183;">[</span><span style="color: #709870;">(</span>empty? lvz<span style="color: #709870;">)</span> 0<span style="color: #909183;">]</span>
+    <span style="color: #909183;">[</span>else <span style="color: #709870;">(</span>+ <span style="color: #907373;">(</span>first lvz<span style="color: #907373;">)</span> <span style="color: #907373;">(</span>sum <span style="color: #6276BA;">(</span>rest lvz<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf779e53" class="outline-3">
+<h3 id="orgf779e53">Datenstrukturen</h3>
+<div class="outline-text-3" id="text-orgf779e53">
+</div>
+<div id="outline-container-orgd97a6fe" class="outline-4">
+<h4 id="orgd97a6fe">self evaluation expressions (Konstanten)</h4>
+<div class="outline-text-4" id="text-orgd97a6fe">
+<ul class="org-ul">
+<li><code>true</code>, <code>false</code></li>
+<li><code>nil</code>
+<ul class="org-ul">
+<li>entspricht <code>null</code> in Java</li>
+<li>steht auch für den Wahrheitswert <code>false</code></li>
+<li><p>
+Alles was nicht <code>nil</code> oder <code>false</code> ist, hat den Wahrheitswert <code>true</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">if</span> 1 2 3<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+2
+</pre></li>
+</ul></li>
+
+<li>Symbole: <code>'das-ist-ein-symbol</code> (wie in Racket)</li>
+<li>Keywords: <code>:das-ist-ein-keyword</code></li>
+<li>quotierte Ausdrücke: <code>'(1 true nil a "string")</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb647827" class="outline-4">
+<h4 id="orgb647827">Listen</h4>
+<div class="outline-text-4" id="text-orgb647827">
+<ul class="org-ul">
+<li>ähnlich wie in allen Lisp-Dialekten</li>
+<li>hauptsächliche Verwendung in Clojure: Funktionsaufrufe</li>
+<li>Grundfunktionen: 
+<ul class="org-ul">
+<li><p>
+Literale
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">'<span style="color: #707183;">(</span>1 2 <span style="color: #7388D6;">(</span>+ 1 2<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 2 (+ 1 2))
+</pre></li>
+
+<li><p>
+<code>list</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">list</span> 1 2 <span style="color: #7388D6;">(</span>+ 1 2<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 2 3)
+</pre></li>
+
+<li><p>
+<code>conj</code> (für conjoin)
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #006FE0;">conj</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">list</span> 1 2 <span style="color: #909183;">(</span>+ 1 2<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> 0<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(0 1 2 3)
+</pre></li>
+</ul></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+<code>first</code> und <code>rest</code> wie in Racket (außer für die leere Liste)
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #006FE0;">first</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">conj</span> <span style="color: #909183;">(</span><span style="color: #006FE0;">list</span> 1 2 <span style="color: #709870;">(</span>+ 1 2<span style="color: #709870;">)</span><span style="color: #909183;">)</span> 0<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+  <span style="color: #707183;">(</span><span style="color: #006FE0;">rest</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">conj</span> <span style="color: #909183;">(</span><span style="color: #006FE0;">list</span> 1 2 <span style="color: #709870;">(</span>+ 1 2<span style="color: #709870;">)</span><span style="color: #909183;">)</span> 0<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+0(1 2 3)
+</pre>
+
+
+<ul class="org-ul">
+<li><code class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">first</span> <span style="color: #7388D6;">()</span><span style="color: #707183;">)</span></code> liefert <code class="src src-clojure"><span style="color: #D0372D;">nil</span></code>,</li>
+<li><code class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">rest</span> <span style="color: #7388D6;">()</span><span style="color: #707183;">)</span></code> liefert <code class="src src-clojure"><span style="color: #707183;">()</span></code></li>
+</ul></li>
+<li><p>
+<code class="src src-clojure">cons</code> liefert scheinbar das gleiche Resultat wie in Racket
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #006FE0;">cons</span> 0 <span style="color: #7388D6;">(</span><span style="color: #006FE0;">list</span> 1 2 <span style="color: #909183;">(</span>+ 1 2<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(0 1 2 3)
+</pre>
+
+
+<p>
+liefert aber eine Sequence
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #006FE0;">type</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">cons</span> 0 <span style="color: #909183;">(</span><span style="color: #006FE0;">list</span> 1 2 <span style="color: #709870;">(</span>+ 1 2<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+clojure.lang.Cons
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1d6aefe" class="outline-4">
+<h4 id="org1d6aefe">Vektoren</h4>
+<div class="outline-text-4" id="text-org1d6aefe">
+<ul class="org-ul">
+<li>Vektoren sind eine sequentielle Datenstruktur  mit effizientem,
+wahlfreien Zugriff auf die Elemente.</li>
+<li>Verhalten vergleichbar mit Arraylist in Java</li>
+<li><p>
+Grundfunktionen:
+</p>
+<ul class="org-ul">
+<li><p>
+Literale 
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">[</span>1 2 3<span style="color: #707183;">]</span>
+</pre>
+</div>
+
+<pre class="example">
+[1 2 3]
+</pre></li>
+
+<li><p>
+<code>vector</code> (analog zu <code>list</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #006FE0;">vector</span> 1 2 <span style="color: #7388D6;">(</span>+ 1 2<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+[1 2 3]
+</pre></li>
+
+<li><p>
+<code>conj</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #006FE0;">conj</span> <span style="color: #7388D6;">[</span>1 2 3<span style="color: #7388D6;">]</span> 4 5 6<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+[1 2 3 4 5 6]
+</pre></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+Zugriff über Indizes
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #006FE0;">get</span> <span style="color: #7388D6;">[</span><span style="color: #008000;">"xyz"</span> <span style="color: #D0372D;">false</span> <span style="color: #D0372D;">:x</span><span style="color: #7388D6;">]</span> 0<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+"xyz"
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #7388D6;">[</span><span style="color: #008000;">"xyz"</span> <span style="color: #D0372D;">false</span> <span style="color: #D0372D;">:x</span><span style="color: #7388D6;">]</span> 2<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+:x
+</pre></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga91057b" class="outline-4">
+<h4 id="orga91057b">Mengen</h4>
+<div class="outline-text-4" id="text-orga91057b">
+<ul class="org-ul">
+<li>Sets bilden die Clojure-Implementierung für mathematische Mengen.</li>
+<li><p>
+Grundfunktionen:
+</p>
+<ul class="org-ul">
+<li><p>
+Literale
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">#<span style="color: #707183;">{</span>1 2 3<span style="color: #707183;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+#{1 3 2}
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure">#<span style="color: #707183;">{</span><span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:b</span> <span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:c</span><span style="color: #707183;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+class clojure.lang.ExceptionInfoclass java.lang.IllegalArgumentExceptionSyntax error reading source at (REPL:1:15).
+Duplicate key: :a
+</pre></li>
+
+<li><p>
+<code>hash-set</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">hash-set</span> <span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:b</span> <span style="color: #D0372D;">:c</span> <span style="color: #D0372D;">:d</span> <span style="color: #D0372D;">:a</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#{:c :b :d :a}
+</pre></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+<code>set</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">set</span> <span style="color: #7388D6;">[</span><span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:b</span> <span style="color: #D0372D;">:c</span> <span style="color: #D0372D;">:d</span> <span style="color: #D0372D;">:a</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#{:c :b :d :a}
+</pre></li>
+
+<li><p>
+<code>conj</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">conj</span> #<span style="color: #7388D6;">{</span><span style="color: #008000;">"Kurt"</span> <span style="color: #008000;">"Frida"</span> <span style="color: #008000;">"Eleonore"</span><span style="color: #7388D6;">}</span> <span style="color: #008000;">"Gustav"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#{"Frida" "Eleonore" "Gustav" "Kurt"}
+</pre></li>
+
+<li><p>
+<code>disj</code> (disjoin)
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">disj</span> #<span style="color: #7388D6;">{</span><span style="color: #008000;">"Kurt"</span> <span style="color: #008000;">"Frida"</span> <span style="color: #008000;">"Eleonore"</span><span style="color: #7388D6;">}</span> <span style="color: #008000;">"Frida"</span> <span style="color: #008000;">"Kurt"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#{"Eleonore"}
+</pre></li>
+</ul></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+Anwendungsbeispiele
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">apply</span> str <span style="color: #7388D6;">(</span><span style="color: #006FE0;">remove</span> <span style="color: #909183;">(</span><span style="color: #006FE0;">set</span> <span style="color: #008000;">"aeiouy"</span><span style="color: #909183;">)</span> <span style="color: #008000;">"vowels are useless"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+"vwls r slss"
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">numeric?</span> <span style="color: #7388D6;">[</span>s<span style="color: #7388D6;">]</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">every?</span> <span style="color: #909183;">(</span><span style="color: #006FE0;">set</span> <span style="color: #008000;">"0123456789"</span><span style="color: #909183;">)</span> s<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#'user/numeric?
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span>numeric? <span style="color: #008000;">"123"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+true
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span>numeric? <span style="color: #008000;">"12a3"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+false
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2216aef" class="outline-4">
+<h4 id="org2216aef">Maps</h4>
+<div class="outline-text-4" id="text-org2216aef">
+<ul class="org-ul">
+<li>Maps sind Mengen Schlüssel-Wert-Paaren.</li>
+<li>In anderen Programmiersprachen als dictionaries oder hash-maps
+bekannt.</li>
+<li>Schlüssel müssen eindeutig sein.</li>
+<li><p>
+Grundfunktionen:
+</p>
+<ul class="org-ul">
+<li><p>
+Literale
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">{</span><span style="color: #008000;">"Kurt"</span> 25 <span style="color: #008000;">"Frida"</span> 19 <span style="color: #008000;">"Eleonore"</span> 21<span style="color: #707183;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+{"Kurt" 25, "Frida" 19, "Eleonore" 21}
+</pre></li>
+
+<li><p>
+Hinzufügen neuer Schlüssel-Wert-Paare
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">assoc</span> <span style="color: #7388D6;">{</span><span style="color: #008000;">"Kurt"</span> 25 <span style="color: #008000;">"Frida"</span> 19 <span style="color: #008000;">"Eleonore"</span> 21<span style="color: #7388D6;">}</span> <span style="color: #008000;">"Kurt"</span> 27<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+{"Kurt" 27, "Frida" 19, "Eleonore" 21}
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">assoc</span> <span style="color: #7388D6;">{</span><span style="color: #008000;">"Kurt"</span> 25 <span style="color: #008000;">"Frida"</span> 19 <span style="color: #008000;">"Eleonore"</span> 21<span style="color: #7388D6;">}</span> <span style="color: #008000;">"Frida"</span> 22<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+{"Kurt" 25, "Frida" 22, "Eleonore" 21}
+</pre></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+Entfernen eines Schlüssel-Wert-Paars
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">dissoc</span> <span style="color: #7388D6;">{</span><span style="color: #008000;">"Kurt"</span> 25 <span style="color: #008000;">"Frida"</span> 19 <span style="color: #008000;">"Eleonore"</span> 21<span style="color: #7388D6;">}</span> <span style="color: #008000;">"Kurt"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+{"Frida" 19, "Eleonore" 21}
+</pre></li>
+
+<li><p>
+Wertzugriff über Schlüssel
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">get</span> <span style="color: #7388D6;">{</span><span style="color: #008000;">"Kurt"</span> 25 <span style="color: #008000;">"Frida"</span> 19 <span style="color: #008000;">"Eleonore"</span> 21<span style="color: #7388D6;">}</span> <span style="color: #008000;">"Kurt"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+25
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #7388D6;">{</span><span style="color: #008000;">"Kurt"</span> 25 <span style="color: #008000;">"Frida"</span> 19 <span style="color: #008000;">"Eleonore"</span> 21<span style="color: #7388D6;">}</span> <span style="color: #008000;">"Kurt"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+25
+</pre>
+
+
+<ul class="org-ul">
+<li><p>
+Wenn die Schlüssel keywords sind, geht auch &#x2026;  
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">  <span style="color: #707183;">(</span><span style="color: #D0372D;">:y</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:x</span> 2 <span style="color: #D0372D;">:y</span> 3 <span style="color: #D0372D;">:z</span> 7<span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+3
+</pre></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+Repräsentation von Daten einer Anwendungsdomäne
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">person</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:name</span> <span style="color: #008000;">"D&#252;sentrieb"</span>
+             <span style="color: #D0372D;">:vorname</span> <span style="color: #008000;">"Daniel"</span>
+             <span style="color: #D0372D;">:adresse</span> <span style="color: #909183;">{</span><span style="color: #D0372D;">:strasse</span> <span style="color: #008000;">"Disneystra&#223;e 1"</span>
+                       <span style="color: #D0372D;">:plz</span> <span style="color: #008000;">"12345"</span>
+                       <span style="color: #D0372D;">:ort</span> <span style="color: #008000;">"Entenhausen"</span><span style="color: #909183;">}</span><span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+#'user/person
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">get-in</span> person <span style="color: #7388D6;">[</span><span style="color: #D0372D;">:adresse</span> <span style="color: #D0372D;">:plz</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+"12345"
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">assoc-in</span> person <span style="color: #7388D6;">[</span><span style="color: #D0372D;">:adresse</span> <span style="color: #D0372D;">:plz</span><span style="color: #7388D6;">]</span> <span style="color: #008000;">"54321"</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+{:name "Düsentrieb", :vorname "Daniel", :adresse {:strasse "Disneystraße 1", :plz "54321", :ort "Entenhausen"}}
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org499e5b6" class="outline-3">
+<h3 id="org499e5b6">(Lazy) Sequences</h3>
+<div class="outline-text-3" id="text-org499e5b6">
+<ul class="org-ul">
+<li>Sequences stellen eine Abstraktion über den genannten konkreten
+Datenstrukturen dar.</li>
+<li><p>
+Sehen äußerlich aus wie Listen
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">seq</span> <span style="color: #7388D6;">[</span>1 2 3<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 2 3)
+</pre></li>
+
+<li><p>
+Klassische Funktionen höherer Ordnung liefern sequences:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">map</span> inc <span style="color: #7388D6;">[</span>1 2 3<span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(2 3 4)
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">map</span> #<span style="color: #7388D6;">(</span><span style="color: #006FE0;">inc</span> <span style="color: #909183;">(</span><span style="color: #006FE0;">val</span> <span style="color: #BA36A5;">%</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:x</span> 1 <span style="color: #D0372D;">:y</span> 2 <span style="color: #D0372D;">:z</span> 3<span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(2 3 4)
+</pre></li>
+
+<li><p>
+Klassische Funktionen höherer Ordnung liefern ggf. lazy sequences:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #006FE0;">take</span> 5 <span style="color: #7388D6;">(</span><span style="color: #006FE0;">map</span> inc <span style="color: #909183;">(</span><span style="color: #006FE0;">range</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+(1 2 3 4 5)
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org468d1b3" class="outline-3">
+<h3 id="org468d1b3">Destructuring</h3>
+<div class="outline-text-3" id="text-org468d1b3">
+<p>
+Unter <i>destructuring</i> versteht man eine Weise, Werte aus einer
+Datenstruktur zu extrahieren und dabei an Variablen zu binden. Dabei
+muss die Datenstruktur nicht traversiert werden. Destructuring wird
+vorwiegend auf Vektoren und Maps angewendet, ist aber auch für Listen
+und Zeichenketten möglich.
+</p>
+
+<p>
+(vgl. <a href="https://clojure.org/guides/destructuring">Destructuring in Clojure</a>)
+</p>
+</div>
+<div id="outline-container-org1406e15" class="outline-4">
+<h4 id="org1406e15">Vektoren</h4>
+<div class="outline-text-4" id="text-org1406e15">
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-vector</span> <span style="color: #7388D6;">[</span><span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:b</span> <span style="color: #D0372D;">:c</span> <span style="color: #D0372D;">:d</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-nested-vector</span> <span style="color: #7388D6;">[</span><span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:b</span> <span style="color: #D0372D;">:c</span> <span style="color: #D0372D;">:d</span> <span style="color: #909183;">[</span><span style="color: #D0372D;">:x</span> <span style="color: #D0372D;">:y</span> <span style="color: #D0372D;">:z</span><span style="color: #909183;">]</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a b c d<span style="color: #909183;">]</span> my-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b c d<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a :b :c :d</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a _ _ d <span style="color: #709870;">[</span>x y z<span style="color: #709870;">]</span><span style="color: #909183;">]</span> my-nested-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a d x y z<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a :d :x :y :z</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Das Muster muss nicht den ganzen Vektor abdecken:</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a b c<span style="color: #909183;">]</span> my-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b c<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a :b :c</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Mit &amp; the-rest kann der restliche Teil des Vektors an the-rest </span>
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">gebunden werden</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a b &amp; the-rest<span style="color: #909183;">]</span> my-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b the-rest<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a :b (:c :d)</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Wenn das Muster mehr Elemente "verlangt" als im Vektor vorhanden",</span>
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">werden die &#252;bersch&#252;ssigen Symbole an nil gebunden.</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a b c d e f g<span style="color: #909183;">]</span> my-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b c d e f g<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a :b :c :d nil nil nil</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Mit :as some-symbol als die beiden letzten Eintr&#228;ge im Muster </span>
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">wird der ganze Vektor an some-symbol gebunden</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span><span style="color: #D0372D;">:as</span> all<span style="color: #909183;">]</span> my-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> all<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; [:a :b :c :d]</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a <span style="color: #D0372D;">:as</span> all<span style="color: #909183;">]</span> my-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a all<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a [:a :b :c :d]</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a _ _ _ <span style="color: #709870;">[</span>x y z <span style="color: #D0372D;">:as</span> nested<span style="color: #709870;">]</span> <span style="color: #D0372D;">:as</span> all<span style="color: #909183;">]</span> my-nested-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a x y z nested all<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a :x :y :z [:x :y :z] [:a :b :c :d [:x :y :z]]</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">&amp; the-rest und :as some-symbol k&#246;nnen auch zusammen benutzt werden.</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>a b &amp; the-rest <span style="color: #D0372D;">:as</span> all<span style="color: #909183;">]</span> my-vector<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b the-rest all<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; :a :b (:c :d) [:a :b :c :d]</span>
+
+<span style="color: #8D8D84;">;;; </span>
+</pre>
+</div>
+</div>
+<div id="outline-container-org30df650" class="outline-5">
+<h5 id="org30df650">Beispiel ohne Destructuring &#x2026;</h5>
+<div class="outline-text-5" id="text-org30df650">
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-line</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>5 10<span style="color: #909183;">]</span> <span style="color: #909183;">[</span>10 20<span style="color: #909183;">]</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span>p1 <span style="color: #909183;">(</span><span style="color: #006FE0;">first</span> my-line<span style="color: #909183;">)</span>
+      p2 <span style="color: #909183;">(</span><span style="color: #006FE0;">second</span> my-line<span style="color: #909183;">)</span>
+      x1 <span style="color: #909183;">(</span><span style="color: #006FE0;">first</span> p1<span style="color: #909183;">)</span>
+      y1 <span style="color: #909183;">(</span><span style="color: #006FE0;">second</span> p1<span style="color: #909183;">)</span>
+      x2 <span style="color: #909183;">(</span><span style="color: #006FE0;">first</span> p2<span style="color: #909183;">)</span>
+      y2 <span style="color: #909183;">(</span><span style="color: #006FE0;">second</span> p2<span style="color: #909183;">)</span><span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> <span style="color: #008000;">"Line from ("</span> x1 <span style="color: #008000;">","</span> y1 <span style="color: #008000;">") to ("</span> x2 <span style="color: #008000;">", "</span> y2 <span style="color: #008000;">")"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; "Line from ( 5 , 10 ) to ( 10 , 20 )"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga5e73c3" class="outline-5">
+<h5 id="orga5e73c3">&#x2026; und mit Destructuring</h5>
+<div class="outline-text-5" id="text-orga5e73c3">
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-line</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>5 10<span style="color: #909183;">]</span> <span style="color: #909183;">[</span>10 20<span style="color: #909183;">]</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>p1 p2<span style="color: #909183;">]</span> my-line
+      <span style="color: #909183;">[</span>x1 y1<span style="color: #909183;">]</span> p1
+      <span style="color: #909183;">[</span>x2 y2<span style="color: #909183;">]</span> p2<span style="color: #7388D6;">]</span>
+ <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> <span style="color: #008000;">"Line from ("</span> x1 <span style="color: #008000;">","</span> y1 <span style="color: #008000;">") to ("</span> x2 <span style="color: #008000;">", "</span> y2 <span style="color: #008000;">")"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;</span><span style="color: #8D8D84; font-style: italic;">= "Line from ( 5 , 10 ) to ( 10 , 20 )"</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; "Line from ( 5 , 10 ) to ( 10 , 20 )"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf7ca010" class="outline-4">
+<h4 id="orgf7ca010">Maps</h4>
+<div class="outline-text-4" id="text-orgf7ca010">
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-hashmap</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:a</span> <span style="color: #008000;">"A"</span> <span style="color: #D0372D;">:b</span> <span style="color: #008000;">"B"</span> <span style="color: #D0372D;">:c</span> <span style="color: #008000;">"C"</span> <span style="color: #D0372D;">:d</span> <span style="color: #008000;">"D"</span><span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-nested-hashmap</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:a</span> <span style="color: #008000;">"A"</span> <span style="color: #D0372D;">:b</span> <span style="color: #008000;">"B"</span> <span style="color: #D0372D;">:c</span> <span style="color: #008000;">"C"</span> <span style="color: #D0372D;">:d</span> <span style="color: #008000;">"D"</span> <span style="color: #D0372D;">:q</span> <span style="color: #909183;">{</span><span style="color: #D0372D;">:x</span> <span style="color: #008000;">"X"</span> <span style="color: #D0372D;">:y</span> <span style="color: #008000;">"Y"</span> <span style="color: #D0372D;">:z</span> <span style="color: #008000;">"Z"</span><span style="color: #909183;">}</span><span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span>a <span style="color: #D0372D;">:a</span> d <span style="color: #D0372D;">:d</span><span style="color: #909183;">}</span> my-hashmap<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a d<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; A D</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span>a <span style="color: #D0372D;">:a</span>, b <span style="color: #D0372D;">:b</span>, <span style="color: #709870;">{</span>x <span style="color: #D0372D;">:x</span>, y <span style="color: #D0372D;">:y</span><span style="color: #709870;">}</span> <span style="color: #D0372D;">:q</span><span style="color: #909183;">}</span> my-nested-hashmap<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b x y<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; A B X Y</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Wenn ein Schl&#252;ssel in der Map nicht existiert, wird die Variable an </span>
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">nil gebunden.</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span>a <span style="color: #D0372D;">:a</span>, not-found <span style="color: #D0372D;">:not-found</span>, b <span style="color: #D0372D;">:b</span><span style="color: #909183;">}</span> my-hashmap<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a not-found b<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; A nil B</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">F&#252;r fehlende Schl&#252;ssel kann hinter dem Schl&#252;sselwort :or eine Map mit </span>
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Default-Werten angegeben werden.</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span>a <span style="color: #D0372D;">:a</span>, not-found <span style="color: #D0372D;">:not-found</span>, b <span style="color: #D0372D;">:b</span>, <span style="color: #D0372D;">:or</span> <span style="color: #709870;">{</span>not-found <span style="color: #008000;">":)"</span><span style="color: #709870;">}</span><span style="color: #909183;">}</span> my-hashmap<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a not-found b<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; A :) B</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Die Form :as some-symbol ist auch f&#252;r Maps verf&#252;gbar. </span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span>a <span style="color: #D0372D;">:a</span>, b <span style="color: #D0372D;">:b</span>, <span style="color: #D0372D;">:as</span> all<span style="color: #909183;">}</span> my-hashmap<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b all<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; A B {:a A :b B :c C :d D}</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Die Kombination von :as und :or ist auch m&#246;glich.</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span>a <span style="color: #D0372D;">:a</span>, b <span style="color: #D0372D;">:b</span>, not-found <span style="color: #D0372D;">:not-found</span>, <span style="color: #D0372D;">:or</span> <span style="color: #709870;">{</span>not-found <span style="color: #008000;">":)"</span><span style="color: #709870;">}</span>, <span style="color: #D0372D;">:as</span> all<span style="color: #909183;">}</span> my-hashmap<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> a b not-found all<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; A B :) {:a A :b B :c C :d D}</span>
+
+<span style="color: #8D8D84;">;;; </span>
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb8a7fad" class="outline-5">
+<h5 id="orgb8a7fad">Beispiel</h5>
+<div class="outline-text-5" id="text-orgb8a7fad">
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">client</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:name</span> <span style="color: #008000;">"Super Co."</span>
+             <span style="color: #D0372D;">:location</span> <span style="color: #008000;">"Philadelphia"</span>
+             <span style="color: #D0372D;">:description</span> <span style="color: #008000;">"The worldwide leader in plastic tableware."</span><span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">ohne Destructuring</span>
+<span style="color: #8D8D84;">;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span>name <span style="color: #909183;">(</span><span style="color: #D0372D;">:name</span> client<span style="color: #909183;">)</span>
+      location <span style="color: #909183;">(</span><span style="color: #D0372D;">:location</span> client<span style="color: #909183;">)</span>
+      description <span style="color: #909183;">(</span><span style="color: #D0372D;">:description</span> client<span style="color: #909183;">)</span><span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> name location <span style="color: #008000;">"-"</span> description<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; Super Co. Philadelphia - The worldwide leader in plastic tableware.</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">mit Destructuring</span>
+<span style="color: #8D8D84;">;;;;;;;;;;;;;;;;;;;;;;</span>
+ <span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span>name <span style="color: #D0372D;">:name</span>
+       location <span style="color: #D0372D;">:location</span>
+       description <span style="color: #D0372D;">:description</span><span style="color: #909183;">}</span> client<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> name location <span style="color: #008000;">"-"</span> description<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; Super Co. Philadelphia - The worldwide leader in plastic tableware.</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">und noch k&#252;rzer mit dem :keys Schl&#252;sselwort</span>
+<span style="color: #8D8D84;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">let</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">{</span><span style="color: #D0372D;">:keys</span> <span style="color: #709870;">[</span>name location description<span style="color: #709870;">]</span><span style="color: #909183;">}</span> client<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> name location <span style="color: #008000;">"-"</span> description<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; Super Co. Philadelphia - The worldwide leader in plastic tableware.</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4376f82" class="outline-4">
+<h4 id="org4376f82">Funktionsköpfe</h4>
+<div class="outline-text-4" id="text-org4376f82">
+<ul class="org-ul">
+<li>Ein häufiger Anwendungszweck von Destructuring ist die Zerlegung von
+Argumenten, die an eine Funktion übergeben werden.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">"klassisch" ohne Destructuring</span>
+<span style="color: #8D8D84;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">print-coordinates-1</span> <span style="color: #7388D6;">[</span>point<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">[</span>x <span style="color: #709870;">(</span><span style="color: #006FE0;">first</span> point<span style="color: #709870;">)</span>
+        y <span style="color: #709870;">(</span><span style="color: #006FE0;">second</span> point<span style="color: #709870;">)</span>
+        z <span style="color: #709870;">(</span><span style="color: #006FE0;">last</span> point<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
+    <span style="color: #909183;">(</span><span style="color: #006FE0;">println</span> <span style="color: #008000;">"x:"</span> x <span style="color: #008000;">", y:"</span> y <span style="color: #008000;">", z:"</span> z<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">mit Destructuring unter Verwendung von let</span>
+<span style="color: #8D8D84;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">print-coordinates-2</span> <span style="color: #7388D6;">[</span>point<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">let</span> <span style="color: #909183;">[</span><span style="color: #709870;">[</span>x y z<span style="color: #709870;">]</span> point<span style="color: #909183;">]</span>
+    <span style="color: #909183;">(</span><span style="color: #006FE0;">println</span> <span style="color: #008000;">"x:"</span> x <span style="color: #008000;">", y:"</span> y <span style="color: #008000;">", z:"</span> z<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #8D8D84;">;;; </span><span style="color: #8D8D84; font-style: italic;">Anwendung von Destructuring auf die Parameterliste</span>
+<span style="color: #8D8D84;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">print-coordinates-3</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>x y z<span style="color: #909183;">]</span><span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">println</span> <span style="color: #008000;">"x:"</span> x <span style="color: #008000;">", y:"</span> y <span style="color: #008000;">", z:"</span> z<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgebbd2c0" class="outline-3">
+<h3 id="orgebbd2c0">Threading Makros</h3>
+<div class="outline-text-3" id="text-orgebbd2c0">
+<ul class="org-ul">
+<li><p>
+die Aufgabe „Rabattiere alle Preise aus einer Liste, die
+größer als 20 sind, um 10% und summiere sie auf” hatten wir schon
+als Java-Lösung:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #0000FF;">final</span> <span style="color: #6434A3;">List</span><span style="color: #707183;">&lt;</span><span style="color: #6434A3;">BigDecimal</span><span style="color: #707183;">&gt;</span> <span style="color: #BA36A5;">prices</span> = Arrays.asList<span style="color: #707183;">(</span>
+  <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"10"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"30"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"17"</span><span style="color: #7388D6;">)</span>,
+  <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"20"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"15"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"18"</span><span style="color: #7388D6;">)</span>,
+  <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"45"</span><span style="color: #7388D6;">)</span>, <span style="color: #0000FF;">new</span> <span style="color: #6434A3;">BigDecimal</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"12"</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>;
+
+<span style="color: #8D8D84;">// </span><span style="color: #8D8D84; font-style: italic;">L&#246;sung f&#252;r Java &gt;= 8</span>
+<span style="color: #0000FF;">final</span> <span style="color: #6434A3;">BigDecimal</span> <span style="color: #BA36A5;">totalOfDiscountedPrices</span> =
+  prices.stream<span style="color: #707183;">()</span>
+        .filter<span style="color: #707183;">(</span>price -&gt; price.compareTo<span style="color: #7388D6;">(</span>BigDecimal.valueOf<span style="color: #909183;">(</span>20<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span> &gt; 0<span style="color: #707183;">)</span>
+        .map<span style="color: #707183;">(</span>price -&gt; price.multiply<span style="color: #7388D6;">(</span>BigDecimal.valueOf<span style="color: #909183;">(</span>0.9<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+        .reduce<span style="color: #707183;">(</span><span style="color: #D0372D;">BigDecimal</span>.ZERO, BigDecimal::add<span style="color: #707183;">)</span>;
+</pre>
+</div></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+verglichen damit ist die klassische funktionale Lösung mit Clojure
+eher schlecht lesbar:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">prices</span> <span style="color: #7388D6;">(</span><span style="color: #006FE0;">map</span> bigdec <span style="color: #909183;">[</span>10 30 17 20 15 18 45 12<span style="color: #909183;">]</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">totalOfDiscountedPrices</span>
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">reduce</span> + 0
+          <span style="color: #909183;">(</span><span style="color: #006FE0;">map</span> <span style="color: #709870;">(</span><span style="color: #0000FF;">fn</span> <span style="color: #907373;">[</span>p<span style="color: #907373;">]</span> <span style="color: #907373;">(</span>* p 0.9M<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+               <span style="color: #709870;">(</span><span style="color: #006FE0;">filter</span> <span style="color: #907373;">(</span><span style="color: #0000FF;">fn</span> <span style="color: #6276BA;">[</span>p<span style="color: #6276BA;">]</span> <span style="color: #6276BA;">(</span>&gt; p 20M<span style="color: #6276BA;">)</span><span style="color: #907373;">)</span>
+                       prices<span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">oder syntaktisch durch das thread-last (-&gt;&gt;) Makro gezuckert</span>
+<span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">totalOfDiscountedPrices2</span>
+  <span style="color: #7388D6;">(</span><span style="color: #0000FF;">-&gt;&gt;</span> prices
+       <span style="color: #909183;">(</span><span style="color: #006FE0;">filter</span> #<span style="color: #709870;">(</span>&gt; <span style="color: #BA36A5;">%</span> 20M<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+       <span style="color: #909183;">(</span><span style="color: #006FE0;">map</span>    #<span style="color: #709870;">(</span>* <span style="color: #BA36A5;">%</span> 0.9M<span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+       <span style="color: #909183;">(</span><span style="color: #006FE0;">reduce</span> + 0<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div></li>
+</ul>
+<ul class="org-ul">
+<li>Das thread-last-Makro (-&gt;&gt;) fügt den „durchgeschleiften“ Wert als
+<b>letztes</b> Argument den Funktionsaufrufen hinzu.</li>
+<li><p>
+Das thread-first-Makro (-&gt;) fügt den „durchgeschleiften“ Wert als
+<b>erstes</b> Argument den Funktionsaufrufen hinzu.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">transform</span> <span style="color: #7388D6;">[</span>person<span style="color: #7388D6;">]</span>
+   <span style="color: #7388D6;">(</span><span style="color: #006FE0;">update</span> <span style="color: #909183;">(</span><span style="color: #006FE0;">assoc</span> person <span style="color: #D0372D;">:hair-color</span> <span style="color: #D0372D;">:gray</span><span style="color: #909183;">)</span> <span style="color: #D0372D;">:age</span> inc<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span>transform <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:name</span> <span style="color: #008000;">"Socrates"</span>, <span style="color: #D0372D;">:age</span> 39<span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
+<span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">=&gt; {:name "Socrates", :age 40, :hair-color :gray}</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">transform*</span> <span style="color: #7388D6;">[</span>person<span style="color: #7388D6;">]</span>
+   <span style="color: #7388D6;">(</span><span style="color: #0000FF;">-&gt;</span> person
+      <span style="color: #909183;">(</span><span style="color: #006FE0;">assoc</span> <span style="color: #D0372D;">:hair-color</span> <span style="color: #D0372D;">:gray</span><span style="color: #909183;">)</span>
+      <span style="color: #909183;">(</span><span style="color: #006FE0;">update</span> <span style="color: #D0372D;">:age</span> inc<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge6788c7" class="outline-2">
+<h2 id="orge6788c7">Ein erstes Beispiel</h2>
+<div class="outline-text-2" id="text-orge6788c7">
+<p>
+<a href="Beispiel.html">hier geht's weiter</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org1e62e5a" class="outline-2">
+<h2 id="bibliography">Literaturverzeichnis</h2>
+<div class="outline-text-2" id="text-bibliography">
+<ul class='org-ref-bib'><li><a id="Wan2000Functional">[Wan2000Functional] Wan & Hudak, Functional Reactive Programming from First Principles, 242-252, in in: Proceedings of the ACM SIGPLAN 2000 conference on Programming language design and implementation  - PLDI '00, edited by ACM Press (2000)</a></li>
+<li><a id="Gh11">[Gh11] Debasish Gosch, DSLs in Action, Manning (2011).</a></li>
+<li><a id="Fow10">[Fow10] Martin Fowler, Domain-Specific Languages, Addison-Wesley (2011).</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Datum: 27. 06. 2021</p>
+<p class="author">Autor: Christopher Karow, Johannes Brauer</p>
+<p class="date">Created: 2021-06-27 Sun 12:00</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

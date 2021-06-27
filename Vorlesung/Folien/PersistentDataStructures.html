@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<title>Exkurs: Persistent Data Structures</title>
+<meta name="author" content="Christopher Karow, Johannes Brauer"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="reveal.js-master/dist/reveal.css"/>
+
+<link rel="stylesheet" href="reveal.js-master/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./mycss/myrevealstyle.css"/>
+<link rel="stylesheet" href="reveal.js-master/plugin/highlight/vs.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" type="text/css" href="mycss/mystyle.css" />
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Exkurs: Persistent Data Structures</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">27. 06. 2021</h3>
+</section>
+
+<section>
+<section id="slide-org37a92ce">
+<h2 id="org37a92ce">Ziele</h2>
+<p>
+Antwort auf die Frage: Wie kann die Manipulation von mutationsfreien
+  Datenstrukturen, wie sie in funktionalen Programmiersprachen
+  überlich sind, effizient implementiert werden?
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org7ac3ce7">
+<h2 id="org7ac3ce7">Funktionale Datenstrukturen</h2>
+<div class="outline-text-2" id="text-org7ac3ce7">
+</div>
+</section>
+<section id="slide-org9c7c3cc">
+<h3 id="org9c7c3cc">Imperative Datenstrukturen</h3>
+<ul>
+<li>Änderungen an <i>imperativen Datenstrukturen</i> basieren auf dem Prinzip
+der Mutation.</li>
+<li><p>
+Was ist das Resultat des folgenden C-Programms?
+</p>
+<div class="org-src-container">
+
+<pre><code class="c" >#include &lt;stdio.h&gt;
+ 
+int main () {
+
+   /* Deklaration und Initialisierung eines Arrays */
+   int v[ 5 ] = {100, 101, 102, 103, 104}; 
+   int j;
+   
+   /* Ausgabe der Array-Elemente*/
+   for (j = 0; j &lt; 5; j++ ) {
+      printf("Element[%d] = %d\n", j, v[j] );
+   }
+   
+   /* Änderung eines Array-Elements und erneute Ausgabe*/
+   v[4] = 0;
+   for (j = 0; j &lt; 5; j++ ) {
+      printf("Element[%d] = %d\n", j, v[j] );
+   }
+
+   return 0;
+}
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li><p>
+Ausgabe in der Shell
+</p>
+<div class="org-src-container">
+
+<pre><code class="sh" >  $gcc -o main *.c
+  $main
+  Element[0] = 100
+  Element[1] = 101
+  Element[2] = 102
+  Element[3] = 103
+  Element[4] = 104
+  Element[0] = 100
+  Element[1] = 101
+  Element[2] = 102
+  Element[3] = 103
+  Element[4] = 0
+</code></pre>
+</div></li>
+<li>Stichwort: Place oriented Programming</li>
+
+</ul>
+</section>
+<section id="slide-org4f0f64e">
+<h3 id="org4f0f64e">Funktionale Datenstrukturen</h3>
+<ul>
+<li>Funktionale Datenstrukturen sind nicht änderbar.</li>
+<li><p>
+Beispiel in Clojure
+</p>
+<div class="org-src-container">
+
+<pre><code class="clojure" >  ;; Deklaration und Initialisierung eines "Arrays" (vector)
+  (def v [100, 101, 102, 103, 104])
+
+  ;;Ausgabe der Array-Elemente
+  v
+  ;; =&gt; [100 101 102 103 104]
+
+  ;; Änderung eines Array-Elements
+  (assoc v 4 0)
+  ;; =&gt; [100 101 102 103 0]
+
+  ;; erneute Ausgabe von v
+  v
+  ;; =&gt; [100 101 102 103 104]
+</code></pre>
+</div></li>
+<li>Welche Frage drängt sich hier auf?</li>
+
+</ul>
+</section>
+<section id="slide-org2d614b6">
+<h4 id="org2d614b6">Effiziente Implementierung</h4>
+<ul>
+<li>Ideen basieren auf Okasakis Buch <i>Purely Functional Data Structures</i>
+<a class="org-ref-reference" href="#/slide-bibliography">[Okasaki1999]</a></li>
+<li>Jede Operation, die den Wert einer Datenstruktur ändert, erzeugt ein
+neues Exemplar von ihr.</li>
+<li>Da nach der Ausführung von Änderungsoperationen, die vorangegangen
+Versionen der Datenstruktur existieren, spricht man auch von
+<i>persistenten Datenstrukturen</i>.</li>
+<li>Das einfache Anlegen von Kopien führt nicht zu akzeptablen Laufzeiten.</li>
+<li>Die Lösung besteht in der Verwendung von Baumstrukturen, die ermöglichen
+<ul>
+<li>Redundanzen der „Kopien“ so weit wie möglich zu vermeiden und</li>
+<li>trotzdem einen schnellen Zugriff auf die Elemente bereit zu
+stellen.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org549710d">
+<h4 id="org549710d">Exemplarische Darstellung für Vektoren in Clojure</h4>
+<ul>
+<li>Verwendet werden Strukturen, die Binärbäumen ähneln.</li>
+<li>Die internen Knoten enthalten keine Daten, sondern nur Verweise auf
+(maximal zwei) Nachfolger-Knoten.</li>
+<li>Die Blätter enthalten maximal zwei Elemente der Datenstruktur &#x2013; des
+Vektors.</li>
+<li>Die Blätter sind nach den Indizes geordnet.</li>
+<li>Das folgende Bild zeigt einen Vektor mit den ganzzahligen Werten 0
+bis 8.</li>
+
+</ul>
+</section>
+<section>
+<p>
+(Diese und die folgenden Abbildungen sind aus <a href="https://hypirion.com/musings/understanding-persistent-vector-pt-1">Polymatheia</a> entnommen.)
+</p>
+
+<div class="figure">
+<p><img src="./Abbildungen/vec0.png" alt="vec0.png" width="600px" />
+</p>
+</div>
+</section>
+<section>
+<ul>
+<li>Wollte man die Zahl 9 dem Vektor hinzufügen, entstünde in der
+„imperativen Welt“ das folgende Bild:</li>
+
+</ul>
+
+<div class="figure">
+<p><img src="./Abbildungen/vec1.png" alt="vec1.png" width="400px" />
+</p>
+</div>
+<ul>
+<li>Die vorherige Version des Vektors wäre nicht mehr existent.</li>
+<li>Um Persistenz zu erreichen und den Kopieraufwand zu minimieren
+werden Pfadkopien eingesetzt.</li>
+
+</ul>
+</section>
+<section id="slide-org683140b">
+<h5 id="org683140b">Die Änderungsoperation</h5>
+<ul>
+<li>Um ein Vektorelement zu ändern, verfolgt man den Pfad bis zu dem
+Element, das geändert werden soll.</li>
+<li>Dabei werden alle Knoten des Pfads kopiert.</li>
+<li><p>
+Schließlich wird der Blattknoten kopiert und das Element durch das
+neue ersetzt.
+</p>
+<div class="nebeneinander">
+<ul>
+<li><p>
+Beispiel:
+</p>
+<pre class="example">
+(def brown [0 1 2 3 4 5 6 7 8])
+(def blue (assoc brown 5 'beef))
+</pre></li>
+<li>Rückgabewert ist der neue Pfad.</li>
+
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec2.png" alt="vec2.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org5b1e0d7">
+<h5 id="org5b1e0d7">Anhängen eines Elements</h5>
+<ul>
+<li>Drei Fälle sind zu unterscheiden:
+<ol>
+<li>Im Blatt ganz rechts ist noch Platz für das neue Element.</li>
+<li>Es gibt noch unbelegte Zweige aber kein Platz im Blatt ganz rechts.</li>
+<li>Der existierende Baum ist bereits vollständig belegt.</li>
+
+</ol></li>
+
+</ul>
+</section>
+<section>
+<p>
+<b>Fall 1</b>
+</p>
+<ul>
+<li><p>
+Vorgehensweise entspricht weitgehend der Änderungsoperation.
+</p>
+<div class="nebeneinander">
+<ul>
+<li><p>
+Beispiel:
+</p>
+<pre class="example">
+(conj [0 1 2 3 4] 5)
+</pre></li>
+
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec3.png" alt="vec3.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div></li>
+
+</ul>
+</section>
+<section>
+<p>
+<b>Fall 2</b>
+</p>
+<div class="nebeneinander">
+<ul>
+<li>Neue Knoten werden bei Bedarf erzeugt.</li>
+<li>Kopierte Knoten sind blau, neu erzeugte Knoten rosa dargestellt.</li>
+
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec4.png" alt="vec4.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div>
+</section>
+<section>
+<p>
+<b>Fall 3</b>
+</p>
+<div class="nebeneinander">
+<ul>
+<li>Die neue Wurzel ist violett, die übrigen neu erzeugten Knoten sind
+wieder rosa dargestellt.</li>
+
+</ul>
+
+</div>
+<div class="nebeneinander">
+
+<div class="figure">
+<p><img src="./Abbildungen/vec5.png" alt="vec5.png" width="400px" />
+</p>
+</div>
+
+</div>
+<div class="clear">
+
+</div>
+</section>
+<section id="slide-org6801041">
+<h5 id="org6801041">Entfernen von Elementen</h5>
+<ul>
+<li>Hier sind ähnliche Überlegungen wie beim Hinzufügen von Elementen
+anzustellen.</li>
+<li>Die gezeigten Beispiel decken nur einen kleinen Bereich des Themas
+<i>funktionale Datenstrukturen</i> ab.</li>
+<li>Weitere Beispiele in <a href="https://hypirion.com/musings/understanding-persistent-vector-pt-1">Polymatheia</a>.</li>
+<li>Umfassende Darstellung in <a class="org-ref-reference" href="#/slide-bibliography">[Okasaki1999]</a>.</li>
+
+</ul>
+</section>
+<section id="slide-org4fae3c5">
+<h3 id="org4fae3c5">Effizienzbetrachtung</h3>
+<ul>
+<li>Die geschilderten Operationen haben für imperative Datenstrukturen
+die Laufzeitkomplexität \(O(1)\).</li>
+<li>Für die oben benutzten Binärbäume gilt \(O(log_2 n)\).</li>
+<li>Um sich an \(O(1)\) anzunähern, könnten die Binärbäume durch
+Mehrwegbäume ersetzt werden.</li>
+<li>Clojure benutzt einen Verzweigungsgrad von 32.</li>
+<li>Bei einer Anzahl von Elementen kleiner \(10^9\) ist die Baumtiefe
+nicht größer als 6.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-bibliography">
+<h2 id="bibliography">Literaturverzeichnis</h2>
+<ul class='org-ref-bib'><li><a id="Okasaki1999">[Okasaki1999] Chris Okasaki, Purely Functional Data Structures, Cambridge University Press (1999).</a></li>
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="reveal.js-master/dist/reveal.js"></script>
+<script src="reveal.js-master/plugin/highlight/highlight.js"></script>
+<script src="reveal.js-master/plugin/zoom/zoom.js"></script>
+<script src="reveal.js-master/plugin/search/search.js"></script>
+<script src="reveal.js-master/plugin/menu/menu.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: true,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+
+overview: true,
+width: 1120,
+height: 800,
+margin: 0.05,
+minScale: 1.00,
+maxScale: 1.00,
+
+transition: 'slide',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealHighlight, RevealZoom, RevealSearch, RevealMenu ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+,menu: {hideMissingTitles: true, markers: false, themes: true }});
+</script>
+</body>
+</html>

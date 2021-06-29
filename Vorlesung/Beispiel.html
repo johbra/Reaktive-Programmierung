@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
-<!-- 2021-06-27 Sun 12:06 -->
+<!-- 2021-06-29 Tue 14:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Beispiel einer reaktiven Anwendung</title>
@@ -281,11 +281,12 @@ for the JavaScript code in this tag.
 <span class="subtitle">Reaktive Programmierung</span>
 </h1>
 
-<div id="outline-container-org8706c43" class="outline-2">
-<h2 id="org8706c43">Ziele</h2>
-<div class="outline-text-2" id="text-org8706c43">
+
+<div id="outline-container-orgba521dd" class="outline-2">
+<h2 id="orgba521dd">Ziele</h2>
+<div class="outline-text-2" id="text-orgba521dd">
 <ul class="org-ul">
-<li>Studium eines Beispiel ein reaktiven Anwendung geschrieben in
+<li>Studium eines Beispiel einer reaktiven Anwendung geschrieben in
 ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></li>
 <li>Nutzung durch die Clojurescript-Adaption <i><a href="https://github.com/reagent-project/reagent">Reagent</a></i> für
 <a href="https://johbra.github.io/dep/">Dozenteneinsatzplanung</a> (mit <a href="https://drive.google.com/open?id=1ZR3xy5EXyZfarY7tpM-t8LH1V5gfLO3F">Erfahrungsbericht</a>)</li>
@@ -293,12 +294,13 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 </div>
 </div>
 
-<div id="outline-container-org1467ce6" class="outline-2">
-<h2 id="org1467ce6">Schematische Darstellung interaktiver Anwendungen</h2>
-<div class="outline-text-2" id="text-org1467ce6">
-<p>
-Formulierung in einer internen DSL
-</p>
+<div id="outline-container-org313d517" class="outline-2">
+<h2 id="org313d517">Schematische Darstellung interaktiver Anwendungen</h2>
+<div class="outline-text-2" id="text-org313d517">
+</div>
+<div id="outline-container-org63afa8d" class="outline-3">
+<h3 id="org63afa8d">Formulierung in einer internen DSL</h3>
+<div class="outline-text-3" id="text-org63afa8d">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span>big-bang 
   state                     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">der Weltzustand</span>
@@ -311,33 +313,68 @@ Formulierung in einer internen DSL
    ...<span style="color: #707183;">)</span>
 </pre>
 </div>
-
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:1:1).
-Unable to resolve symbol: big-bang in this context
-</pre>
-
-
 <ul class="org-ul">
 <li>Die Handler, <code>render</code> und <code>end?</code> sind reine Funktionen.</li>
 <li>Die Mutation von <code>state</code> ist in <code>big-bang</code> versteckt.</li>
-<li><a href="file:///Users/jb/Google-Drive/Planung/Clojure-Script/big-bang/src/bb/my_scetch.cljs">Beispiel</a></li>
+<li>Darstellung ist angelehnt an</li>
 </ul>
 </div>
-<div id="outline-container-orgd045e6b" class="outline-3">
-<h3 id="orgd045e6b">Bestandteile</h3>
-<div class="outline-text-3" id="text-orgd045e6b">
+</div>
+<div id="outline-container-orgd9460eb" class="outline-3">
+<h3 id="orgd9460eb">Herkunft</h3>
+<div class="outline-text-3" id="text-orgd9460eb">
 <ul class="org-ul">
-<li>Events  (<code>:on-tick</code>, <code>:on-mouse</code>, \(\ldots\))</li>
-<li>Handler (<code>tick-handler</code>, <code>mouse-handler</code>,  \(\ldots\))</li>
-<li>Views   (<code>render</code>)</li>
+<li>Die gezeigte Darstellung lehnt sich an <a class="org-ref-reference" href="#/slide-bibliography">[felleisen2018how]</a> an.</li>
+<li><p>
+<a href="http://htdp.org">http://htdp.org</a>
+</p>
+
+<div class="figure">
+<p><img src="./Abbildungen/nuworld.png" alt="nuworld.png" width="850px" />
+</p>
+</div></li>
+</ul>
+</div>
+<div id="outline-container-orgc1a3d5b" class="outline-4">
+<h4 id="orgc1a3d5b">Kleines Beispiel</h4>
+<div class="outline-text-4" id="text-orgc1a3d5b">
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">ns</span> <span style="color: #6434A3;">bb.my-scetch</span>
+  <span style="color: #7388D6;">(</span><span style="color: #D0372D;">:require</span>
+   <span style="color: #909183;">[</span>quil.core <span style="color: #D0372D;">:as</span> q<span style="color: #909183;">]</span>
+   <span style="color: #909183;">[</span>bb.big-bang <span style="color: #D0372D;">:refer</span> <span style="color: #709870;">[</span>big-bang<span style="color: #709870;">]</span><span style="color: #909183;">]</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">number-&gt;square</span> <span style="color: #7388D6;">[</span>state<span style="color: #7388D6;">]</span>
+  <span style="color: #7388D6;">(</span><span style="color: #6434A3;">q</span>/rect 200 200 <span style="color: #909183;">(</span><span style="color: #D0372D;">:size</span> state<span style="color: #909183;">)</span> <span style="color: #909183;">(</span><span style="color: #D0372D;">:size</span> state<span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">reset</span> <span style="color: #7388D6;">[</span>state<span style="color: #7388D6;">]</span> 
+  <span style="color: #7388D6;">(</span><span style="color: #006FE0;">assoc</span> state <span style="color: #D0372D;">:size</span> 100<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #0000FF;">defn</span> <span style="color: #006699;">my-scetch</span>
+  <span style="color: #7388D6;">[]</span>
+  <span style="color: #7388D6;">(</span>big-bang <span style="color: #909183;">{</span><span style="color: #D0372D;">:size</span> 100<span style="color: #909183;">}</span>
+            <span style="color: #909183;">{</span><span style="color: #D0372D;">:to-draw</span>  number-&gt;square
+             <span style="color: #D0372D;">:on-tick</span> #<span style="color: #709870;">(</span>- <span style="color: #BA36A5;">%</span> 0.5<span style="color: #709870;">)</span>
+             <span style="color: #D0372D;">:on-key</span>  reset
+             <span style="color: #D0372D;">:stop-when</span> #<span style="color: #709870;">(</span>= <span style="color: #BA36A5;">%</span> -20<span style="color: #709870;">)</span><span style="color: #909183;">}</span><span style="color: #7388D6;">)</span>
+</pre>
+</div>
+<p>
+Bestandteile
+</p>
+<ul class="org-ul">
+<li>Events  (<code>:on-tick</code>, <code>:on-key</code>)</li>
+<li>Handler (<code>#(- % 0.5)</code>, <code>reset</code>, #(= % -20))</li>
+<li>Views   (<code>number-&gt;square</code>)</li>
+<li><a href="https://johbra.github.io/big-bang/">big-bang</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org57e8031" class="outline-2">
-<h2 id="org57e8031">Eigenschaften von re-frame</h2>
-<div class="outline-text-2" id="text-org57e8031">
+</div>
+<div id="outline-container-org1b97451" class="outline-2">
+<h2 id="org1b97451">Eigenschaften von re-frame</h2>
+<div class="outline-text-2" id="text-org1b97451">
 <ul class="org-ul">
 <li>Clojurescript-Framework auf Basis von Reagent/React für die
 Programmierung und Benutzungsoberflächen von Single-Page-Applications</li>
@@ -351,12 +388,12 @@ You are programming in data. The functions which later transform
 data, themselves start as data.
 </p>
 </blockquote></li>
-<li><a href="#org3a58eda">unidirektionaler Datenfluss</a></li>
+<li><a href="#org6ab7ad2">unidirektionaler Datenfluss</a></li>
 </ul>
 </div>
-<div id="outline-container-orgd519a29" class="outline-3">
-<h3 id="orgd519a29">Sechs Dominosteine</h3>
-<div class="outline-text-3" id="text-orgd519a29">
+<div id="outline-container-orgee2cd69" class="outline-3">
+<h3 id="orgee2cd69">Sechs Dominosteine</h3>
+<div class="outline-text-3" id="text-orgee2cd69">
 <dl class="org-dl">
 <dt>Event dispatch</dt><dd>Event = Reaktion auf externe Ereignisse (Mausklick,
 Websocket-Nachricht etc.)</dd>
@@ -375,9 +412,9 @@ View \(v\) ist eine Funktion \(f\) des App-Zustands \(z\).
 aktualisiert.</dd>
 </dl>
 </div>
-<div id="outline-container-org5628042" class="outline-4">
-<h4 id="org5628042">Zusammenfassung</h4>
-<div class="outline-text-4" id="text-org5628042">
+<div id="outline-container-org5ca81dd" class="outline-4">
+<h4 id="org5ca81dd">Zusammenfassung</h4>
+<div class="outline-text-4" id="text-org5ca81dd">
 
 <div class="figure">
 <p><img src="./Abbildungen/6dominoes.png" alt="6dominoes.png" width="450px" />
@@ -386,9 +423,9 @@ aktualisiert.</dd>
 </div>
 </div>
 </div>
-<div id="outline-container-org628e5c1" class="outline-3">
-<h3 id="org628e5c1">App-Zustand</h3>
-<div class="outline-text-3" id="text-org628e5c1">
+<div id="outline-container-orge5995b6" class="outline-3">
+<h3 id="orge5995b6">App-Zustand</h3>
+<div class="outline-text-3" id="text-orge5995b6">
 <ul class="org-ul">
 <li>ein globaler Zustand (single source of truth)</li>
 <li>wird von re-frame automatisch angelegt: <br />
@@ -402,13 +439,13 @@ aktualisiert.</dd>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgeed230e" class="outline-3">
-<h3 id="orgeed230e">Code-Beispiele</h3>
-<div class="outline-text-3" id="text-orgeed230e">
+<div id="outline-container-org29680c1" class="outline-3">
+<h3 id="org29680c1">Code-Beispiele</h3>
+<div class="outline-text-3" id="text-org29680c1">
 </div>
-<div id="outline-container-orgb0ec625" class="outline-4">
-<h4 id="orgb0ec625">Html-DSL</h4>
-<div class="outline-text-4" id="text-orgb0ec625">
+<div id="outline-container-org67f4610" class="outline-4">
+<h4 id="org67f4610">Html-DSL</h4>
+<div class="outline-text-4" id="text-org67f4610">
 <ul class="org-ul">
 <li>In View-Komponenten wird gemäß re-frame-Dokumentation das mit
 Reagent bereitgestellte <a href="https://github.com/weavejester/hiccup">hiccup</a>-Format als HTML-DSL verwendet.</li>
@@ -431,11 +468,6 @@ Verfügung.</li>
     <span style="color: #D0372D;">:label</span> <span style="color: #008000;">"Plane Quartal"</span><span style="color: #707183;">]</span>
 </pre>
 </div>
-
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:0:0).
-Unable to resolve symbol: button in this context
-</pre>
 
 </div>
 
@@ -479,11 +511,6 @@ Layout-Beispiel
 </pre>
 </div>
 
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:0:0).
-Unable to resolve symbol: v-box in this context
-</pre>
-
 </div>
 <p>
 resultiert in:
@@ -497,9 +524,9 @@ resultiert in:
 </div>
 </div>
 
-<div id="outline-container-org09731cf" class="outline-4">
-<h4 id="org09731cf">View-Komponente für <a href="http://localhost:9500/">Auswahl von Geschäftsjahr und Quartal</a></h4>
-<div class="outline-text-4" id="text-org09731cf">
+<div id="outline-container-org34f084c" class="outline-4">
+<h4 id="org34f084c">View-Komponente für <a href="http://localhost:9500/">Auswahl von Geschäftsjahr und Quartal</a></h4>
+<div class="outline-text-4" id="text-org34f084c">
 
 <div class="figure">
 <p><img src="./Abbildungen/geschaeftsjahrquartal.png" alt="geschaeftsjahrquartal.png" width="450px" />
@@ -507,7 +534,7 @@ resultiert in:
 </div>
 <ul class="org-ul">
 <li>Die View-Funktion <code class="src src-clojure">geschaeftjahr-quartal-form</code> rendert in den Zeilen
-19 und 20 die Auswahlbox für das aktuelle Geschaeftsjahr.</li>
+10 und 11 die Auswahlbox für das aktuelle Geschaeftsjahr.</li>
 <li>Wählt der Benutzer ein Geschäftsjahr aus, wird die Handlerfunktion
 <code>dispatch</code> aufgerufen.</li>
 <li>Dadurch wird ein re-frame-Event (<b>Domino 1</b>) ausgelöst.</li>
@@ -541,17 +568,11 @@ resultiert in:
        <span style="color: #D0372D;">:label</span> <span style="color: #008000;">"neues G-Jahr anlegen"</span><span style="color: #907373;">]</span> <span style="color: #709870;">]</span><span style="color: #909183;">]</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
-
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:4:16).
-No such namespace: rf
-</pre>
 </div>
 </div>
-
-<div id="outline-container-org1c4e667" class="outline-4">
-<h4 id="org1c4e667">Der Handler für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
-<div class="outline-text-4" id="text-org1c4e667">
+<div id="outline-container-org06d6a82" class="outline-4">
+<h4 id="org06d6a82">Der Handler für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
+<div class="outline-text-4" id="text-org06d6a82">
 <ul class="org-ul">
 <li>Event-Bezeichner sind Teil der DSL für das programmierte
 re-frame-System.</li>
@@ -580,17 +601,11 @@ zweites Element das zweite Element des Dispatch-Vektors enthält
           <span style="color: #D0372D;">:quartal</span> <span style="color: #709870;">(</span><span style="color: #006FE0;">first</span> <span style="color: #907373;">(</span>quartale-fuer-jahr item<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
-
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:1:1).
-No such namespace: rf
-</pre>
 </div>
 </div>
-
-<div id="outline-container-orgabf41af" class="outline-4">
-<h4 id="orgabf41af">Das Effect-Handling für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
-<div class="outline-text-4" id="text-orgabf41af">
+<div id="outline-container-org0c5715c" class="outline-4">
+<h4 id="org0c5715c">Das Effect-Handling für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
+<div class="outline-text-4" id="text-org0c5715c">
 <ul class="org-ul">
 <li>Im Allgemeinen verarbeiten Effect-Handler-Funktionen das Resultat
 der Event-Handler-Funktion (Domino 2).</li>
@@ -605,9 +620,9 @@ nichts tun.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org79fa13f" class="outline-4">
-<h4 id="org79fa13f">Query &#x2013; View &#x2013; DOM</h4>
-<div class="outline-text-4" id="text-org79fa13f">
+<div id="outline-container-orgf00f1f7" class="outline-4">
+<h4 id="orgf00f1f7">Query &#x2013; View &#x2013; DOM</h4>
+<div class="outline-text-4" id="text-orgf00f1f7">
 <ul class="org-ul">
 <li>Nachdem der Zustand der Applikation neu berechnet ist, wird ein
 neues View ermittelt: \(v = f(s)\).</li>
@@ -643,13 +658,6 @@ deren Änderung eine Neuberechnung des Views erfordert.</li>
        <span style="color: #D0372D;">:label</span> <span style="color: #008000;">"neues G-Jahr anlegen"</span><span style="color: #907373;">]</span> <span style="color: #709870;">]</span><span style="color: #909183;">]</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
-
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:4:16).
-No such namespace: rf
-</pre>
-
-
 <ul class="org-ul">
 <li>Die anonyme Query-Funktion wird mithilfe von <code>reg-sub</code> registriert.</li>
 <li>Sie liefert das in der Datenbank gespeicherte aktuelle Geschäftsjahr
@@ -664,11 +672,6 @@ als Resultat.</li>
 </pre>
 </div>
 
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:1:1).
-No such namespace: rf
-</pre>
-
 </div>
 <ul class="org-ul">
 <li>Jede Änderung des Geschäftsjahrs führt zur Ausführung der
@@ -680,9 +683,9 @@ React.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc99a4b0" class="outline-4">
-<h4 id="orgc99a4b0">View-Komponente für die <a href="http://localhost:9500">Anzeige der Dozentenauslastung</a></h4>
-<div class="outline-text-4" id="text-orgc99a4b0">
+<div id="outline-container-org3931f5f" class="outline-4">
+<h4 id="org3931f5f">View-Komponente für die <a href="http://localhost:9500">Anzeige der Dozentenauslastung</a></h4>
+<div class="outline-text-4" id="text-org3931f5f">
 <ul class="org-ul">
 <li>Eine weitere für die Kennung <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code> 
 registrierte View-Funktion ist <code class="src src-clojure">dozentenauslastung</code>.</li>
@@ -708,13 +711,6 @@ Funktion für die Query-Funktionen
      td-render-fn <span style="color: #909183;">]</span><span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
-
-<pre class="example">
-class clojure.lang.Compiler$CompilerExceptionclass clojure.lang.Compiler$CompilerExceptionSyntax error compiling at (*cider-repl FRP-temp/Lektionen:localhost:57997(clj)*:4:25).
-No such namespace: rf
-</pre>
-
-
 <ul class="org-ul">
 <li>Im Rumpf der Funktion werden mithilfe einer weiteren internen DSL
 die Auslastungsdaten der Dozenten in eine HTML-Tabelle verwandelt.</li>
@@ -722,9 +718,9 @@ die Auslastungsdaten der Dozenten in eine HTML-Tabelle verwandelt.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org93748a6" class="outline-3">
-<h3 id="org93748a6">Infos aus der re-frame-Dokumentation</h3>
-<div class="outline-text-3" id="text-org93748a6">
+<div id="outline-container-org01c85df" class="outline-3">
+<h3 id="org01c85df">Infos aus der re-frame-Dokumentation</h3>
+<div class="outline-text-3" id="text-org01c85df">
 <ul class="org-ul">
 <li><a href="http://day8.github.io/re-frame/event-handling-infographic/">Infographics</a></li>
 <li><a href="http://day8.github.io/re-frame/subscriptions/#as-infographic">The Signal Graph</a></li>
@@ -733,16 +729,16 @@ die Auslastungsdaten der Dozenten in eine HTML-Tabelle verwandelt.</li>
 </div>
 </div>
 
-<div id="outline-container-orgae6bf00" class="outline-2">
-<h2 id="orgae6bf00">FRP vs. MVC</h2>
-<div class="outline-text-2" id="text-orgae6bf00">
+<div id="outline-container-org69d0b8c" class="outline-2">
+<h2 id="org69d0b8c">FRP vs. MVC</h2>
+<div class="outline-text-2" id="text-org69d0b8c">
 <p>
 <a class="org-ref-reference" href="#/slide-bibliography">[Ferreira19]</a>
 </p>
 </div>
-<div id="outline-container-org1b4897a" class="outline-3">
-<h3 id="org1b4897a">Model-View-Controller</h3>
-<div class="outline-text-3" id="text-org1b4897a">
+<div id="outline-container-orgfb97bdd" class="outline-3">
+<h3 id="orgfb97bdd">Model-View-Controller</h3>
+<div class="outline-text-3" id="text-orgfb97bdd">
 <ul class="org-ul">
 <li><p>
 Datenfluss
@@ -762,9 +758,9 @@ Datenfluss
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfe0d60a" class="outline-3">
-<h3 id="orgfe0d60a">Model-Binding</h3>
-<div class="outline-text-3" id="text-orgfe0d60a">
+<div id="outline-container-org7cdac0c" class="outline-3">
+<h3 id="org7cdac0c">Model-Binding</h3>
+<div class="outline-text-3" id="text-org7cdac0c">
 <ul class="org-ul">
 <li><p>
 Datenfluss
@@ -781,9 +777,9 @@ unter Umgehung des Controllers</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3a58eda" class="outline-3">
-<h3 id="org3a58eda">Unidirektionaler Datenfluss</h3>
-<div class="outline-text-3" id="text-org3a58eda">
+<div id="outline-container-org6ab7ad2" class="outline-3">
+<h3 id="org6ab7ad2">Unidirektionaler Datenfluss</h3>
+<div class="outline-text-3" id="text-org6ab7ad2">
 
 <div class="figure">
 <p><img src="./Abbildungen/unidirectional.png" alt="unidirectional.png" width="450px" />
@@ -800,18 +796,19 @@ unter Umgehung des Controllers</li>
 </div>
 
 
-<div id="outline-container-org597f082" class="outline-2">
+<div id="outline-container-orgdd0ca95" class="outline-2">
 <h2 id="bibliography">Literaturverzeichnis</h2>
 <div class="outline-text-2" id="text-bibliography">
-<ul class='org-ref-bib'><li><a id="Ferreira19">[Ferreira19] Esdras Portilho Araujo Ferreira, Unidirectional circular dataflow architecture for real-time updates, School of Computing Dublin City University, (2019).</a></li>
+<ul class='org-ref-bib'><li><a id="felleisen2018how">[felleisen2018how] Felleisen, How to design programs : an introduction to programming and computing, The MIT Press (2018).</a></li>
+<li><a id="Ferreira19">[Ferreira19] Esdras Portilho Araujo Ferreira, Unidirectional circular dataflow architecture for real-time updates, School of Computing Dublin City University, (2019).</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Datum: 27. 06. 2021</p>
+<p class="date">Datum: 29. 06. 2021 29. 06. 2021</p>
 <p class="author">Autor: Christopher Karow, Johannes Brauer</p>
-<p class="date">Created: 2021-06-27 Sun 12:06</p>
+<p class="date">Created: 2021-06-29 Tue 14:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

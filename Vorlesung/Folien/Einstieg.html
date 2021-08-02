@@ -44,24 +44,24 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Einstieg</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">06. 07. 2021</h3>
+<h1 class="title">Einstieg</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">02. 08. 2021</h3>
 </section>
 
 <section>
-<section id="slide-orgb1cb7c8">
-<h2 id="orgb1cb7c8">Ziele</h2>
+<section id="slide-org970756b">
+<h2 id="org970756b">Ziele</h2>
 <ul>
 <li>Kennenlernen wichtiger Grundbegriffe der (funktional-)reaktiven Programmierung</li>
-<li>Studium eines Beispiel ein reaktiven Anwendung geschrieben in
+<li>Studium eines Beispiels einer reaktiven Anwendung geschrieben in
 ClojureScript</li>
-<li>Drum zuvor einen Crash-Kurs in Clojure/ClojureScript</li>
+<li>Darum zuvor ein Crash-Kurs in Clojure/ClojureScript</li>
 
 </ul>
 </section>
 </section>
 <section>
-<section id="slide-org0e68ec6">
-<h2 id="org0e68ec6">Grundbegriffe</h2>
+<section id="slide-org5010ec5">
+<h2 id="org5010ec5">Grundbegriffe</h2>
 <ul>
 <li>Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</li>
 <li>Warum sollte man Anwendungen funktional programmieren?</li>
@@ -70,8 +70,8 @@ ClojureScript</li>
 
 </ul>
 </section>
-<section id="slide-orgd43f5b6">
-<h3 id="orgd43f5b6">Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</h3>
+<section id="slide-orgaa7a2df">
+<h3 id="orgaa7a2df">Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</h3>
 <ul>
 <li>Funktional-reaktive Programmierung keine neue Idee
 <a class="org-ref-reference" href="#/slide-bibliography">[Wan2000Functional]</a>.
@@ -91,8 +91,8 @@ page applications)</li>
 
 </ul>
 </section>
-<section id="slide-orgfa4a505">
-<h4 id="orgfa4a505">Bedeutung der Programmierparadigmen</h4>
+<section id="slide-org188b722">
+<h4 id="org188b722">Bedeutung der Programmierparadigmen</h4>
 <ul>
 <li>Reaktive Programmierung kann als orthogonal zu den klassischen
 Programmierparadigmen betrachtet werden.
@@ -125,8 +125,8 @@ Chapter 3. <a href="https://livebook.manning.com/book/rx-dot-net-in-action/chapt
 
 </ul>
 </section>
-<section id="slide-org67ef6f2">
-<h4 id="org67ef6f2">Reaktive Systeme</h4>
+<section id="slide-org289d58b">
+<h4 id="org289d58b">Reaktive Systeme</h4>
 <ul>
 <li>ereignis-getriebene Anwendungen</li>
 <li>kontinuierliche Interaktion mit ihrer Umgebung
@@ -172,8 +172,8 @@ Programmiertechniken in Betracht zu ziehen.</li>
 
 </ul>
 </section>
-<section id="slide-orga8cc0f8">
-<h4 id="orga8cc0f8">Manifesto</h4>
+<section id="slide-org8531e42">
+<h4 id="org8531e42">Manifesto</h4>
 <p>
 <a href="https://www.reactivemanifesto.org">The Reactive Manifesto</a> definiert Eigenschaften reaktiver Systeme.
 </p>
@@ -189,8 +189,8 @@ Reaktive Systeme sind
 
 </dl>
 </section>
-<section id="slide-org8008b25">
-<h4 id="org8008b25">Weitere Prinzipien</h4>
+<section id="slide-orgef22d97">
+<h4 id="orgef22d97">Weitere Prinzipien</h4>
 <p>
 aus <a class="org-ref-reference" href="#/slide-bibliography">[Salvaneschi2017]</a>
 </p>
@@ -212,8 +212,8 @@ execution following the flow of control of the application.</dd>
 
 </dl>
 </section>
-<section id="slide-org96274c9">
-<h3 id="org96274c9">Warum sollte man Anwendungen funktional programmieren?</h3>
+<section id="slide-org282d37a">
+<h3 id="org282d37a">Warum sollte man Anwendungen funktional programmieren?</h3>
 <ul>
 <li>Functional Programming is Fun</li>
 <li>Functional Programming is Growing</li>
@@ -232,8 +232,8 @@ execution following the flow of control of the application.</dd>
 Auszug aus <a href="https://purelyfunctional.tv/article/why-functional-programming/">Why Functional Programming?</a>
 </p>
 </section>
-<section id="slide-org2989a86">
-<h4 id="org2989a86">Allgegenwart der funktionalen Programmierung</h4>
+<section id="slide-orgf12c9ee">
+<h4 id="orgf12c9ee">Allgegenwart der funktionalen Programmierung</h4>
 <ul>
 <li>Lambda-Ausdrücke in Sprachen wie Java und C#</li>
 <li>Verwendung der klassischen Funktionen höherer Ordnung</li>
@@ -242,8 +242,8 @@ Auszug aus <a href="https://purelyfunctional.tv/article/why-functional-programmi
 
 </ul>
 </section>
-<section id="slide-org6a08d32">
-<h5 id="org6a08d32">Finde Hamburg</h5>
+<section id="slide-org0a06d7e">
+<h5 id="org0a06d7e">Finde Hamburg</h5>
 <p>
 Statt einer imperativen Lösung
 </p>
@@ -274,8 +274,8 @@ besser
 
 </div>
 </section>
-<section id="slide-orgd6b9691">
-<h5 id="orgd6b9691">Beispiel: Rabattiere alle Preise aus einer Liste, &#x2026;</h5>
+<section id="slide-orgb58aac0">
+<h5 id="orgb58aac0">Beispiel: Rabattiere alle Preise aus einer Liste, &#x2026;</h5>
 <p>
 die größer als 20 sind, um 10% und summiere sie auf.
 </p>
@@ -305,8 +305,8 @@ final BigDecimal totalOfDiscountedPrices =
 </code></pre>
 </div>
 </section>
-<section id="slide-org317d618">
-<h5 id="org317d618">Registrierung eines <i>event listeners</i> in <i>Swing</i></h5>
+<section id="slide-org4a36c56">
+<h5 id="org4a36c56">Registrierung eines <i>event listeners</i> in <i>Swing</i></h5>
 <ul>
 <li>Swing ist eine Java-Bibliothek für die Programmierung graphischer
 Benutzungsoberflächen.</li>
@@ -358,8 +358,8 @@ Abhilfe: Benutzung eines Lambda-Ausdrucks:
 
 </ul>
 </section>
-<section id="slide-org0d61ce6">
-<h4 id="org0d61ce6">Eine Bezahl-App</h4>
+<section id="slide-org737f45f">
+<h4 id="org737f45f">Eine Bezahl-App</h4>
 <p>
 Entwicklung beschrieben durch Wille Faler in
 <a href="https://dzone.com/articles/one-night-clojure-makes-scala">https://dzone.com/articles/one-night-clojure-makes-scala</a>
@@ -379,8 +379,8 @@ Entwicklung beschrieben durch Wille Faler in
 </ul>
 
 </section>
-<section id="slide-org0381c9e">
-<h5 id="org0381c9e">Funktionale Programmierung im Lichte der Evolution</h5>
+<section id="slide-org1477e80">
+<h5 id="org1477e80">Funktionale Programmierung im Lichte der Evolution</h5>
 <p>
 (vgl. <a href="https://cscalfani.medium.com/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536">So You Want to be a Functional Programmer (Part 1)</a>)
 </p>
@@ -391,8 +391,8 @@ Entwicklung beschrieben durch Wille Faler in
 </div>
 
 </section>
-<section id="slide-org5af4825">
-<h3 id="org5af4825">Was ist eine Einseiten-Webanwendung (single page application)?</h3>
+<section id="slide-org376c949">
+<h3 id="org376c949">Was ist eine Einseiten-Webanwendung (single page application)?</h3>
 <ul>
 <li>Klassische Webseiten
 <ul>
@@ -414,8 +414,8 @@ verteilt auf Frontend und Backend.</li>
 
 </ul>
 </section>
-<section id="slide-orga78367d">
-<h3 id="orga78367d">Was ist eine domänenspezifische Sprache?</h3>
+<section id="slide-org938e2aa">
+<h3 id="org938e2aa">Was ist eine domänenspezifische Sprache?</h3>
 <ul>
 <li>viele Wege einem Rechner zu sagen, was er tun soll
 <ul>
@@ -444,8 +444,8 @@ Universalsprachen konzipiert sind.</li>
 
 </ul>
 </section>
-<section id="slide-org1ca7032">
-<h4 id="org1ca7032">Die Überbrückung der „Abstraktionslücke“</h4>
+<section id="slide-orgf2c1dd0">
+<h4 id="orgf2c1dd0">Die Überbrückung der „Abstraktionslücke“</h4>
 
 <div class="figure">
 <p><img src="./Abbildungen/Abstraktionsluecke.png" alt="Abstraktionsluecke.png" width="650px" />
@@ -453,8 +453,8 @@ Universalsprachen konzipiert sind.</li>
 </div>
 
 </section>
-<section id="slide-orgc78bc4a">
-<h4 id="orgc78bc4a">interne versus externe DSLs</h4>
+<section id="slide-org69c7c22">
+<h4 id="org69c7c22">interne versus externe DSLs</h4>
 <ul>
 <li>Diese Begriffe beziehen sich auf das Verhältnis zur Wirtssprache, in
 der die in der DSL beschriebenen Komponenten verwendet bzw. in die
@@ -480,13 +480,13 @@ DSLs in Form von Lisp-Makros eine seit Jahrzehnten geübte Praxis.</li>
 </section>
 </section>
 <section>
-<section id="slide-org0b44c51">
-<h2 id="org0b44c51">Clojure</h2>
-<div class="outline-text-2" id="text-org0b44c51">
+<section id="slide-org5d84cef">
+<h2 id="org5d84cef">Clojure</h2>
+<div class="outline-text-2" id="text-org5d84cef">
 </div>
 </section>
-<section id="slide-org9b7b237">
-<h3 id="org9b7b237">Eigenschaften von Clojure</h3>
+<section id="slide-org33a9e16">
+<h3 id="org33a9e16">Eigenschaften von Clojure</h3>
 <p>
 Clojure &#x2026;
 </p>
@@ -500,8 +500,8 @@ objektorientiert, &#x2026;).</li>
 </ul>
 
 </section>
-<section id="slide-orgf98f481">
-<h3 id="orgf98f481">Web-Seiten zu Clojure</h3>
+<section id="slide-org9cd1dfb">
+<h3 id="org9cd1dfb">Web-Seiten zu Clojure</h3>
 <ul>
 <li><a href="http://clojure.org">Hauptseite</a></li>
 <li><a href="http://clojure.org/features">Features</a></li>
@@ -528,8 +528,8 @@ objektorientiert, &#x2026;).</li>
 </ul>
 
 </section>
-<section id="slide-org24f0335">
-<h3 id="org24f0335">Benutzung von Clojure</h3>
+<section id="slide-org63dc31b">
+<h3 id="org63dc31b">Benutzung von Clojure</h3>
 <ul>
 <li><a href="https://repl.it/languages/clojure">Online Clojure IDE</a></li>
 <li>Command line tool: <code>clj</code></li>
@@ -538,8 +538,8 @@ objektorientiert, &#x2026;).</li>
 </ul>
 
 </section>
-<section id="slide-orgd8ee4b5">
-<h3 id="orgd8ee4b5">Die Read-Eval-Print-Loop</h3>
+<section id="slide-org858c0b9">
+<h3 id="org858c0b9">Die Read-Eval-Print-Loop</h3>
 <p>
 Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
 </p>
@@ -556,8 +556,8 @@ Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
 </div>
 
 </section>
-<section id="slide-org7f59cdc">
-<h3 id="org7f59cdc">Beispiele für Funktionsdefinitionen</h3>
+<section id="slide-org45fca16">
+<h3 id="org45fca16">Beispiele für Funktionsdefinitionen</h3>
 <p>
 <b>Clojure</b>
 </p>
@@ -610,8 +610,8 @@ Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
       [else (filter praed? (rest lst))]))) 
 </code></pre>
 </section>
-<section id="slide-orge00b057">
-<h4 id="orge00b057">Kurzformen</h4>
+<section id="slide-org94bc3e6">
+<h4 id="org94bc3e6">Kurzformen</h4>
 <p>
 <b>Clojure</b>
 </p>
@@ -636,13 +636,13 @@ Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
 </code></pre>
 
 </section>
-<section id="slide-orge5170f8">
-<h3 id="orge5170f8">Datenstrukturen</h3>
-<div class="outline-text-3" id="text-orge5170f8">
+<section id="slide-org4ddba5b">
+<h3 id="org4ddba5b">Datenstrukturen</h3>
+<div class="outline-text-3" id="text-org4ddba5b">
 </div>
 </section>
-<section id="slide-org1c556e1">
-<h4 id="org1c556e1">self evaluation expressions (Konstanten)</h4>
+<section id="slide-org2519053">
+<h4 id="org2519053">self evaluation expressions (Konstanten)</h4>
 <ul>
 <li><code>true</code>, <code>false</code></li>
 <li><code>nil</code>
@@ -663,8 +663,8 @@ Alles was nicht <code>nil</code> oder <code>false</code> ist, hat den Wahrheitsw
 
 </ul>
 </section>
-<section id="slide-orgcf67c8a">
-<h4 id="orgcf67c8a">Listen</h4>
+<section id="slide-org8a8e358">
+<h4 id="org8a8e358">Listen</h4>
 <ul>
 <li>ähnlich wie in allen Lisp-Dialekten</li>
 <li>hauptsächliche Verwendung in Clojure: Funktionsaufrufe</li>
@@ -722,8 +722,8 @@ liefert aber eine Sequence
 
 </ul>
 </section>
-<section id="slide-orga1bde92">
-<h4 id="orga1bde92">Vektoren</h4>
+<section id="slide-orgfd6f814">
+<h4 id="orgfd6f814">Vektoren</h4>
 <ul>
 <li>Vektoren sind eine sequentielle Datenstruktur  mit effizientem,
 wahlfreien Zugriff auf die Elemente.</li>
@@ -769,8 +769,8 @@ Zugriff über Indizes
 
 </ul>
 </section>
-<section id="slide-orgb9ff8db">
-<h4 id="orgb9ff8db">Mengen</h4>
+<section id="slide-org1f96f07">
+<h4 id="org1f96f07">Mengen</h4>
 <ul>
 <li>Sets bilden die Clojure-Implementierung für mathematische Mengen.</li>
 <li><p>
@@ -841,8 +841,8 @@ Anwendungsbeispiele
 
 </ul>
 </section>
-<section id="slide-org599525b">
-<h4 id="org599525b">Maps</h4>
+<section id="slide-org0d69dfd">
+<h4 id="org0d69dfd">Maps</h4>
 <ul>
 <li>Maps sind Mengen Schlüssel-Wert-Paaren.</li>
 <li>In anderen Programmiersprachen als dictionaries oder hash-maps
@@ -922,8 +922,8 @@ Repräsentation von Daten einer Anwendungsdomäne
 
 </ul>
 </section>
-<section id="slide-org3b6e3b9">
-<h3 id="org3b6e3b9">(Lazy) Sequences</h3>
+<section id="slide-org95a4e48">
+<h3 id="org95a4e48">(Lazy) Sequences</h3>
 <ul>
 <li>Sequences stellen eine Abstraktion über den genannten konkreten
 Datenstrukturen dar.</li>
@@ -951,8 +951,8 @@ Klassische Funktionen höherer Ordnung liefern ggf. lazy sequences:
 
 </ul>
 </section>
-<section id="slide-orgaaba5e5">
-<h3 id="orgaaba5e5">Destructuring</h3>
+<section id="slide-orgc6f7425">
+<h3 id="orgc6f7425">Destructuring</h3>
 <p>
 Unter <i>destructuring</i> versteht man eine Weise, Werte aus einer
 Datenstruktur zu extrahieren und dabei an Variablen zu binden. Dabei
@@ -965,8 +965,8 @@ und Zeichenketten möglich.
 (vgl. <a href="https://clojure.org/guides/destructuring">Destructuring in Clojure</a>)
 </p>
 </section>
-<section id="slide-org13399d0">
-<h4 id="org13399d0">Vektoren</h4>
+<section id="slide-orgaddd591">
+<h4 id="orgaddd591">Vektoren</h4>
 <pre><code class="language-klipse" >
 (def my-vector [:a :b :c :d])
 (def my-nested-vector [:a :b :c :d [:x :y :z]])
@@ -1033,8 +1033,8 @@ und Zeichenketten möglich.
 ;; =&gt; :a :b (:c :d) [:a :b :c :d]
 </code></pre>
 </section>
-<section id="slide-org9225f93">
-<h5 id="org9225f93">Beispiel ohne Destructuring &#x2026;</h5>
+<section id="slide-org7feabcc">
+<h5 id="org7feabcc">Beispiel ohne Destructuring &#x2026;</h5>
 <pre><code class="language-klipse" >
 (def my-line [[5 10] [10 20]])
 
@@ -1048,8 +1048,8 @@ und Zeichenketten möglich.
 ;; =&gt; "Line from ( 5 , 10 ) to ( 10 , 20 )"
 </code></pre>
 </section>
-<section id="slide-orgd04aec2">
-<h5 id="orgd04aec2">&#x2026; und mit Destructuring</h5>
+<section id="slide-org126053d">
+<h5 id="org126053d">&#x2026; und mit Destructuring</h5>
 <pre><code class="language-klipse" >
 (def my-line [[5 10] [10 20]])
 
@@ -1060,8 +1060,8 @@ und Zeichenketten möglich.
 ;; =&gt; "Line from ( 5 , 10 ) to ( 10 , 20 )"
 </code></pre>
 </section>
-<section id="slide-org0be40c4">
-<h4 id="org0be40c4">Maps</h4>
+<section id="slide-org5a7cfd5">
+<h4 id="org5a7cfd5">Maps</h4>
 <pre><code class="language-klipse" >
 (def my-hashmap {:a "A" :b "B" :c "C" :d "D"})
 (def my-nested-hashmap {:a "A" :b "B" :c "C" :d "D" :q {:x "X" :y "Y" :z "Z"}})
@@ -1107,8 +1107,8 @@ und Zeichenketten möglich.
 ;; =&gt; A B :) {:a A :b B :c C :d D}
 </code></pre>
 </section>
-<section id="slide-org4687cb2">
-<h5 id="org4687cb2">Beispiel</h5>
+<section id="slide-org902870f">
+<h5 id="org902870f">Beispiel</h5>
 <pre><code class="language-klipse" >
 (def client {:name "Super Co."
              :location "Philadelphia"
@@ -1138,8 +1138,8 @@ und Zeichenketten möglich.
 ;; =&gt; Super Co. Philadelphia - The worldwide leader in plastic tableware.
 </code></pre>
 </section>
-<section id="slide-org3a5b642">
-<h4 id="org3a5b642">Funktionsköpfe</h4>
+<section id="slide-orge6a64b8">
+<h4 id="orge6a64b8">Funktionsköpfe</h4>
 <ul>
 <li>Ein häufiger Anwendungszweck von Destructuring ist die Zerlegung von
 Argumenten, die an eine Funktion übergeben werden.</li>
@@ -1166,8 +1166,8 @@ Argumenten, die an eine Funktion übergeben werden.</li>
   (println "x:" x ", y:" y ", z:" z))
 </code></pre>
 </section>
-<section id="slide-org0607399">
-<h3 id="org0607399">Threading Makros</h3>
+<section id="slide-org5056dc5">
+<h3 id="org5056dc5">Threading Makros</h3>
 <ul>
 <li><p>
 die Aufgabe „Rabattiere alle Preise aus einer Liste, die
@@ -1243,8 +1243,8 @@ Das thread-first-Makro (-&gt;) fügt den „durchgeschleiften“ Wert als
 </section>
 </section>
 <section>
-<section id="slide-orgd7a10c0">
-<h2 id="orgd7a10c0">Ein erstes Beispiel</h2>
+<section id="slide-org93d6ae1">
+<h2 id="org93d6ae1">Ein erstes Beispiel</h2>
 <p>
 <a href="Beispiel.html">hier geht's weiter</a>
 </p>

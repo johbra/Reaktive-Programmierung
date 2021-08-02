@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
-<!-- 2021-07-06 Tue 15:54 -->
+<!-- 2021-08-02 Mon 20:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Einstieg</title>
@@ -259,20 +259,20 @@ for the JavaScript code in this tag.
 <span class="subtitle">Reaktive Programmierung</span>
 </h1>
 
-<div id="outline-container-orgda2a627" class="outline-2">
-<h2 id="orgda2a627">Ziele</h2>
-<div class="outline-text-2" id="text-orgda2a627">
+<div id="outline-container-orgc550fbb" class="outline-2">
+<h2 id="orgc550fbb">Ziele</h2>
+<div class="outline-text-2" id="text-orgc550fbb">
 <ul class="org-ul">
 <li>Kennenlernen wichtiger Grundbegriffe der (funktional-)reaktiven Programmierung</li>
-<li>Studium eines Beispiel ein reaktiven Anwendung geschrieben in
+<li>Studium eines Beispiels einer reaktiven Anwendung geschrieben in
 ClojureScript</li>
-<li>Drum zuvor einen Crash-Kurs in Clojure/ClojureScript</li>
+<li>Darum zuvor ein Crash-Kurs in Clojure/ClojureScript</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga04f42e" class="outline-2">
-<h2 id="orga04f42e">Grundbegriffe</h2>
-<div class="outline-text-2" id="text-orga04f42e">
+<div id="outline-container-org926b46d" class="outline-2">
+<h2 id="org926b46d">Grundbegriffe</h2>
+<div class="outline-text-2" id="text-org926b46d">
 <ul class="org-ul">
 <li>Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</li>
 <li>Warum sollte man Anwendungen funktional programmieren?</li>
@@ -280,9 +280,9 @@ ClojureScript</li>
 <li>Was ist eine domänenspezifische Sprache (domain specific language, DSL)?</li>
 </ul>
 </div>
-<div id="outline-container-org2541d8a" class="outline-3">
-<h3 id="org2541d8a">Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</h3>
-<div class="outline-text-3" id="text-org2541d8a">
+<div id="outline-container-org95c8e30" class="outline-3">
+<h3 id="org95c8e30">Was bedeutet „reaktiv” in <i>Reaktiver Programmierung</i>?</h3>
+<div class="outline-text-3" id="text-org95c8e30">
 <ul class="org-ul">
 <li>Funktional-reaktive Programmierung keine neue Idee
 <a class="org-ref-reference" href="#/slide-bibliography">[Wan2000Functional]</a>.
@@ -300,9 +300,9 @@ genauer erläutert.</li>
 page applications)</li>
 </ul>
 </div>
-<div id="outline-container-org8ced778" class="outline-4">
-<h4 id="org8ced778">Bedeutung der Programmierparadigmen</h4>
-<div class="outline-text-4" id="text-org8ced778">
+<div id="outline-container-orgca63de0" class="outline-4">
+<h4 id="orgca63de0">Bedeutung der Programmierparadigmen</h4>
+<div class="outline-text-4" id="text-orgca63de0">
 <ul class="org-ul">
 <li>Reaktive Programmierung kann als orthogonal zu den klassischen
 Programmierparadigmen betrachtet werden.
@@ -333,9 +333,9 @@ Chapter 3. <a href="https://livebook.manning.com/book/rx-dot-net-in-action/chapt
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf77d2db" class="outline-4">
-<h4 id="orgf77d2db">Reaktive Systeme</h4>
-<div class="outline-text-4" id="text-orgf77d2db">
+<div id="outline-container-org28adaf5" class="outline-4">
+<h4 id="org28adaf5">Reaktive Systeme</h4>
+<div class="outline-text-4" id="text-org28adaf5">
 <ul class="org-ul">
 <li>ereignis-getriebene Anwendungen</li>
 <li>kontinuierliche Interaktion mit ihrer Umgebung
@@ -374,9 +374,9 @@ Programmiertechniken in Betracht zu ziehen.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga3d0abf" class="outline-4">
-<h4 id="orga3d0abf">Manifesto</h4>
-<div class="outline-text-4" id="text-orga3d0abf">
+<div id="outline-container-org0411160" class="outline-4">
+<h4 id="org0411160">Manifesto</h4>
+<div class="outline-text-4" id="text-org0411160">
 <p>
 <a href="https://www.reactivemanifesto.org">The Reactive Manifesto</a> definiert Eigenschaften reaktiver Systeme.
 </p>
@@ -392,9 +392,9 @@ Reaktive Systeme sind
 </dl>
 </div>
 </div>
-<div id="outline-container-orgfe42d49" class="outline-4">
-<h4 id="orgfe42d49">Weitere Prinzipien</h4>
-<div class="outline-text-4" id="text-orgfe42d49">
+<div id="outline-container-org37c5d83" class="outline-4">
+<h4 id="org37c5d83">Weitere Prinzipien</h4>
+<div class="outline-text-4" id="text-org37c5d83">
 <p>
 aus <a class="org-ref-reference" href="#/slide-bibliography">[Salvaneschi2017]</a>
 </p>
@@ -417,9 +417,9 @@ execution following the flow of control of the application.</dd>
 </div>
 </div>
 </div>
-<div id="outline-container-org558779e" class="outline-3">
-<h3 id="org558779e">Warum sollte man Anwendungen funktional programmieren?</h3>
-<div class="outline-text-3" id="text-org558779e">
+<div id="outline-container-org16ee703" class="outline-3">
+<h3 id="org16ee703">Warum sollte man Anwendungen funktional programmieren?</h3>
+<div class="outline-text-3" id="text-org16ee703">
 <ul class="org-ul">
 <li>Functional Programming is Fun</li>
 <li>Functional Programming is Growing</li>
@@ -437,9 +437,9 @@ execution following the flow of control of the application.</dd>
 Auszug aus <a href="https://purelyfunctional.tv/article/why-functional-programming/">Why Functional Programming?</a>
 </p>
 </div>
-<div id="outline-container-orgef60db8" class="outline-4">
-<h4 id="orgef60db8">Allgegenwart der funktionalen Programmierung</h4>
-<div class="outline-text-4" id="text-orgef60db8">
+<div id="outline-container-org60de38b" class="outline-4">
+<h4 id="org60de38b">Allgegenwart der funktionalen Programmierung</h4>
+<div class="outline-text-4" id="text-org60de38b">
 <ul class="org-ul">
 <li>Lambda-Ausdrücke in Sprachen wie Java und C#</li>
 <li>Verwendung der klassischen Funktionen höherer Ordnung</li>
@@ -447,9 +447,9 @@ Auszug aus <a href="https://purelyfunctional.tv/article/why-functional-programmi
 <li>Ein paar Beispiele zu Java &#x2026;</li>
 </ul>
 </div>
-<div id="outline-container-org267bbbb" class="outline-5">
-<h5 id="org267bbbb">Finde Hamburg</h5>
-<div class="outline-text-5" id="text-org267bbbb">
+<div id="outline-container-orgee44d02" class="outline-5">
+<h5 id="orgee44d02">Finde Hamburg</h5>
+<div class="outline-text-5" id="text-orgee44d02">
 <p>
 Statt einer imperativen Lösung
 </p>
@@ -479,9 +479,9 @@ besser
 </div>
 </div>
 </div>
-<div id="outline-container-org534b4e9" class="outline-5">
-<h5 id="org534b4e9">Beispiel: Rabattiere alle Preise aus einer Liste, &#x2026;</h5>
-<div class="outline-text-5" id="text-org534b4e9">
+<div id="outline-container-org18fdd62" class="outline-5">
+<h5 id="org18fdd62">Beispiel: Rabattiere alle Preise aus einer Liste, &#x2026;</h5>
+<div class="outline-text-5" id="text-org18fdd62">
 <p>
 die größer als 20 sind, um 10% und summiere sie auf.
 </p>
@@ -511,9 +511,9 @@ die größer als 20 sind, um 10% und summiere sie auf.
 </div>
 </div>
 </div>
-<div id="outline-container-org81c51c3" class="outline-5">
-<h5 id="org81c51c3">Registrierung eines <i>event listeners</i> in <i>Swing</i></h5>
-<div class="outline-text-5" id="text-org81c51c3">
+<div id="outline-container-orgb102869" class="outline-5">
+<h5 id="orgb102869">Registrierung eines <i>event listeners</i> in <i>Swing</i></h5>
+<div class="outline-text-5" id="text-orgb102869">
 <ul class="org-ul">
 <li>Swing ist eine Java-Bibliothek für die Programmierung graphischer
 Benutzungsoberflächen.</li>
@@ -561,9 +561,9 @@ Abhilfe: Benutzung eines Lambda-Ausdrucks:
 </div>
 </div>
 </div>
-<div id="outline-container-org3c28298" class="outline-4">
-<h4 id="org3c28298">Eine Bezahl-App</h4>
-<div class="outline-text-4" id="text-org3c28298">
+<div id="outline-container-org7ba5670" class="outline-4">
+<h4 id="org7ba5670">Eine Bezahl-App</h4>
+<div class="outline-text-4" id="text-org7ba5670">
 <p>
 Entwicklung beschrieben durch Wille Faler in
 <a href="https://dzone.com/articles/one-night-clojure-makes-scala">https://dzone.com/articles/one-night-clojure-makes-scala</a>
@@ -582,9 +582,9 @@ Entwicklung beschrieben durch Wille Faler in
 </ul>
 </div>
 
-<div id="outline-container-org5a41d44" class="outline-5">
-<h5 id="org5a41d44">Funktionale Programmierung im Lichte der Evolution</h5>
-<div class="outline-text-5" id="text-org5a41d44">
+<div id="outline-container-orga4b822a" class="outline-5">
+<h5 id="orga4b822a">Funktionale Programmierung im Lichte der Evolution</h5>
+<div class="outline-text-5" id="text-orga4b822a">
 <p>
 (vgl. <a href="https://cscalfani.medium.com/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536">So You Want to be a Functional Programmer (Part 1)</a>)
 </p>
@@ -598,9 +598,9 @@ Entwicklung beschrieben durch Wille Faler in
 </div>
 </div>
 
-<div id="outline-container-orga01d0de" class="outline-3">
-<h3 id="orga01d0de">Was ist eine Einseiten-Webanwendung (single page application)?</h3>
-<div class="outline-text-3" id="text-orga01d0de">
+<div id="outline-container-orgef7c64a" class="outline-3">
+<h3 id="orgef7c64a">Was ist eine Einseiten-Webanwendung (single page application)?</h3>
+<div class="outline-text-3" id="text-orgef7c64a">
 <ul class="org-ul">
 <li>Klassische Webseiten
 <ul class="org-ul">
@@ -620,9 +620,9 @@ verteilt auf Frontend und Backend.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org93d550b" class="outline-3">
-<h3 id="org93d550b">Was ist eine domänenspezifische Sprache?</h3>
-<div class="outline-text-3" id="text-org93d550b">
+<div id="outline-container-org8d04775" class="outline-3">
+<h3 id="org8d04775">Was ist eine domänenspezifische Sprache?</h3>
+<div class="outline-text-3" id="text-org8d04775">
 <ul class="org-ul">
 <li>viele Wege einem Rechner zu sagen, was er tun soll
 <ul class="org-ul">
@@ -648,9 +648,9 @@ Universalsprachen konzipiert sind.</li>
 <li><a href="https://reactjs.org/docs/introducing-jsx.html">JSX</a></li>
 </ul>
 </div>
-<div id="outline-container-org32e7a00" class="outline-4">
-<h4 id="org32e7a00">Die Überbrückung der „Abstraktionslücke“</h4>
-<div class="outline-text-4" id="text-org32e7a00">
+<div id="outline-container-orgc2db05b" class="outline-4">
+<h4 id="orgc2db05b">Die Überbrückung der „Abstraktionslücke“</h4>
+<div class="outline-text-4" id="text-orgc2db05b">
 
 <div class="figure">
 <p><img src="./Abbildungen/Abstraktionsluecke.png" alt="Abstraktionsluecke.png" width="650px" />
@@ -659,9 +659,9 @@ Universalsprachen konzipiert sind.</li>
 </div>
 </div>
 
-<div id="outline-container-org6bdd71d" class="outline-4">
-<h4 id="org6bdd71d">interne versus externe DSLs</h4>
-<div class="outline-text-4" id="text-org6bdd71d">
+<div id="outline-container-orge1605b6" class="outline-4">
+<h4 id="orge1605b6">interne versus externe DSLs</h4>
+<div class="outline-text-4" id="text-orge1605b6">
 <ul class="org-ul">
 <li>Diese Begriffe beziehen sich auf das Verhältnis zur Wirtssprache, in
 der die in der DSL beschriebenen Komponenten verwendet bzw. in die
@@ -687,13 +687,13 @@ DSLs in Form von Lisp-Makros eine seit Jahrzehnten geübte Praxis.</li>
 </div>
 </div>
 
-<div id="outline-container-orgf3d4607" class="outline-2">
-<h2 id="orgf3d4607">Clojure</h2>
-<div class="outline-text-2" id="text-orgf3d4607">
+<div id="outline-container-orgc33f4c2" class="outline-2">
+<h2 id="orgc33f4c2">Clojure</h2>
+<div class="outline-text-2" id="text-orgc33f4c2">
 </div>
-<div id="outline-container-orga100d80" class="outline-3">
-<h3 id="orga100d80">Eigenschaften von Clojure</h3>
-<div class="outline-text-3" id="text-orga100d80">
+<div id="outline-container-org8e016e6" class="outline-3">
+<h3 id="org8e016e6">Eigenschaften von Clojure</h3>
+<div class="outline-text-3" id="text-org8e016e6">
 <p>
 Clojure &#x2026;
 </p>
@@ -707,9 +707,9 @@ objektorientiert, &#x2026;).</li>
 </div>
 </div>
 
-<div id="outline-container-orgd9b1def" class="outline-3">
-<h3 id="orgd9b1def">Web-Seiten zu Clojure</h3>
-<div class="outline-text-3" id="text-orgd9b1def">
+<div id="outline-container-org8a05b3a" class="outline-3">
+<h3 id="org8a05b3a">Web-Seiten zu Clojure</h3>
+<div class="outline-text-3" id="text-org8a05b3a">
 <ul class="org-ul">
 <li><a href="http://clojure.org">Hauptseite</a></li>
 <li><a href="http://clojure.org/features">Features</a></li>
@@ -733,9 +733,9 @@ objektorientiert, &#x2026;).</li>
 </div>
 </div>
 
-<div id="outline-container-org3f5f92b" class="outline-3">
-<h3 id="org3f5f92b">Benutzung von Clojure</h3>
-<div class="outline-text-3" id="text-org3f5f92b">
+<div id="outline-container-org86e3f77" class="outline-3">
+<h3 id="org86e3f77">Benutzung von Clojure</h3>
+<div class="outline-text-3" id="text-org86e3f77">
 <ul class="org-ul">
 <li><a href="https://repl.it/languages/clojure">Online Clojure IDE</a></li>
 <li>Command line tool: <code>clj</code></li>
@@ -744,9 +744,9 @@ objektorientiert, &#x2026;).</li>
 </div>
 </div>
 
-<div id="outline-container-orgcbff279" class="outline-3">
-<h3 id="orgcbff279">Die Read-Eval-Print-Loop</h3>
-<div class="outline-text-3" id="text-orgcbff279">
+<div id="outline-container-org8c447d6" class="outline-3">
+<h3 id="org8c447d6">Die Read-Eval-Print-Loop</h3>
+<div class="outline-text-3" id="text-org8c447d6">
 <p>
 Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
 </p>
@@ -763,9 +763,9 @@ Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
 </div>
 </div>
 
-<div id="outline-container-orge69eef9" class="outline-3">
-<h3 id="orge69eef9">Beispiele für Funktionsdefinitionen</h3>
-<div class="outline-text-3" id="text-orge69eef9">
+<div id="outline-container-org3804f00" class="outline-3">
+<h3 id="org3804f00">Beispiele für Funktionsdefinitionen</h3>
+<div class="outline-text-3" id="text-org3804f00">
 <p>
 <b>Clojure</b>
 </p>
@@ -830,9 +830,9 @@ Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
 </pre>
 </div>
 </div>
-<div id="outline-container-org4e7442e" class="outline-4">
-<h4 id="org4e7442e">Kurzformen</h4>
-<div class="outline-text-4" id="text-org4e7442e">
+<div id="outline-container-orge7a5422" class="outline-4">
+<h4 id="orge7a5422">Kurzformen</h4>
+<div class="outline-text-4" id="text-orge7a5422">
 <p>
 <b>Clojure</b>
 </p>
@@ -866,13 +866,13 @@ Funktioniert wie in Racket (Interaktionsfenster in DrRacket)
 </div>
 </div>
 
-<div id="outline-container-orge495083" class="outline-3">
-<h3 id="orge495083">Datenstrukturen</h3>
-<div class="outline-text-3" id="text-orge495083">
+<div id="outline-container-org86f67a3" class="outline-3">
+<h3 id="org86f67a3">Datenstrukturen</h3>
+<div class="outline-text-3" id="text-org86f67a3">
 </div>
-<div id="outline-container-orge9648a3" class="outline-4">
-<h4 id="orge9648a3">self evaluation expressions (Konstanten)</h4>
-<div class="outline-text-4" id="text-orge9648a3">
+<div id="outline-container-org3b2e840" class="outline-4">
+<h4 id="org3b2e840">self evaluation expressions (Konstanten)</h4>
+<div class="outline-text-4" id="text-org3b2e840">
 <ul class="org-ul">
 <li><code>true</code>, <code>false</code></li>
 <li><code>nil</code>
@@ -898,9 +898,9 @@ Alles was nicht <code>nil</code> oder <code>false</code> ist, hat den Wahrheitsw
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc1bcd9" class="outline-4">
-<h4 id="orgfc1bcd9">Listen</h4>
-<div class="outline-text-4" id="text-orgfc1bcd9">
+<div id="outline-container-orgbd4e186" class="outline-4">
+<h4 id="orgbd4e186">Listen</h4>
+<div class="outline-text-4" id="text-orgbd4e186">
 <ul class="org-ul">
 <li>ähnlich wie in allen Lisp-Dialekten</li>
 <li>hauptsächliche Verwendung in Clojure: Funktionsaufrufe</li>
@@ -991,9 +991,9 @@ clojure.lang.Cons
 </div>
 </div>
 
-<div id="outline-container-orgecbac87" class="outline-4">
-<h4 id="orgecbac87">Vektoren</h4>
-<div class="outline-text-4" id="text-orgecbac87">
+<div id="outline-container-org7b3be18" class="outline-4">
+<h4 id="org7b3be18">Vektoren</h4>
+<div class="outline-text-4" id="text-org7b3be18">
 <ul class="org-ul">
 <li>Vektoren sind eine sequentielle Datenstruktur  mit effizientem,
 wahlfreien Zugriff auf die Elemente.</li>
@@ -1066,9 +1066,9 @@ Zugriff über Indizes
 </div>
 </div>
 
-<div id="outline-container-org9b05018" class="outline-4">
-<h4 id="org9b05018">Mengen</h4>
-<div class="outline-text-4" id="text-org9b05018">
+<div id="outline-container-org65891ae" class="outline-4">
+<h4 id="org65891ae">Mengen</h4>
+<div class="outline-text-4" id="text-org65891ae">
 <ul class="org-ul">
 <li>Sets bilden die Clojure-Implementierung für mathematische Mengen.</li>
 <li><p>
@@ -1196,9 +1196,9 @@ false
 </div>
 </div>
 
-<div id="outline-container-org69ef6fc" class="outline-4">
-<h4 id="org69ef6fc">Maps</h4>
-<div class="outline-text-4" id="text-org69ef6fc">
+<div id="outline-container-org86c9efd" class="outline-4">
+<h4 id="org86c9efd">Maps</h4>
+<div class="outline-text-4" id="text-org86c9efd">
 <ul class="org-ul">
 <li>Maps sind Mengen Schlüssel-Wert-Paaren.</li>
 <li>In anderen Programmiersprachen als dictionaries oder hash-maps
@@ -1336,9 +1336,9 @@ Repräsentation von Daten einer Anwendungsdomäne
 </div>
 </div>
 
-<div id="outline-container-org2800308" class="outline-3">
-<h3 id="org2800308">(Lazy) Sequences</h3>
-<div class="outline-text-3" id="text-org2800308">
+<div id="outline-container-org967a759" class="outline-3">
+<h3 id="org967a759">(Lazy) Sequences</h3>
+<div class="outline-text-3" id="text-org967a759">
 <ul class="org-ul">
 <li>Sequences stellen eine Abstraktion über den genannten konkreten
 Datenstrukturen dar.</li>
@@ -1391,9 +1391,9 @@ Klassische Funktionen höherer Ordnung liefern ggf. lazy sequences:
 </div>
 </div>
 
-<div id="outline-container-orgb17f070" class="outline-3">
-<h3 id="orgb17f070">Destructuring</h3>
-<div class="outline-text-3" id="text-orgb17f070">
+<div id="outline-container-org8821dad" class="outline-3">
+<h3 id="org8821dad">Destructuring</h3>
+<div class="outline-text-3" id="text-org8821dad">
 <p>
 Unter <i>destructuring</i> versteht man eine Weise, Werte aus einer
 Datenstruktur zu extrahieren und dabei an Variablen zu binden. Dabei
@@ -1406,9 +1406,9 @@ und Zeichenketten möglich.
 (vgl. <a href="https://clojure.org/guides/destructuring">Destructuring in Clojure</a>)
 </p>
 </div>
-<div id="outline-container-orgef4e5b8" class="outline-4">
-<h4 id="orgef4e5b8">Vektoren</h4>
-<div class="outline-text-4" id="text-orgef4e5b8">
+<div id="outline-container-org1fb2d28" class="outline-4">
+<h4 id="org1fb2d28">Vektoren</h4>
+<div class="outline-text-4" id="text-org1fb2d28">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-vector</span> <span style="color: #7388D6;">[</span><span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:b</span> <span style="color: #D0372D;">:c</span> <span style="color: #D0372D;">:d</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-nested-vector</span> <span style="color: #7388D6;">[</span><span style="color: #D0372D;">:a</span> <span style="color: #D0372D;">:b</span> <span style="color: #D0372D;">:c</span> <span style="color: #D0372D;">:d</span> <span style="color: #909183;">[</span><span style="color: #D0372D;">:x</span> <span style="color: #D0372D;">:y</span> <span style="color: #D0372D;">:z</span><span style="color: #909183;">]</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
@@ -1477,9 +1477,9 @@ und Zeichenketten möglich.
 </pre>
 </div>
 </div>
-<div id="outline-container-orga13a881" class="outline-5">
-<h5 id="orga13a881">Beispiel ohne Destructuring &#x2026;</h5>
-<div class="outline-text-5" id="text-orga13a881">
+<div id="outline-container-orga6354da" class="outline-5">
+<h5 id="orga6354da">Beispiel ohne Destructuring &#x2026;</h5>
+<div class="outline-text-5" id="text-orga6354da">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-line</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>5 10<span style="color: #909183;">]</span> <span style="color: #909183;">[</span>10 20<span style="color: #909183;">]</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
 
@@ -1495,9 +1495,9 @@ und Zeichenketten möglich.
 </div>
 </div>
 </div>
-<div id="outline-container-org6027bd3" class="outline-5">
-<h5 id="org6027bd3">&#x2026; und mit Destructuring</h5>
-<div class="outline-text-5" id="text-org6027bd3">
+<div id="outline-container-org854c33a" class="outline-5">
+<h5 id="org854c33a">&#x2026; und mit Destructuring</h5>
+<div class="outline-text-5" id="text-org854c33a">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-line</span> <span style="color: #7388D6;">[</span><span style="color: #909183;">[</span>5 10<span style="color: #909183;">]</span> <span style="color: #909183;">[</span>10 20<span style="color: #909183;">]</span><span style="color: #7388D6;">]</span><span style="color: #707183;">)</span>
 
@@ -1511,9 +1511,9 @@ und Zeichenketten möglich.
 </div>
 </div>
 </div>
-<div id="outline-container-org54d05d2" class="outline-4">
-<h4 id="org54d05d2">Maps</h4>
-<div class="outline-text-4" id="text-org54d05d2">
+<div id="outline-container-org171da39" class="outline-4">
+<h4 id="org171da39">Maps</h4>
+<div class="outline-text-4" id="text-org171da39">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-hashmap</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:a</span> <span style="color: #008000;">"A"</span> <span style="color: #D0372D;">:b</span> <span style="color: #008000;">"B"</span> <span style="color: #D0372D;">:c</span> <span style="color: #008000;">"C"</span> <span style="color: #D0372D;">:d</span> <span style="color: #008000;">"D"</span><span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
 <span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">my-nested-hashmap</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:a</span> <span style="color: #008000;">"A"</span> <span style="color: #D0372D;">:b</span> <span style="color: #008000;">"B"</span> <span style="color: #D0372D;">:c</span> <span style="color: #008000;">"C"</span> <span style="color: #D0372D;">:d</span> <span style="color: #008000;">"D"</span> <span style="color: #D0372D;">:q</span> <span style="color: #909183;">{</span><span style="color: #D0372D;">:x</span> <span style="color: #008000;">"X"</span> <span style="color: #D0372D;">:y</span> <span style="color: #008000;">"Y"</span> <span style="color: #D0372D;">:z</span> <span style="color: #008000;">"Z"</span><span style="color: #909183;">}</span><span style="color: #7388D6;">}</span><span style="color: #707183;">)</span>
@@ -1562,9 +1562,9 @@ und Zeichenketten möglich.
 </pre>
 </div>
 </div>
-<div id="outline-container-org90c9a27" class="outline-5">
-<h5 id="org90c9a27">Beispiel</h5>
-<div class="outline-text-5" id="text-org90c9a27">
+<div id="outline-container-orgf26f3cf" class="outline-5">
+<h5 id="orgf26f3cf">Beispiel</h5>
+<div class="outline-text-5" id="text-orgf26f3cf">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">def</span> <span style="color: #BA36A5;">client</span> <span style="color: #7388D6;">{</span><span style="color: #D0372D;">:name</span> <span style="color: #008000;">"Super Co."</span>
              <span style="color: #D0372D;">:location</span> <span style="color: #008000;">"Philadelphia"</span>
@@ -1597,9 +1597,9 @@ und Zeichenketten möglich.
 </div>
 </div>
 </div>
-<div id="outline-container-org98c9d7a" class="outline-4">
-<h4 id="org98c9d7a">Funktionsköpfe</h4>
-<div class="outline-text-4" id="text-org98c9d7a">
+<div id="outline-container-orgdf4b061" class="outline-4">
+<h4 id="orgdf4b061">Funktionsköpfe</h4>
+<div class="outline-text-4" id="text-orgdf4b061">
 <ul class="org-ul">
 <li>Ein häufiger Anwendungszweck von Destructuring ist die Zerlegung von
 Argumenten, die an eine Funktion übergeben werden.</li>
@@ -1628,9 +1628,9 @@ Argumenten, die an eine Funktion übergeben werden.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org1609638" class="outline-3">
-<h3 id="org1609638">Threading Makros</h3>
-<div class="outline-text-3" id="text-org1609638">
+<div id="outline-container-org51e8291" class="outline-3">
+<h3 id="org51e8291">Threading Makros</h3>
+<div class="outline-text-3" id="text-org51e8291">
 <ul class="org-ul">
 <li><p>
 die Aufgabe „Rabattiere alle Preise aus einer Liste, die
@@ -1700,15 +1700,15 @@ Das thread-first-Makro (-&gt;) fügt den „durchgeschleiften“ Wert als
 </div>
 </div>
 
-<div id="outline-container-org695d756" class="outline-2">
-<h2 id="org695d756">Ein erstes Beispiel</h2>
-<div class="outline-text-2" id="text-org695d756">
+<div id="outline-container-orgffdefe5" class="outline-2">
+<h2 id="orgffdefe5">Ein erstes Beispiel</h2>
+<div class="outline-text-2" id="text-orgffdefe5">
 <p>
 <a href="Beispiel.html">hier geht's weiter</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org9a0df7e" class="outline-2">
+<div id="outline-container-org05324b6" class="outline-2">
 <h2 id="bibliography">Literaturverzeichnis</h2>
 <div class="outline-text-2" id="text-bibliography">
 <ul class='org-ref-bib'><li><a id="Wan2000Functional">[Wan2000Functional] Wan & Hudak, Functional Reactive Programming from First Principles, 242-252, in in: Proceedings of the ACM SIGPLAN 2000 conference on Programming language design and implementation  - PLDI '00, edited by ACM Press (2000)</a></li>
@@ -1721,9 +1721,9 @@ Das thread-first-Makro (-&gt;) fügt den „durchgeschleiften“ Wert als
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Datum: 06. 07. 2021</p>
+<p class="date">Datum: 02. 08. 2021</p>
 <p class="author">Autor: Christopher Karow, Johannes Brauer</p>
-<p class="date">Created: 2021-07-06 Tue 15:54</p>
+<p class="date">Created: 2021-08-02 Mon 20:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

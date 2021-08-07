@@ -20,13 +20,13 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Beispiel einer reaktiven Anwendung</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">11. 07. 2021</h3>
+<h1 class="title">Beispiel einer reaktiven Anwendung</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">07. 08. 2021</h3>
 </section>
 
 
 <section>
-<section id="slide-org1cda66a">
-<h2 id="org1cda66a">Ziele</h2>
+<section id="slide-orgc58c5e3">
+<h2 id="orgc58c5e3">Ziele</h2>
 <ul>
 <li>Studium eines Beispiels einer reaktiven Anwendung geschrieben in
 ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></li>
@@ -37,13 +37,13 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 </section>
 </section>
 <section>
-<section id="slide-org20153bb">
-<h2 id="org20153bb">Schematische Darstellung interaktiver Anwendungen</h2>
-<div class="outline-text-2" id="text-org20153bb">
+<section id="slide-org16429f8">
+<h2 id="org16429f8">Schematische Darstellung interaktiver Anwendungen</h2>
+<div class="outline-text-2" id="text-org16429f8">
 </div>
 </section>
-<section id="slide-orgedba666">
-<h3 id="orgedba666">Formulierung in einer internen DSL</h3>
+<section id="slide-org49e4f39">
+<h3 id="org49e4f39">Formulierung in einer internen DSL</h3>
 <div class="org-src-container">
 
 <pre><code class="clojure" >(big-bang 
@@ -63,8 +63,8 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 
 </ul>
 </section>
-<section id="slide-org2162d8e">
-<h3 id="org2162d8e">Herkunft</h3>
+<section id="slide-org2ddb327">
+<h3 id="org2ddb327">Herkunft</h3>
 <ul>
 <li>Die gezeigte Darstellung lehnt sich an <a class="org-ref-reference" href="#/slide-bibliography">[felleisen2018how]</a> an.</li>
 <li><p>
@@ -78,8 +78,8 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 
 </ul>
 </section>
-<section id="slide-org32fb271">
-<h3 id="org32fb271">Kleines Beispiel</h3>
+<section id="slide-orgd95365e">
+<h3 id="orgd95365e">Kleines Beispiel</h3>
 <div class="org-src-container">
 
 <pre><code class="clojure" >(ns bb.my-scetch
@@ -116,8 +116,8 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 </section>
 </section>
 <section>
-<section id="slide-org2c1d5b7">
-<h2 id="org2c1d5b7">Reagent</h2>
+<section id="slide-orgaab7cbc">
+<h2 id="orgaab7cbc">Reagent</h2>
 <ul>
 <li><a href="https://github.com/reagent-project/reagent">Reagent</a>: schlanke Schnittstelle zwischen <a href="https://clojurescript.org">Clojurescript</a> und <a href="https://de.reactjs.org">React</a></li>
 <li>React-Komponenten werden durch Clojurescript-Funktionen realisiert.</li>
@@ -133,8 +133,8 @@ wird so in HTML verwandelt:<br />
 </section>
 </section>
 <section>
-<section id="slide-org6747f0d">
-<h2 id="org6747f0d">Eigenschaften von re-frame</h2>
+<section id="slide-org6cddf54">
+<h2 id="org6cddf54">Eigenschaften von re-frame</h2>
 <ul>
 <li>Clojurescript-Framework auf Basis von Reagent/React für die
 Programmierung und Benutzungsoberflächen von Single-Page-Applications</li>
@@ -149,12 +149,12 @@ data, themselves start as data.
 </p>
 </blockquote></li>
 <li>sehr ausführliche <a href="https://day8.github.io/re-frame/">Dokumentation</a></li>
-<li><a href="#/slide-orge6c0c8a" class="forwardlink">unidirektionaler Datenfluss</a></li>
+<li><a href="#/slide-org8d6c8b8" class="forwardlink">unidirektionaler Datenfluss</a></li>
 
 </ul>
 </section>
-<section id="slide-org656d6c9">
-<h3 id="org656d6c9">Sechs Dominosteine</h3>
+<section id="slide-org4741fd0">
+<h3 id="org4741fd0">Sechs Dominosteine</h3>
 <dl>
 <dt>Event dispatch</dt><dd>Event = Reaktion auf externe Ereignisse (Mausklick,
 Websocket-Nachricht etc.)</dd>
@@ -175,16 +175,16 @@ aktualisiert.</dd>
 
 </dl>
 </section>
-<section id="slide-orgbf1f10d">
-<h4 id="orgbf1f10d">Zusammenfassung</h4>
+<section id="slide-orgfc3f646">
+<h4 id="orgfc3f646">Zusammenfassung</h4>
 
 <div class="figure">
 <p><img src="./Abbildungen/6dominoes.png" alt="6dominoes.png" width="450px" />
 </p>
 </div>
 </section>
-<section id="slide-org8089f08">
-<h3 id="org8089f08">App-Zustand</h3>
+<section id="slide-org2a243ea">
+<h3 id="org2a243ea">App-Zustand</h3>
 <ul>
 <li>ein globaler Zustand (single source of truth)</li>
 <li>wird von re-frame automatisch angelegt: <br />
@@ -199,8 +199,8 @@ aktualisiert.</dd>
 
 </ul>
 </section>
-<section id="slide-org0196cc6">
-<h3 id="org0196cc6">Code-Beispiele</h3>
+<section id="slide-org5289971">
+<h3 id="org5289971">Code-Beispiele</h3>
 <ul>
 <li>Musterbeispiel: <a href="https://johbra.github.io/dep-reframe/">Dozenteneinsatzplanung</a> für die
 Bachelorstudiengänge der NORDAKADEMIE</li>
@@ -211,8 +211,8 @@ für ein Manipel</li>
 
 </ul>
 </section>
-<section id="slide-org0e1e9c8">
-<h4 id="org0e1e9c8">Html-DSL</h4>
+<section id="slide-org4b66b55">
+<h4 id="org4b66b55">Html-DSL</h4>
 <ul>
 <li>In View-Komponenten wird gemäß re-frame-Dokumentation das mit
 Reagent bereitgestellte <a href="https://github.com/weavejester/hiccup">hiccup</a>-Format als HTML-DSL verwendet.</li>
@@ -298,8 +298,8 @@ resultiert in:
 </ul>
 
 </section>
-<section id="slide-orgc4c4e48">
-<h4 id="orgc4c4e48">View-Komponente für <a href="http://localhost:9500/">Auswahl von Geschäftsjahr und Quartal</a></h4>
+<section id="slide-orgda1bc41">
+<h4 id="orgda1bc41">View-Komponente für <a href="http://localhost:9500/">Auswahl von Geschäftsjahr und Quartal</a></h4>
 
 <div class="figure">
 <p><img src="./Abbildungen/geschaeftsjahrquartal.png" alt="geschaeftsjahrquartal.png" width="450px" />
@@ -345,8 +345,8 @@ resultiert in:
 </code></pre>
 </div>
 </section>
-<section id="slide-org06173e2">
-<h4 id="org06173e2">Der Handler für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
+<section id="slide-orge0557ca">
+<h4 id="orge0557ca">Der Handler für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
 <ul>
 <li>Event-Bezeichner sind Teil der DSL für das programmierte
 re-frame-System.</li>
@@ -380,8 +380,8 @@ zweites Element das zweite Element des Dispatch-Vektors enthält
 </code></pre>
 </div>
 </section>
-<section id="slide-org3629b68">
-<h4 id="org3629b68">Das Effect-Handling für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
+<section id="slide-org05d96f1">
+<h4 id="org05d96f1">Das Effect-Handling für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
 <ul>
 <li>Im Allgemeinen verarbeiten Effect-Handler-Funktionen das Resultat
 der Event-Handler-Funktion (Domino 2).</li>
@@ -396,8 +396,8 @@ nichts tun.</li>
 
 </ul>
 </section>
-<section id="slide-org6e9127d">
-<h4 id="org6e9127d">Query &#x2013; View &#x2013; DOM</h4>
+<section id="slide-org9d519dc">
+<h4 id="org9d519dc">Query &#x2013; View &#x2013; DOM</h4>
 <ul>
 <li>Nachdem der Zustand der Applikation neu berechnet ist, wird ein
 neues View ermittelt: \(v = f(s)\).</li>
@@ -464,8 +464,8 @@ React.</li>
 
 </ul>
 </section>
-<section id="slide-orga089e7f">
-<h4 id="orga089e7f">View-Komponente für die <a href="https://johbra.github.io/dep-reframe/">Anzeige der Dozentenauslastung</a></h4>
+<section id="slide-org7e82846">
+<h4 id="org7e82846">View-Komponente für die <a href="https://johbra.github.io/dep-reframe/">Anzeige der Dozentenauslastung</a></h4>
 <ul>
 <li>Eine weitere für die Kennung <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code> 
 registrierte View-Funktion ist <code class="src src-clojure">dozentenauslastung</code>.</li>
@@ -499,16 +499,16 @@ die Auslastungsdaten der Dozenten in eine HTML-Tabelle verwandelt.</li>
 
 </ul>
 </section>
-<section id="slide-orgaa63273">
-<h3 id="orgaa63273">Modale Dialoge</h3>
+<section id="slide-org7d8a7a8">
+<h3 id="org7d8a7a8">Modale Dialoge</h3>
 <ul>
 <li>benutzt für Pflegedialoge für Manipel, Module, Dozenten &#x2026;</li>
 <li>werden aktiviert aus dem Menü am linken Rand</li>
 
 </ul>
 </section>
-<section id="slide-org5d84b37">
-<h4 id="org5d84b37">Die Komponente <code>dozenten</code></h4>
+<section id="slide-org47a0cd1">
+<h4 id="org47a0cd1">Die Komponente <code>dozenten</code></h4>
 <div class="nebeneinander650">
 
 <div class="figure">
@@ -602,8 +602,8 @@ die Auslastungsdaten der Dozenten in eine HTML-Tabelle verwandelt.</li>
 
 </ul>
 </section>
-<section id="slide-org20585d4">
-<h4 id="org20585d4">Modaler Dialog Dozent</h4>
+<section id="slide-org2269c58">
+<h4 id="org2269c58">Modaler Dialog Dozent</h4>
 
 <div class="figure">
 <p><img src="./Abbildungen/dozent.png" alt="dozent.png" width="450px" />
@@ -638,8 +638,8 @@ Alle modalen Dialoge werden durch dieselbe Komponente erstellt:
 </div>
 
 </section>
-<section id="slide-org39bce2a">
-<h3 id="org39bce2a">Infos aus der re-frame-Dokumentation</h3>
+<section id="slide-org1f7ada9">
+<h3 id="org1f7ada9">Infos aus der re-frame-Dokumentation</h3>
 <ul>
 <li><a href="http://day8.github.io/re-frame/event-handling-infographic/">Infographics</a></li>
 <li><a href="http://day8.github.io/re-frame/subscriptions/#as-infographic">The Signal Graph</a></li>
@@ -649,14 +649,14 @@ Alle modalen Dialoge werden durch dieselbe Komponente erstellt:
 </section>
 </section>
 <section>
-<section id="slide-orgbc5e838">
-<h2 id="orgbc5e838">FRP vs. MVC</h2>
+<section id="slide-org8b1643c">
+<h2 id="org8b1643c">RP vs. MVC</h2>
 <p>
 <a class="org-ref-reference" href="#/slide-bibliography">[Ferreira19]</a>
 </p>
 </section>
-<section id="slide-orgdbacac2">
-<h3 id="orgdbacac2">Model-View-Controller</h3>
+<section id="slide-orgd67be5f">
+<h3 id="orgd67be5f">Model-View-Controller</h3>
 <ul>
 <li><p>
 Datenfluss
@@ -677,8 +677,8 @@ Datenfluss
 
 </ul>
 </section>
-<section id="slide-org08e2c5b">
-<h3 id="org08e2c5b">Model-Binding</h3>
+<section id="slide-org736dc23">
+<h3 id="org736dc23">Model-Binding</h3>
 <ul>
 <li><p>
 Datenfluss
@@ -695,8 +695,8 @@ unter Umgehung des Controllers</li>
 
 </ul>
 </section>
-<section id="slide-orge6c0c8a">
-<h3 id="orge6c0c8a">Unidirektionaler Datenfluss</h3>
+<section id="slide-org8d6c8b8">
+<h3 id="org8d6c8b8">Unidirektionaler Datenfluss</h3>
 
 <div class="figure">
 <p><img src="./Abbildungen/unidirectional.png" alt="unidirectional.png" width="450px" />

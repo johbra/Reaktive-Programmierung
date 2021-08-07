@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
-<!-- 2021-07-11 Sun 19:10 -->
+<!-- 2021-08-07 Sat 20:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Beispiel einer reaktiven Anwendung</title>
@@ -282,9 +282,9 @@ for the JavaScript code in this tag.
 </h1>
 
 
-<div id="outline-container-orge4c3d9a" class="outline-2">
-<h2 id="orge4c3d9a">Ziele</h2>
-<div class="outline-text-2" id="text-orge4c3d9a">
+<div id="outline-container-orgf5569fc" class="outline-2">
+<h2 id="orgf5569fc">Ziele</h2>
+<div class="outline-text-2" id="text-orgf5569fc">
 <ul class="org-ul">
 <li>Studium eines Beispiels einer reaktiven Anwendung geschrieben in
 ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></li>
@@ -293,13 +293,13 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 </div>
 </div>
 
-<div id="outline-container-org8f2a6a1" class="outline-2">
-<h2 id="org8f2a6a1">Schematische Darstellung interaktiver Anwendungen</h2>
-<div class="outline-text-2" id="text-org8f2a6a1">
+<div id="outline-container-org741285f" class="outline-2">
+<h2 id="org741285f">Schematische Darstellung interaktiver Anwendungen</h2>
+<div class="outline-text-2" id="text-org741285f">
 </div>
-<div id="outline-container-org52eed7d" class="outline-3">
-<h3 id="org52eed7d">Formulierung in einer internen DSL</h3>
-<div class="outline-text-3" id="text-org52eed7d">
+<div id="outline-container-org726650d" class="outline-3">
+<h3 id="org726650d">Formulierung in einer internen DSL</h3>
+<div class="outline-text-3" id="text-org726650d">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span>big-bang 
   state                     <span style="color: #8D8D84;">;; </span><span style="color: #8D8D84; font-style: italic;">der Weltzustand</span>
@@ -318,9 +318,9 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 </ul>
 </div>
 </div>
-<div id="outline-container-orge23e2d2" class="outline-3">
-<h3 id="orge23e2d2">Herkunft</h3>
-<div class="outline-text-3" id="text-orge23e2d2">
+<div id="outline-container-org1e2f9a3" class="outline-3">
+<h3 id="org1e2f9a3">Herkunft</h3>
+<div class="outline-text-3" id="text-org1e2f9a3">
 <ul class="org-ul">
 <li>Die gezeigte Darstellung lehnt sich an <a class="org-ref-reference" href="#/slide-bibliography">[felleisen2018how]</a> an.</li>
 <li><p>
@@ -334,9 +334,9 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 </ul>
 </div>
 </div>
-<div id="outline-container-org6c99b1c" class="outline-3">
-<h3 id="org6c99b1c">Kleines Beispiel</h3>
-<div class="outline-text-3" id="text-org6c99b1c">
+<div id="outline-container-org3611fa5" class="outline-3">
+<h3 id="org3611fa5">Kleines Beispiel</h3>
+<div class="outline-text-3" id="text-org3611fa5">
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #707183;">(</span><span style="color: #0000FF;">ns</span> <span style="color: #6434A3;">bb.my-scetch</span>
   <span style="color: #7388D6;">(</span><span style="color: #D0372D;">:require</span>
@@ -370,9 +370,9 @@ ClojureScript unter Verwendung von <a href="https://de.reactjs.org">React</a></l
 </div>
 </div>
 </div>
-<div id="outline-container-org79154a2" class="outline-2">
-<h2 id="org79154a2">Reagent</h2>
-<div class="outline-text-2" id="text-org79154a2">
+<div id="outline-container-orgd3e9b1a" class="outline-2">
+<h2 id="orgd3e9b1a">Reagent</h2>
+<div class="outline-text-2" id="text-orgd3e9b1a">
 <ul class="org-ul">
 <li><a href="https://github.com/reagent-project/reagent">Reagent</a>: schlanke Schnittstelle zwischen <a href="https://clojurescript.org">Clojurescript</a> und <a href="https://de.reactjs.org">React</a></li>
 <li>React-Komponenten werden durch Clojurescript-Funktionen realisiert.</li>
@@ -386,9 +386,9 @@ wird so in HTML verwandelt:<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-org1acc180" class="outline-2">
-<h2 id="org1acc180">Eigenschaften von re-frame</h2>
-<div class="outline-text-2" id="text-org1acc180">
+<div id="outline-container-orga307d0c" class="outline-2">
+<h2 id="orga307d0c">Eigenschaften von re-frame</h2>
+<div class="outline-text-2" id="text-orga307d0c">
 <ul class="org-ul">
 <li>Clojurescript-Framework auf Basis von Reagent/React für die
 Programmierung und Benutzungsoberflächen von Single-Page-Applications</li>
@@ -403,12 +403,12 @@ data, themselves start as data.
 </p>
 </blockquote></li>
 <li>sehr ausführliche <a href="https://day8.github.io/re-frame/">Dokumentation</a></li>
-<li><a href="#orgc963b1e">unidirektionaler Datenfluss</a></li>
+<li><a href="#org1db3429">unidirektionaler Datenfluss</a></li>
 </ul>
 </div>
-<div id="outline-container-org5857a3b" class="outline-3">
-<h3 id="org5857a3b">Sechs Dominosteine</h3>
-<div class="outline-text-3" id="text-org5857a3b">
+<div id="outline-container-org36f126d" class="outline-3">
+<h3 id="org36f126d">Sechs Dominosteine</h3>
+<div class="outline-text-3" id="text-org36f126d">
 <dl class="org-dl">
 <dt>Event dispatch</dt><dd>Event = Reaktion auf externe Ereignisse (Mausklick,
 Websocket-Nachricht etc.)</dd>
@@ -427,9 +427,9 @@ View \(v\) ist eine Funktion \(f\) des App-Zustands \(z\).
 aktualisiert.</dd>
 </dl>
 </div>
-<div id="outline-container-org9c9dac4" class="outline-4">
-<h4 id="org9c9dac4">Zusammenfassung</h4>
-<div class="outline-text-4" id="text-org9c9dac4">
+<div id="outline-container-orgf6a526f" class="outline-4">
+<h4 id="orgf6a526f">Zusammenfassung</h4>
+<div class="outline-text-4" id="text-orgf6a526f">
 
 <div class="figure">
 <p><img src="./Abbildungen/6dominoes.png" alt="6dominoes.png" width="450px" />
@@ -438,9 +438,9 @@ aktualisiert.</dd>
 </div>
 </div>
 </div>
-<div id="outline-container-org0047765" class="outline-3">
-<h3 id="org0047765">App-Zustand</h3>
-<div class="outline-text-3" id="text-org0047765">
+<div id="outline-container-org625f08f" class="outline-3">
+<h3 id="org625f08f">App-Zustand</h3>
+<div class="outline-text-3" id="text-org625f08f">
 <ul class="org-ul">
 <li>ein globaler Zustand (single source of truth)</li>
 <li>wird von re-frame automatisch angelegt: <br />
@@ -454,9 +454,9 @@ aktualisiert.</dd>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb85b4d4" class="outline-3">
-<h3 id="orgb85b4d4">Code-Beispiele</h3>
-<div class="outline-text-3" id="text-orgb85b4d4">
+<div id="outline-container-org9e57c52" class="outline-3">
+<h3 id="org9e57c52">Code-Beispiele</h3>
+<div class="outline-text-3" id="text-org9e57c52">
 <ul class="org-ul">
 <li>Musterbeispiel: <a href="https://johbra.github.io/dep-reframe/">Dozenteneinsatzplanung</a> für die
 Bachelorstudiengänge der NORDAKADEMIE</li>
@@ -466,9 +466,9 @@ Bachelorstudiengänge der NORDAKADEMIE</li>
 für ein Manipel</li>
 </ul>
 </div>
-<div id="outline-container-org45fd258" class="outline-4">
-<h4 id="org45fd258">Html-DSL</h4>
-<div class="outline-text-4" id="text-org45fd258">
+<div id="outline-container-orgc6779b7" class="outline-4">
+<h4 id="orgc6779b7">Html-DSL</h4>
+<div class="outline-text-4" id="text-orgc6779b7">
 <ul class="org-ul">
 <li>In View-Komponenten wird gemäß re-frame-Dokumentation das mit
 Reagent bereitgestellte <a href="https://github.com/weavejester/hiccup">hiccup</a>-Format als HTML-DSL verwendet.</li>
@@ -547,9 +547,9 @@ resultiert in:
 </div>
 </div>
 
-<div id="outline-container-org4b39c39" class="outline-4">
-<h4 id="org4b39c39">View-Komponente für <a href="http://localhost:9500/">Auswahl von Geschäftsjahr und Quartal</a></h4>
-<div class="outline-text-4" id="text-org4b39c39">
+<div id="outline-container-org27b0ca1" class="outline-4">
+<h4 id="org27b0ca1">View-Komponente für <a href="http://localhost:9500/">Auswahl von Geschäftsjahr und Quartal</a></h4>
+<div class="outline-text-4" id="text-org27b0ca1">
 
 <div class="figure">
 <p><img src="./Abbildungen/geschaeftsjahrquartal.png" alt="geschaeftsjahrquartal.png" width="450px" />
@@ -593,9 +593,9 @@ resultiert in:
 </div>
 </div>
 </div>
-<div id="outline-container-org4d4259f" class="outline-4">
-<h4 id="org4d4259f">Der Handler für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
-<div class="outline-text-4" id="text-org4d4259f">
+<div id="outline-container-org37edd00" class="outline-4">
+<h4 id="org37edd00">Der Handler für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
+<div class="outline-text-4" id="text-org37edd00">
 <ul class="org-ul">
 <li>Event-Bezeichner sind Teil der DSL für das programmierte
 re-frame-System.</li>
@@ -626,9 +626,9 @@ zweites Element das zweite Element des Dispatch-Vektors enthält
 </div>
 </div>
 </div>
-<div id="outline-container-org4f7471b" class="outline-4">
-<h4 id="org4f7471b">Das Effect-Handling für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
-<div class="outline-text-4" id="text-org4f7471b">
+<div id="outline-container-orga356b40" class="outline-4">
+<h4 id="orga356b40">Das Effect-Handling für das Event <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code></h4>
+<div class="outline-text-4" id="text-orga356b40">
 <ul class="org-ul">
 <li>Im Allgemeinen verarbeiten Effect-Handler-Funktionen das Resultat
 der Event-Handler-Funktion (Domino 2).</li>
@@ -643,9 +643,9 @@ nichts tun.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgef9577c" class="outline-4">
-<h4 id="orgef9577c">Query &#x2013; View &#x2013; DOM</h4>
-<div class="outline-text-4" id="text-orgef9577c">
+<div id="outline-container-orgfcbb1bb" class="outline-4">
+<h4 id="orgfcbb1bb">Query &#x2013; View &#x2013; DOM</h4>
+<div class="outline-text-4" id="text-orgfcbb1bb">
 <ul class="org-ul">
 <li>Nachdem der Zustand der Applikation neu berechnet ist, wird ein
 neues View ermittelt: \(v = f(s)\).</li>
@@ -706,9 +706,9 @@ React.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org565b497" class="outline-4">
-<h4 id="org565b497">View-Komponente für die <a href="https://johbra.github.io/dep-reframe/">Anzeige der Dozentenauslastung</a></h4>
-<div class="outline-text-4" id="text-org565b497">
+<div id="outline-container-org852228b" class="outline-4">
+<h4 id="org852228b">View-Komponente für die <a href="https://johbra.github.io/dep-reframe/">Anzeige der Dozentenauslastung</a></h4>
+<div class="outline-text-4" id="text-org852228b">
 <ul class="org-ul">
 <li>Eine weitere für die Kennung <code class="src src-clojure"><span style="color: #D0372D;">:geschaeftsjahr</span></code> 
 registrierte View-Funktion ist <code class="src src-clojure">dozentenauslastung</code>.</li>
@@ -741,17 +741,17 @@ die Auslastungsdaten der Dozenten in eine HTML-Tabelle verwandelt.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org072910e" class="outline-3">
-<h3 id="org072910e">Modale Dialoge</h3>
-<div class="outline-text-3" id="text-org072910e">
+<div id="outline-container-org8df7407" class="outline-3">
+<h3 id="org8df7407">Modale Dialoge</h3>
+<div class="outline-text-3" id="text-org8df7407">
 <ul class="org-ul">
 <li>benutzt für Pflegedialoge für Manipel, Module, Dozenten &#x2026;</li>
 <li>werden aktiviert aus dem Menü am linken Rand</li>
 </ul>
 </div>
-<div id="outline-container-org596f295" class="outline-4">
-<h4 id="org596f295">Die Komponente <code>dozenten</code></h4>
-<div class="outline-text-4" id="text-org596f295">
+<div id="outline-container-org0f82599" class="outline-4">
+<h4 id="org0f82599">Die Komponente <code>dozenten</code></h4>
+<div class="outline-text-4" id="text-org0f82599">
 <div class="nebeneinander650">
 
 <div class="figure">
@@ -838,9 +838,9 @@ die Auslastungsdaten der Dozenten in eine HTML-Tabelle verwandelt.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf67514f" class="outline-4">
-<h4 id="orgf67514f">Modaler Dialog Dozent</h4>
-<div class="outline-text-4" id="text-orgf67514f">
+<div id="outline-container-org648ab69" class="outline-4">
+<h4 id="org648ab69">Modaler Dialog Dozent</h4>
+<div class="outline-text-4" id="text-org648ab69">
 
 <div class="figure">
 <p><img src="./Abbildungen/dozent.png" alt="dozent.png" width="450px" />
@@ -876,9 +876,9 @@ Alle modalen Dialoge werden durch dieselbe Komponente erstellt:
 </div>
 </div>
 
-<div id="outline-container-org53a852a" class="outline-3">
-<h3 id="org53a852a">Infos aus der re-frame-Dokumentation</h3>
-<div class="outline-text-3" id="text-org53a852a">
+<div id="outline-container-org9397119" class="outline-3">
+<h3 id="org9397119">Infos aus der re-frame-Dokumentation</h3>
+<div class="outline-text-3" id="text-org9397119">
 <ul class="org-ul">
 <li><a href="http://day8.github.io/re-frame/event-handling-infographic/">Infographics</a></li>
 <li><a href="http://day8.github.io/re-frame/subscriptions/#as-infographic">The Signal Graph</a></li>
@@ -887,16 +887,16 @@ Alle modalen Dialoge werden durch dieselbe Komponente erstellt:
 </div>
 </div>
 
-<div id="outline-container-org68f2692" class="outline-2">
-<h2 id="org68f2692">FRP vs. MVC</h2>
-<div class="outline-text-2" id="text-org68f2692">
+<div id="outline-container-org948ef57" class="outline-2">
+<h2 id="org948ef57">RP vs. MVC</h2>
+<div class="outline-text-2" id="text-org948ef57">
 <p>
 <a class="org-ref-reference" href="#/slide-bibliography">[Ferreira19]</a>
 </p>
 </div>
-<div id="outline-container-org099a712" class="outline-3">
-<h3 id="org099a712">Model-View-Controller</h3>
-<div class="outline-text-3" id="text-org099a712">
+<div id="outline-container-orgf372b58" class="outline-3">
+<h3 id="orgf372b58">Model-View-Controller</h3>
+<div class="outline-text-3" id="text-orgf372b58">
 <ul class="org-ul">
 <li><p>
 Datenfluss
@@ -916,9 +916,9 @@ Datenfluss
 </ul>
 </div>
 </div>
-<div id="outline-container-org987d01b" class="outline-3">
-<h3 id="org987d01b">Model-Binding</h3>
-<div class="outline-text-3" id="text-org987d01b">
+<div id="outline-container-org99f0b16" class="outline-3">
+<h3 id="org99f0b16">Model-Binding</h3>
+<div class="outline-text-3" id="text-org99f0b16">
 <ul class="org-ul">
 <li><p>
 Datenfluss
@@ -935,9 +935,9 @@ unter Umgehung des Controllers</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc963b1e" class="outline-3">
-<h3 id="orgc963b1e">Unidirektionaler Datenfluss</h3>
-<div class="outline-text-3" id="text-orgc963b1e">
+<div id="outline-container-org1db3429" class="outline-3">
+<h3 id="org1db3429">Unidirektionaler Datenfluss</h3>
+<div class="outline-text-3" id="text-org1db3429">
 
 <div class="figure">
 <p><img src="./Abbildungen/unidirectional.png" alt="unidirectional.png" width="450px" />
@@ -954,7 +954,7 @@ unter Umgehung des Controllers</li>
 </div>
 
 
-<div id="outline-container-orgffc73e5" class="outline-2">
+<div id="outline-container-orga64ba00" class="outline-2">
 <h2 id="bibliography">Literaturverzeichnis</h2>
 <div class="outline-text-2" id="text-bibliography">
 <ul class='org-ref-bib'><li><a id="felleisen2018how">[felleisen2018how] Felleisen, How to design programs : an introduction to programming and computing, The MIT Press (2018).</a></li>
@@ -964,9 +964,9 @@ unter Umgehung des Controllers</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Datum: 11. 07. 2021</p>
+<p class="date">Datum: 07. 08. 2021</p>
 <p class="author">Autor: Christopher Karow, Johannes Brauer</p>
-<p class="date">Created: 2021-07-11 Sun 19:10</p>
+<p class="date">Created: 2021-08-07 Sat 20:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

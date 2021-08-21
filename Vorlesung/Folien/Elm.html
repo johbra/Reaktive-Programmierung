@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<title>Elm</title>
+<meta name="author" content="Christopher Karow, Johannes Brauer"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="reveal.js-master/dist/reveal.css"/>
+
+<link rel="stylesheet" href="reveal.js-master/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./mycss/myrevealstyle.css"/>
+<link rel="stylesheet" href="reveal.js-master/plugin/highlight/vs.css"/>
+<link rel="stylesheet" type="text/css" href="mycss/mystyle.css" />
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Elm</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">21. 08. 2021</h3>
+</section>
+
+
+<section>
+<section id="slide-orge48017c">
+<h2 id="orge48017c">Ziel</h2>
+<ul>
+<li>Erstes Kennenlernen von <a href="https://elm-lang.org">Elm</a></li>
+<li>Beispiele teilweise entnommen aus <a href="https://elmprogramming.com">Beginning Elm</a></li>
+<li>Literaturbeispiel: <a class="org-ref-reference" href="#/slide-bibliography">[Elm2020]</a></li>
+
+</ul>
+</section>
+<section id="slide-org8824e04">
+<h3 id="org8824e04">Elm &#x2026;</h3>
+<p>
+&#x2026;
+</p>
+<ul>
+<li>ist strikt funktional</li>
+<li>besitzt ein (sehr) strenges, statisches und implizites Typsystem</li>
+<li>kennt keinen Null-Wert</li>
+<li>kennt keine Laufzeitfehler</li>
+<li>wird nach Javascript übersetzt</li>
+<li>liefert außerordentlich detaillierte Fehlermeldungen</li>
+<li>dient (nur) zur Programmierung von Web-Anwendungen</li>
+<li>benötigt dafür kein Framework</li>
+<li>ist „auf natürliche Weise” reaktiv</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org82b3b9a">
+<h2 id="org82b3b9a">Die Sprache</h2>
+<div class="outline-text-2" id="text-org82b3b9a">
+</div>
+</section>
+<section id="slide-org1613591">
+<h3 id="org1613591">Werte</h3>
+<ul>
+<li><p>
+Es gibt die Zahlentypen <code>Int</code>, <code>Float</code> 
+</p>
+<ul>
+<li>und die Abstraktion <code>number</code> (constrained type variable)</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; 1 + 2
+3 : number
+
+&gt; 4534 - 789
+3745 : number
+
+&gt; 42 * 10
+420 : number
+
+&gt; 9 / 4
+2.25 : Float
+
+&gt; 5 / 2
+2.5 : Float
+
+&gt; 5 // 2
+2 : Int
+
+&gt; 5 / 3
+1.6666666666666667 : Float
+
+&gt; (+) 4 5
+9 : number
+
+&gt; 2 ^ 3 ^ 2
+512 : number
+</code></pre>
+</div>
+<ul>
+<li>Es gelten die üblichen Vorrangregeln.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li><p>
+Es gibt Booleans <code>True</code> und <code>False</code>
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; True || False
+True
+
+&gt; False || False
+False
+
+&gt; True &amp;&amp; False
+False
+
+&gt; True &amp;&amp; True
+True
+
+&gt; not True
+False
+
+&gt; xor True False
+True
+
+&gt; xor True True
+False
+
+&gt; xor False False
+False
+</code></pre>
+</div>
+<ul>
+<li>Nur <code>True</code> und <code>False</code> werden als Booleans akzeptiert.</li>
+
+</ul></li>
+
+</ul>
+
+<ul>
+<li><p>
+Es gibt Zeichen (<code>Char</code>) und Zeichenketten (<code>String</code>)
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; "Reaktive Programmierung"
+"Reaktive Programmierung" : String
+
+&gt; "Reaktive" ++ " Programmierung"
+"Reaktive Programmierung" : String
+&gt; 'R'
+'R' : Char
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org174abcd">
+<h3 id="org174abcd">Konstanten (aka Variablen)</h3>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; x = (7 + 5) / 3
+4 : Float
+&gt; x
+4 : Float
+
+&gt; anzahlDerTeilnehmerInnenAmWahlplichtmodulReaktiveProgrammierung = 9
+9 : number
+
+&gt; anzahlDerTeilnehmerInnenAmWahlplichtmodulReaktiveProgrammierung // 3
+3 : Int
+
+&gt; x = x + 1
+-- CYCLIC DEFINITION ------------------------------------------------------ REPL
+
+The `x` value is defined directly in terms of itself, causing an infinite loop.
+
+3| x = x + 1
+   ^
+Are you are trying to mutate a variable? Elm does not have mutation, so when I
+see x defined in terms of x, I treat it as a recursive definition. Try giving
+the new value a new name!
+
+Maybe you DO want a recursive value? To define x we need to know what x is, so
+let’s expand it. Wait, but now we need to know what x is, so let’s expand it...
+This will keep going infinitely!
+
+Hint: The root problem is often a typo in some variable name, but I recommend
+reading &lt;https://elm-lang.org/0.19.1/bad-recursion&gt; for more detailed advice,
+especially if you actually do need a recursive value.
+</code></pre>
+</div>
+</section>
+<section id="slide-org04dd593">
+<h3 id="org04dd593">Funktionen</h3>
+<ul>
+<li><p>
+Funktionsdefinitionen sehen ähnlich aus wie Konstantendefinitionen
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; add x y = x + y
+&lt;function&gt; : number -&gt; number -&gt; number
+
+&gt; add
+&lt;function&gt; : number -&gt; number -&gt; number
+
+&gt; add 2 3
+5 : number
+
+-- partielle Anwendung
+&gt; add 2
+&lt;function&gt; : number -&gt; number
+
+&gt; (add 2) 6
+8 : number
+
+&gt; add2 = add 2
+&lt;function&gt; : number -&gt; number
+
+&gt; add2 9
+11 : number
+</code></pre>
+</div></li>
+<li><p>
+Nutzung der Pipe-Operatoren
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; add x y = x + y
+&lt;function&gt; : number -&gt; number -&gt; number
+
+&gt; increment = add 1
+&lt;function&gt; : number -&gt; number
+
+-- der Operator |&gt; übergibt den linken Ausdruck an die rechts stehende Funktion
+&gt; ten = 9 |&gt; increment
+
+-- der Operator &lt;| übergibt den rechten Ausdruck an die links stehende Funktion
+&gt; increment &lt;| add 5 4
+10 : number
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li><p>
+Lambda-Ausdrücke
+</p>
+<ul>
+<li>Syntax: <code>\argumente -&gt; berechnungsvorschrift</code></li>
+
+</ul>
+<div class="org-src-container">
+
+<pre><code class="elm" >normalFunction x y = x + y
+-- ist äquivalent zu
+lambdaFunction = \x y -&gt; x + y
+
+&gt; normalFunction 1 2
+3 : number
+
+&gt; lambdaFunction 1 2
+3 : number
+</code></pre>
+</div></li>
+<li><p>
+lokale Variablen
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >bigNumbers =
+    let
+        allNumbers = List.range 1 100 
+        isBig num = num &gt; 95
+    in
+        List.filter isBig allNumbers
+
+&gt; bigNumbers
+[96,97,98,99,100] : List Int
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org43cf589">
+<h3 id="org43cf589">Fallunterscheidungen</h3>
+<ul>
+<li><p>
+<code>if</code>
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; velocity = 11.2
+11.2
+
+&gt; if velocity &gt; 11.186 then "Godspeed" else "Come back"
+"Godspeed"
++ =else= muss immer da sein.
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li><p>
+<code>case</code>
+</p>
+
+<p>
+statt
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >weekday dayInNumber =
+    if dayInNumber == 0 then
+        "Sunday"
+
+    else if dayInNumber == 1 then
+        "Monday"
+
+    else if dayInNumber == 2 then
+        "Tuesday"
+
+    else if dayInNumber == 3 then
+        "Wednesday"
+
+    else if dayInNumber == 4 then
+        "Thursday"
+
+    else if dayInNumber == 5 then
+        "Friday"
+
+    else if dayInNumber == 6 then
+        "Saturday"
+
+    else
+        "Unknown day"
+</code></pre>
+</div>
+<p>
+besser:
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >weekday dayInNumber =
+    case dayInNumber of
+        0 -&gt;
+            "Sunday"
+
+        1 -&gt;
+            "Monday"
+
+        2 -&gt;
+            "Tuesday"
+
+        3 -&gt;
+            "Wednesday"
+
+        4 -&gt;
+            "Thursday"
+
+        5 -&gt;
+            "Friday"
+
+        6 -&gt;
+            "Saturday"
+
+        _ -&gt;
+            "Unknown day"
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org499b7a4">
+<h3 id="org499b7a4">Strukturen</h3>
+<div class="outline-text-3" id="text-org499b7a4">
+</div>
+</section>
+<section id="slide-org737b950">
+<h4 id="org737b950">Listen</h4>
+<ul>
+<li>Syntax: <code>[value1,value2,value3.....valuen]</code></li>
+<li>alle Elemente müssen vom gleichen Typ sein</li>
+<li><p>
+Beispiele
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; myList1 = [10,20,30]
+[10,20,30] : List number
+
+&gt; myList2 = ["hello","world"]
+["hello","world"] : List String
+
+&gt; List.head [10,20,30,40] --aka first
+Just 10 : Maybe number
+&gt; List.head []
+Nothing : Maybe a
+
+&gt; List.tail [10,20,30,40] -- aka rest
+Just [20,30,40] : Maybe (List number)
+&gt; List.tail []
+Nothing : Maybe (List a)
+
+10::[20,30,40,50]  -- aka cons
+[10,20,30,40,50] : List number
+
+&gt; List.isEmpty
+&lt;function&gt; : List a -&gt; Bool -- a ist eine Typvariable
+
+&gt; List.isEmpty [10,20,30]
+False : Bool
+
+&gt; List.product [4, 5, 6]
+120 : number
+&gt; List.product []
+1 : number
+
+&gt; List.maximum
+&lt;function&gt; : List comparable -&gt; Maybe comparable
+&gt; List.maximum [3, 17, 2]
+Just 17 : Maybe number
+&gt; List.maximum []
+Nothing : Maybe comparable
+
+&gt; List.filter
+&lt;function&gt; : (a -&gt; Bool) -&gt; List a -&gt; List a
+List.filter (\n -&gt; (remainderBy 2 n) == 0) [10,20,30,55]
+
+-- und so weiter ...
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org1ad9826">
+<h4 id="org1ad9826">Arrays</h4>
+<ul>
+<li>vergleichbar mit Vektoren in Clojure</li>
+<li><p>
+auf die Elemente kann per Index zugegriffen werden
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; import Array
+&gt; myArray = Array.fromList [ 1, 2, 3, 4 ]
+Array.fromList [1,2,3,4]
+    : Array.Array number
+
+&gt; Array.get 3 myArray
+Just 4 : Maybe number
+&gt; Array.get 4 myArray
+Nothing : Maybe 
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-orgcffe54a">
+<h4 id="orgcffe54a">Tuples</h4>
+<ul>
+<li><p>
+Strukturen, die aus zwei oder drei Elementen (möglicherweise)
+unterschiedlichen Typs bestehen
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >( 1, "abc" )
+(1,"abc") : ( number, String )
+
+&gt; ( 1, "abc", ( "Weltformel", 42 ))
+(1,"abc",("Weltformel",42))
+    : ( number, String, ( String, number1 ) )
+
+&gt; trianglePerimeter ( a, b, c ) = a + b + c  
+&lt;function&gt; : ( number, number, number ) -&gt; number
+-- Funktion erwartet 1 Argument, Destructuring
+
+&gt; trianglePerimeter ( 5, 4, 6 )
+15 : number
+
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org7ef3424">
+<h4 id="org7ef3424">Records</h4>
+<ul>
+<li><p>
+Sammlung von Schlüssel-Wert-Paaren
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; { x = 3, y = 4 }
+    : { x : number, y : number1 }
+
+&gt; point3D =
+  { x = 3
+  , y = 4
+  , z = 12
+  }
+{ x = 3, y = 4, z = 12 }
+    : { x : number, y : number1, z : number2 }
+
+&gt; daniel = { name = "Düsentrieb", alter = 85 }
+{ alter = 85, name = "Düsentrieb" }
+    : { alter : number, name : String }
+
+&gt; point3D.z
+12 : number
+&gt; .z point3D
+12 : number
+&gt; .age daniel
+85 : number
+
+-- Pattern matching / Destructuring
+
+&gt; hypotenuse {x,y} =
+    sqrt (x^2 + y^2)
+&lt;function&gt; : { a | x : Float, y : Float } -&gt; Float
+
+&gt; hypotenuse point3D
+5 : Float
+
+&gt; hypotenuse { x = 3, y = 4 }
+5 : Float
+
+-- Updating
+
+&gt; { point3D | x = 0, y = 0 }
+{ x = 0, y = 0, z = 12 }
+    : { x : number, y : number1, z : number2 }
+
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org9e3af0d">
+<h3 id="org9e3af0d">Typen</h3>
+<div class="outline-text-3" id="text-org9e3af0d">
+</div>
+</section>
+<section id="slide-orgbe1c6a3">
+<h4 id="orgbe1c6a3">Typinferenz</h4>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; toFullName person = person.firstName ++ " " ++ person.lastName
+&lt;function&gt; : { a | firstName : String, lastName : String } -&gt; String
+
+&gt; fullName = toFullName { firstName = "Gustav", lastName = "Gans" }
+"Gustav Gans" : String
+
+&gt; fullName = toFullName { firstName = "Donald", lstName = "Duck" }
+-- TYPE MISMATCH ---------------------------------------------------------- REPL
+
+The 1st argument to `toFullName` is not what I expect:
+
+14| fullName = toFullName { firstName = "Gustav", lstName = "Gans" }
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This argument is a record of type:
+
+    { firstName : String, lstName : String }
+
+But `toFullName` needs the 1st argument to be:
+
+    { a | firstName : String, lastName : String }
+
+Hint: Seems like a record field typo. Maybe lastName should be lstName?
+</code></pre>
+</div>
+</section>
+<section id="slide-org9e968c9">
+<h4 id="org9e968c9">Typ-Annotationen</h4>
+<ul>
+<li>zur Verbesserung von Fehlermeldungen</li>
+<li><p>
+zur Dokumentation
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >hypotenuse : Float -&gt; Float -&gt; Float
+hypotenuse a b =
+  sqrt (a^2 + b^2)
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-orgde7b756">
+<h4 id="orgde7b756">Benennung von Typen</h4>
+<div class="org-src-container">
+
+<pre><code class="elm" >type alias Person =
+    { name : String
+    , alter : Int
+    }
+
+stimmberechtigt : Person -&gt; Bool
+stimmberechtigt person =
+    person.alter &gt;= 18
+
+&gt; stimmberechtigt { name = "Clarissa", alter = 20}
+True : Bool
+
+-- ohne type alias
+stimmberechtigt : { name : String, alter : Int} -&gt; Bool
+stimmberechtigt person =
+    person.alter &gt;= 18
+
+-- Typvariablen für Record-Typen dienen auch als Konstruktoren
+&gt; Person "Clarissa" 20
+{ alter = 20, name = "Clarissa" } : Person
+</code></pre>
+</div>
+</section>
+<section id="slide-org24a8824">
+<h4 id="org24a8824">Typdefinitionen</h4>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; type Gruss = Hallo | Moin
+
+&gt; Hallo
+Hallo : Gruss
+&gt; Moin
+Moin : Gruss
+
+type Bool = False | True
+
+gruesse : Gruss -&gt; String
+gruesse gruss =
+    case gruss of
+        Hallo -&gt;
+            "Tach zusammen"
+        Moin -&gt;
+            "Moin Moin"
+
+&gt; gruesse
+&lt;function&gt; : Gruss -&gt; String
+&gt; gruesse Hallo
+"Tach zusammen" : String
+</code></pre>
+</div>
+</section>
+<section id="slide-org9a91f32">
+<h4 id="org9a91f32">Typvariablen</h4>
+<ul>
+<li><p>
+In den folgenden Beispielen ist <code>a</code> eine Typvariable.
+</p>
+<div class="org-src-container">
+
+<pre><code class="elm" >&gt; List.append
+&lt;function&gt; : List a -&gt; List a -&gt; List a
+
+&gt; type Maybe a = Just a | Nothing
+
+&gt; Just 5
+Just 5 : Maybe number
+
+&gt; Nothing
+Nothing : Maybe a
+
+divide : Int -&gt; Int -&gt; Maybe Int 
+divide dvd dvs =
+    case dvs of
+        0 -&gt; Nothing
+        _   -&gt; Just (dvd // dvs)
+
+&gt; divide
+&lt;function&gt; : Int -&gt; Int -&gt; Maybe Int
+
+&gt; divide 8 7
+Just 1 : Maybe Int
+&gt; divide 8 0
+Nothing : Maybe Int
+</code></pre>
+</div></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org0341ed7">
+<h2 id="org0341ed7">Einfache Web-Seite mit Elm</h2>
+<div class="org-src-container">
+
+<pre><code class="shell" >bash-3.2$ elm init
+
+Hello! Elm projects always start with an elm.json file. I can create them!
+
+Now you may be wondering, what will be in this file? How do I add Elm files to
+my project? How do I see it in the browser? How will my code grow? Do I need
+more directories? What about tests? Etc.
+
+Check out &lt;https://elm-lang.org/0.19.1/init&gt; for all the answers!
+
+Knowing all that, would you like me to create an elm.json file now?
+[Y/n]: Y
+
+Okay, I created it. Now read that link!
+
+bash-3.2$ l
+total 8
+drwxr-xr-x@  4 jb  staff  128 Aug 19 13:57 ./
+drwxr-xr-x@ 20 jb  staff  640 Aug 19 13:55 ../
+-rw-r--r--@  1 jb  staff  517 Aug 19 13:57 elm.json
+drwxr-xr-x@  2 jb  staff   64 Aug 19 13:57 src/
+bash-3.2$ l src
+total 0
+drwxr-xr-x@ 2 jb  staff   64 Aug 19 13:57 ./
+drwxr-xr-x@ 4 jb  staff  128 Aug 19 13:57 ../
+
+bash-3.2$ elm make src/ReactiveProgramming.elm --output elm.js
+Starting downloads...
+
+  ● elm/json 1.1.3
+  ● elm/browser 1.0.2
+  ● elm/core 1.0.5
+
+Dependencies ready!
+Success! Compiled 1 module.
+
+    ReactiveProgramming ───&gt; elm.js
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf808858">
+<h3 id="orgf808858">ReactiveProgramming.elm</h3>
+<div class="org-src-container">
+
+<pre><code class="elm" >module ReactiveProgramming exposing (main)
+
+import Html exposing (..)
+import Html.Attributes exposing (..)
+
+
+view model =
+    div []
+        [div [ class "myCss" ]
+             [ h1 [] [ text "Willkommen im Modul Reaktive Programmierung" ]
+             , p [] [ text "Dozenten: Chhristopher Karow, Johannes Brauer"
+            ]
+        ],
+         h3 [] [text "Teilnehmer*Innen"]]
+
+
+main =
+    view "dummy model"
+</code></pre>
+</div>
+<p>
+<a href="file:///Users/jb/Dropbox/FunctionalReactiveProgramming/Elm/repr.html">repr.html</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgb926373">
+<h2 id="orgb926373">Die Elm-Architecture</h2>
+<ul>
+<li>Drei Bestandteile
+<ul>
+<li>Model: beinhaltet den Weltzustand</li>
+<li>View: verwandelt den Weltzustand in HTML</li>
+<li>Update: berechnet einen neuen Weltzustand als Reaktion auf Nachrichten</li>
+
+</ul></li>
+
+</ul>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="./Abbildungen/architecture.svg" class="org-svg" width="650px">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Abbildung 1: </span>entnommen aus <a href="https://guide.elm-lang.org/architecture/">https://guide.elm-lang.org/architecture/</a></p>
+</div>
+
+<p>
+<a href="https://ellie-app.com/new">Elementares Beispiel: Counter</a>
+</p>
+
+<p>
+weitere Beispiele in <a href="https://elm-lang.org/try">https://elm-lang.org/try</a>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-bibliography">
+<h2 id="bibliography">Literaturverzeichnis</h2>
+<ul class='org-ref-bib'><li><a id="Elm2020">[Elm2020] Richard Feldman, Elm in Action, Manning Publications Co. (2020).</a></li>
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="reveal.js-master/dist/reveal.js"></script>
+<script src="reveal.js-master/plugin/highlight/highlight.js"></script>
+<script src="reveal.js-master/plugin/zoom/zoom.js"></script>
+<script src="reveal.js-master/plugin/search/search.js"></script>
+<script src="reveal.js-master/plugin/menu/menu.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: true,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+
+overview: true,
+width: 1400,
+height: 1000,
+margin: 0.05,
+
+transition: 'slide',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealHighlight, RevealZoom, RevealSearch, RevealMenu ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+,menu: {hideMissingTitles: true, markers: false, themes: true }});
+</script>
+</body>
+</html>

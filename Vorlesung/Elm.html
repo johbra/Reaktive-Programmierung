@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+<!-- 2021-08-21 Sat 16:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elm</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Christopher Karow, Johannes Brauer" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<link rel="stylesheet" type="text/css" href="mycss/mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Elm
+<br />
+<span class="subtitle">Reaktive Programmierung</span>
+</h1>
+
+
+<div id="outline-container-orgff3ab81" class="outline-2">
+<h2 id="orgff3ab81">Ziel</h2>
+<div class="outline-text-2" id="text-orgff3ab81">
+<ul class="org-ul">
+<li>Erstes Kennenlernen von <a href="https://elm-lang.org">Elm</a></li>
+<li>Beispiele teilweise entnommen aus <a href="https://elmprogramming.com">Beginning Elm</a></li>
+<li>Literaturbeispiel: <a class="org-ref-reference" href="#/slide-bibliography">[Elm2020]</a></li>
+</ul>
+</div>
+<div id="outline-container-org647d2f0" class="outline-3">
+<h3 id="org647d2f0">Elm &#x2026;</h3>
+<div class="outline-text-3" id="text-org647d2f0">
+<p>
+&#x2026;
+</p>
+<ul class="org-ul">
+<li>ist strikt funktional</li>
+<li>besitzt ein (sehr) strenges, statisches und implizites Typsystem</li>
+<li>kennt keinen Null-Wert</li>
+<li>kennt keine Laufzeitfehler</li>
+<li>wird nach Javascript übersetzt</li>
+<li>liefert außerordentlich detaillierte Fehlermeldungen</li>
+<li>dient (nur) zur Programmierung von Web-Anwendungen</li>
+<li>benötigt dafür kein Framework</li>
+<li>ist „auf natürliche Weise” reaktiv</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4937f48" class="outline-2">
+<h2 id="org4937f48">Die Sprache</h2>
+<div class="outline-text-2" id="text-org4937f48">
+</div>
+<div id="outline-container-org41fb7d7" class="outline-3">
+<h3 id="org41fb7d7">Werte</h3>
+<div class="outline-text-3" id="text-org41fb7d7">
+<ul class="org-ul">
+<li><p>
+Es gibt die Zahlentypen <code>Int</code>, <code>Float</code> 
+</p>
+<ul class="org-ul">
+<li>und die Abstraktion <code>number</code> (constrained type variable)</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> 1 <span style="color: #006FE0;">+</span> 2
+3 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> 4534 <span style="color: #006FE0;">-</span> 789
+3745 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> 42 <span style="color: #006FE0;">*</span> 10
+420 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> 9 <span style="color: #006FE0;">/</span> 4
+2<span style="color: #006FE0;">.</span>25 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span>
+
+<span style="color: #006FE0;">&gt;</span> 5 <span style="color: #006FE0;">/</span> 2
+2<span style="color: #006FE0;">.</span>5 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span>
+
+<span style="color: #006FE0;">&gt;</span> 5 <span style="color: #006FE0;">//</span> 2
+2 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Int</span>
+
+<span style="color: #006FE0;">&gt;</span> 5 <span style="color: #006FE0;">/</span> 3
+1<span style="color: #006FE0;">.</span>6666666666666667 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #707183;">(</span><span style="color: #006FE0;">+</span><span style="color: #707183;">)</span> 4 5
+9 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> 2 <span style="color: #006FE0;">^</span> 3 <span style="color: #006FE0;">^</span> 2
+512 <span style="color: #006FE0;">:</span> number
+</pre>
+</div>
+<ul class="org-ul">
+<li>Es gelten die üblichen Vorrangregeln.</li>
+</ul></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+Es gibt Booleans <code>True</code> und <code>False</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">True</span> <span style="color: #006FE0;">||</span> <span style="color: #6434A3;">False</span>
+<span style="color: #6434A3;">True</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">False</span> <span style="color: #006FE0;">||</span> <span style="color: #6434A3;">False</span>
+<span style="color: #6434A3;">False</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">True</span> <span style="color: #006FE0;">&amp;&amp;</span> <span style="color: #6434A3;">False</span>
+<span style="color: #6434A3;">False</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">True</span> <span style="color: #006FE0;">&amp;&amp;</span> <span style="color: #6434A3;">True</span>
+<span style="color: #6434A3;">True</span>
+
+<span style="color: #006FE0;">&gt;</span> not <span style="color: #6434A3;">True</span>
+<span style="color: #6434A3;">False</span>
+
+<span style="color: #006FE0;">&gt;</span> xor <span style="color: #6434A3;">True</span> <span style="color: #6434A3;">False</span>
+<span style="color: #6434A3;">True</span>
+
+<span style="color: #006FE0;">&gt;</span> xor <span style="color: #6434A3;">True</span> <span style="color: #6434A3;">True</span>
+<span style="color: #6434A3;">False</span>
+
+<span style="color: #006FE0;">&gt;</span> xor <span style="color: #6434A3;">False</span> <span style="color: #6434A3;">False</span>
+<span style="color: #6434A3;">False</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Nur <code>True</code> und <code>False</code> werden als Booleans akzeptiert.</li>
+</ul></li>
+</ul>
+
+<ul class="org-ul">
+<li><p>
+Es gibt Zeichen (<code>Char</code>) und Zeichenketten (<code>String</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> <span style="color: #008000;">"Reaktive Programmierung"</span>
+<span style="color: #008000;">"Reaktive Programmierung"</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #008000;">"Reaktive"</span> <span style="color: #006FE0;">++</span> <span style="color: #008000;">" Programmierung"</span>
+<span style="color: #008000;">"Reaktive Programmierung"</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span>
+<span style="color: #006FE0;">&gt;</span> <span style="color: #008000;">'R'</span>
+'<span style="color: #6434A3;">R'</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Char</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1c287fa" class="outline-3">
+<h3 id="org1c287fa">Konstanten (aka Variablen)</h3>
+<div class="outline-text-3" id="text-org1c287fa">
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> x <span style="color: #006FE0;">=</span> <span style="color: #707183;">(</span>7 <span style="color: #006FE0;">+</span> 5<span style="color: #707183;">)</span> <span style="color: #006FE0;">/</span> 3
+4 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span>
+<span style="color: #006FE0;">&gt;</span> x
+4 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span>
+
+<span style="color: #006FE0;">&gt;</span> anzahlDerTeilnehmerInnenAmWahlplichtmodulReaktiveProgrammierung <span style="color: #006FE0;">=</span> 9
+9 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> anzahlDerTeilnehmerInnenAmWahlplichtmodulReaktiveProgrammierung <span style="color: #006FE0;">//</span> 3
+3 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Int</span>
+
+<span style="color: #006FE0;">&gt;</span> x <span style="color: #006FE0;">=</span> x <span style="color: #006FE0;">+</span> 1
+<span style="color: #8D8D84; font-style: italic;">-- CYCLIC DEFINITION ------------------------------------------------------ REPL</span>
+
+<span style="color: #6434A3;">The</span> <span style="color: #006FE0;">`x`</span> value is defined directly <span style="color: #0000FF;">in</span> terms <span style="color: #0000FF;">of</span> itself<span style="color: #006FE0;">,</span> causing an infinite loop<span style="color: #006FE0;">.</span>
+
+3<span style="color: #006FE0;">|</span> x <span style="color: #006FE0;">=</span> x <span style="color: #006FE0;">+</span> 1
+   <span style="color: #006FE0;">^</span>
+<span style="color: #6434A3;">Are</span> you are trying to mutate a variable? <span style="color: #6434A3;">Elm</span> does not have mutation<span style="color: #006FE0;">,</span> so when <span style="color: #6434A3;">I</span>
+<span style="color: #006699;">see</span> x defined <span style="color: #0000FF;">in</span> terms <span style="color: #0000FF;">of</span> x<span style="color: #006FE0;">,</span> <span style="color: #6434A3;">I</span> treat it <span style="color: #0000FF;">as</span> a recursive definition<span style="color: #006FE0;">.</span> <span style="color: #6434A3;">Try</span> giving
+<span style="color: #006699;">the</span> new value a new name<span style="color: #006FE0;">!</span>
+
+<span style="color: #6434A3;">Maybe</span> you <span style="color: #6434A3;">DO</span> want a recursive value? <span style="color: #6434A3;">To</span> define x we need to know what x is<span style="color: #006FE0;">,</span> so
+<span style="color: #0000FF;">let</span>&#8217;s expand it<span style="color: #006FE0;">.</span> <span style="color: #6434A3;">Wait</span><span style="color: #006FE0;">,</span> but now we need to know what x is<span style="color: #006FE0;">,</span> so <span style="color: #0000FF;">let</span>&#8217;s expand it<span style="color: #006FE0;">...</span>
+<span style="color: #6434A3;">This</span> will keep going infinitely<span style="color: #006FE0;">!</span>
+
+<span style="color: #6434A3;">Hint</span><span style="color: #006FE0;">:</span> <span style="color: #6434A3;">The</span> root problem is often a typo <span style="color: #0000FF;">in</span> some variable name<span style="color: #006FE0;">,</span> but <span style="color: #6434A3;">I</span> recommend
+<span style="color: #006699;">reading</span> <span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">&lt;</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">https</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">://</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">elm</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">-</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">lang</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">.</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">org</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">/</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">0</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">.</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">19</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">.</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">1</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">/</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">bad</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">-</a></span><a href="https://elm-lang.org/0.19.1/bad-recursion">recursion</a><span style="color: #006FE0;"><a href="https://elm-lang.org/0.19.1/bad-recursion">&gt;</a></span> for more detailed advice<span style="color: #006FE0;">,</span>
+<span style="color: #006699;">especially</span> <span style="color: #0000FF;">if</span> you actually do need a recursive value<span style="color: #006FE0;">.</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd3a5ec3" class="outline-3">
+<h3 id="orgd3a5ec3">Funktionen</h3>
+<div class="outline-text-3" id="text-orgd3a5ec3">
+<ul class="org-ul">
+<li><p>
+Funktionsdefinitionen sehen ähnlich aus wie Konstantendefinitionen
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> add x y <span style="color: #006FE0;">=</span> x <span style="color: #006FE0;">+</span> y
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> number <span style="color: #006FE0;">-&gt;</span> number <span style="color: #006FE0;">-&gt;</span> number
+
+<span style="color: #006FE0;">&gt;</span> add
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> number <span style="color: #006FE0;">-&gt;</span> number <span style="color: #006FE0;">-&gt;</span> number
+
+<span style="color: #006FE0;">&gt;</span> add 2 3
+5 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #8D8D84; font-style: italic;">-- partielle Anwendung</span>
+<span style="color: #006FE0;">&gt;</span> add 2
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> number <span style="color: #006FE0;">-&gt;</span> number
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #707183;">(</span>add 2<span style="color: #707183;">)</span> 6
+8 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> add2 <span style="color: #006FE0;">=</span> add 2
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> number <span style="color: #006FE0;">-&gt;</span> number
+
+<span style="color: #006FE0;">&gt;</span> add2 9
+11 <span style="color: #006FE0;">:</span> number
+</pre>
+</div></li>
+<li><p>
+Nutzung der Pipe-Operatoren
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> add x y <span style="color: #006FE0;">=</span> x <span style="color: #006FE0;">+</span> y
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> number <span style="color: #006FE0;">-&gt;</span> number <span style="color: #006FE0;">-&gt;</span> number
+
+<span style="color: #006FE0;">&gt;</span> increment <span style="color: #006FE0;">=</span> add 1
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> number <span style="color: #006FE0;">-&gt;</span> number
+
+<span style="color: #8D8D84; font-style: italic;">-- der Operator |&gt; &#252;bergibt den linken Ausdruck an die rechts stehende Funktion</span>
+<span style="color: #006FE0;">&gt;</span> ten <span style="color: #006FE0;">=</span> 9 <span style="color: #006FE0;">|&gt;</span> increment
+
+<span style="color: #8D8D84; font-style: italic;">-- der Operator &lt;| &#252;bergibt den rechten Ausdruck an die links stehende Funktion</span>
+<span style="color: #006FE0;">&gt;</span> increment <span style="color: #006FE0;">&lt;|</span> add 5 4
+10 <span style="color: #006FE0;">:</span> number
+</pre>
+</div></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+Lambda-Ausdrücke
+</p>
+<ul class="org-ul">
+<li>Syntax: <code>\argumente -&gt; berechnungsvorschrift</code></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006699;">normalFunction</span> x y <span style="color: #006FE0;">=</span> x <span style="color: #006FE0;">+</span> y
+<span style="color: #8D8D84; font-style: italic;">-- ist &#228;quivalent zu</span>
+<span style="color: #006699;">lambdaFunction</span> <span style="color: #006FE0;">=</span> <span style="color: #006FE0;">\</span>x y <span style="color: #006FE0;">-&gt;</span> x <span style="color: #006FE0;">+</span> y
+
+<span style="color: #006FE0;">&gt;</span> normalFunction 1 2
+3 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> lambdaFunction 1 2
+3 <span style="color: #006FE0;">:</span> number
+</pre>
+</div></li>
+<li><p>
+lokale Variablen
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006699;">bigNumbers</span> <span style="color: #006FE0;">=</span>
+    <span style="color: #0000FF;">let</span>
+        allNumbers <span style="color: #006FE0;">=</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>range 1 100 
+        isBig num <span style="color: #006FE0;">=</span> num <span style="color: #006FE0;">&gt;</span> 95
+    <span style="color: #0000FF;">in</span>
+        <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>filter isBig allNumbers
+
+<span style="color: #006FE0;">&gt;</span> bigNumbers
+<span style="color: #707183;">[</span>96<span style="color: #006FE0;">,</span>97<span style="color: #006FE0;">,</span>98<span style="color: #006FE0;">,</span>99<span style="color: #006FE0;">,</span>100<span style="color: #707183;">]</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">List</span> <span style="color: #6434A3;">Int</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org11b4014" class="outline-3">
+<h3 id="org11b4014">Fallunterscheidungen</h3>
+<div class="outline-text-3" id="text-org11b4014">
+<ul class="org-ul">
+<li><p>
+<code>if</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> velocity <span style="color: #006FE0;">=</span> 11<span style="color: #006FE0;">.</span>2
+11<span style="color: #006FE0;">.</span>2
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #0000FF;">if</span> velocity <span style="color: #006FE0;">&gt;</span> 11<span style="color: #006FE0;">.</span>186 <span style="color: #0000FF;">then</span> <span style="color: #008000;">"Godspeed"</span> <span style="color: #0000FF;">else</span> <span style="color: #008000;">"Come back"</span>
+<span style="color: #008000;">"Godspeed"</span>
+<span style="color: #006FE0;">+</span> <span style="color: #006FE0;">=</span>else<span style="color: #006FE0;">=</span> muss immer da sein<span style="color: #006FE0;">.</span>
+</pre>
+</div></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+<code>case</code>
+</p>
+
+<p>
+statt
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006699;">weekday</span> dayInNumber <span style="color: #006FE0;">=</span>
+    <span style="color: #0000FF;">if</span> dayInNumber <span style="color: #006FE0;">==</span> 0 <span style="color: #0000FF;">then</span>
+        <span style="color: #008000;">"Sunday"</span>
+
+    <span style="color: #0000FF;">else</span> <span style="color: #0000FF;">if</span> dayInNumber <span style="color: #006FE0;">==</span> 1 <span style="color: #0000FF;">then</span>
+        <span style="color: #008000;">"Monday"</span>
+
+    <span style="color: #0000FF;">else</span> <span style="color: #0000FF;">if</span> dayInNumber <span style="color: #006FE0;">==</span> 2 <span style="color: #0000FF;">then</span>
+        <span style="color: #008000;">"Tuesday"</span>
+
+    <span style="color: #0000FF;">else</span> <span style="color: #0000FF;">if</span> dayInNumber <span style="color: #006FE0;">==</span> 3 <span style="color: #0000FF;">then</span>
+        <span style="color: #008000;">"Wednesday"</span>
+
+    <span style="color: #0000FF;">else</span> <span style="color: #0000FF;">if</span> dayInNumber <span style="color: #006FE0;">==</span> 4 <span style="color: #0000FF;">then</span>
+        <span style="color: #008000;">"Thursday"</span>
+
+    <span style="color: #0000FF;">else</span> <span style="color: #0000FF;">if</span> dayInNumber <span style="color: #006FE0;">==</span> 5 <span style="color: #0000FF;">then</span>
+        <span style="color: #008000;">"Friday"</span>
+
+    <span style="color: #0000FF;">else</span> <span style="color: #0000FF;">if</span> dayInNumber <span style="color: #006FE0;">==</span> 6 <span style="color: #0000FF;">then</span>
+        <span style="color: #008000;">"Saturday"</span>
+
+    <span style="color: #0000FF;">else</span>
+        <span style="color: #008000;">"Unknown day"</span>
+</pre>
+</div>
+<p>
+besser:
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006699;">weekday</span> dayInNumber <span style="color: #006FE0;">=</span>
+    <span style="color: #0000FF;">case</span> dayInNumber <span style="color: #0000FF;">of</span>
+        0 <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Sunday"</span>
+
+        1 <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Monday"</span>
+
+        2 <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Tuesday"</span>
+
+        3 <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Wednesday"</span>
+
+        4 <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Thursday"</span>
+
+        5 <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Friday"</span>
+
+        6 <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Saturday"</span>
+
+        _ <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Unknown day"</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org76094b7" class="outline-3">
+<h3 id="org76094b7">Strukturen</h3>
+<div class="outline-text-3" id="text-org76094b7">
+</div>
+<div id="outline-container-org6f865ee" class="outline-4">
+<h4 id="org6f865ee">Listen</h4>
+<div class="outline-text-4" id="text-org6f865ee">
+<ul class="org-ul">
+<li>Syntax: <code>[value1,value2,value3.....valuen]</code></li>
+<li>alle Elemente müssen vom gleichen Typ sein</li>
+<li><p>
+Beispiele
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> myList1 <span style="color: #006FE0;">=</span> <span style="color: #707183;">[</span>10<span style="color: #006FE0;">,</span>20<span style="color: #006FE0;">,</span>30<span style="color: #707183;">]</span>
+<span style="color: #707183;">[</span>10<span style="color: #006FE0;">,</span>20<span style="color: #006FE0;">,</span>30<span style="color: #707183;">]</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">List</span> number
+
+<span style="color: #006FE0;">&gt;</span> myList2 <span style="color: #006FE0;">=</span> <span style="color: #707183;">[</span><span style="color: #008000;">"hello"</span><span style="color: #006FE0;">,</span><span style="color: #008000;">"world"</span><span style="color: #707183;">]</span>
+<span style="color: #707183;">[</span><span style="color: #008000;">"hello"</span><span style="color: #006FE0;">,</span><span style="color: #008000;">"world"</span><span style="color: #707183;">]</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">List</span> <span style="color: #6434A3;">String</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>head <span style="color: #707183;">[</span>10<span style="color: #006FE0;">,</span>20<span style="color: #006FE0;">,</span>30<span style="color: #006FE0;">,</span>40<span style="color: #707183;">]</span> <span style="color: #8D8D84; font-style: italic;">--aka first</span>
+<span style="color: #6434A3;">Just</span> 10 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> number
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>head <span style="color: #707183;">[]</span>
+<span style="color: #6434A3;">Nothing</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> a
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>tail <span style="color: #707183;">[</span>10<span style="color: #006FE0;">,</span>20<span style="color: #006FE0;">,</span>30<span style="color: #006FE0;">,</span>40<span style="color: #707183;">]</span> <span style="color: #8D8D84; font-style: italic;">-- aka rest</span>
+<span style="color: #6434A3;">Just</span> <span style="color: #707183;">[</span>20<span style="color: #006FE0;">,</span>30<span style="color: #006FE0;">,</span>40<span style="color: #707183;">]</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> <span style="color: #707183;">(</span><span style="color: #6434A3;">List</span> number<span style="color: #707183;">)</span>
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>tail <span style="color: #707183;">[]</span>
+<span style="color: #6434A3;">Nothing</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> <span style="color: #707183;">(</span><span style="color: #6434A3;">List</span> a<span style="color: #707183;">)</span>
+
+10<span style="color: #006FE0;">::</span><span style="color: #707183;">[</span>20<span style="color: #006FE0;">,</span>30<span style="color: #006FE0;">,</span>40<span style="color: #006FE0;">,</span>50<span style="color: #707183;">]</span>  <span style="color: #8D8D84; font-style: italic;">-- aka cons</span>
+<span style="color: #707183;">[</span>10<span style="color: #006FE0;">,</span>20<span style="color: #006FE0;">,</span>30<span style="color: #006FE0;">,</span>40<span style="color: #006FE0;">,</span>50<span style="color: #707183;">]</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">List</span> number
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>isEmpty
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">List</span> a <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Bool</span> <span style="color: #8D8D84; font-style: italic;">-- a ist eine Typvariable</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>isEmpty <span style="color: #707183;">[</span>10<span style="color: #006FE0;">,</span>20<span style="color: #006FE0;">,</span>30<span style="color: #707183;">]</span>
+<span style="color: #6434A3;">False</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Bool</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>product <span style="color: #707183;">[</span>4<span style="color: #006FE0;">,</span> 5<span style="color: #006FE0;">,</span> 6<span style="color: #707183;">]</span>
+120 <span style="color: #006FE0;">:</span> number
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>product <span style="color: #707183;">[]</span>
+1 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>maximum
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">List</span> comparable <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Maybe</span> comparable
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>maximum <span style="color: #707183;">[</span>3<span style="color: #006FE0;">,</span> 17<span style="color: #006FE0;">,</span> 2<span style="color: #707183;">]</span>
+<span style="color: #6434A3;">Just</span> 17 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> number
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>maximum <span style="color: #707183;">[]</span>
+<span style="color: #6434A3;">Nothing</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> comparable
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>filter
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #707183;">(</span>a <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Bool</span><span style="color: #707183;">)</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">List</span> a <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">List</span> a
+<span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>filter <span style="color: #707183;">(</span><span style="color: #006FE0;">\</span>n <span style="color: #006FE0;">-&gt;</span> <span style="color: #7388D6;">(</span>remainderBy 2 n<span style="color: #7388D6;">)</span> <span style="color: #006FE0;">==</span> 0<span style="color: #707183;">)</span> <span style="color: #707183;">[</span>10<span style="color: #006FE0;">,</span>20<span style="color: #006FE0;">,</span>30<span style="color: #006FE0;">,</span>55<span style="color: #707183;">]</span>
+
+<span style="color: #8D8D84; font-style: italic;">-- und so weiter ...</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org26c3549" class="outline-4">
+<h4 id="org26c3549">Arrays</h4>
+<div class="outline-text-4" id="text-org26c3549">
+<ul class="org-ul">
+<li>vergleichbar mit Vektoren in Clojure</li>
+<li><p>
+auf die Elemente kann per Index zugegriffen werden
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> <span style="color: #0000FF;">import</span> <span style="color: #6434A3;">Array</span>
+<span style="color: #006FE0;">&gt;</span> myArray <span style="color: #006FE0;">=</span> <span style="color: #6434A3;">Array</span><span style="color: #006FE0;">.</span>fromList <span style="color: #707183;">[</span> 1<span style="color: #006FE0;">,</span> 2<span style="color: #006FE0;">,</span> 3<span style="color: #006FE0;">,</span> 4 <span style="color: #707183;">]</span>
+<span style="color: #6434A3;">Array</span><span style="color: #006FE0;">.</span>fromList <span style="color: #707183;">[</span>1<span style="color: #006FE0;">,</span>2<span style="color: #006FE0;">,</span>3<span style="color: #006FE0;">,</span>4<span style="color: #707183;">]</span>
+    <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Array</span><span style="color: #006FE0;">.</span><span style="color: #6434A3;">Array</span> number
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">Array</span><span style="color: #006FE0;">.</span>get 3 myArray
+<span style="color: #6434A3;">Just</span> 4 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> number
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">Array</span><span style="color: #006FE0;">.</span>get 4 myArray
+<span style="color: #6434A3;">Nothing</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> 
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0f3715b" class="outline-4">
+<h4 id="org0f3715b">Tuples</h4>
+<div class="outline-text-4" id="text-org0f3715b">
+<ul class="org-ul">
+<li><p>
+Strukturen, die aus zwei oder drei Elementen (möglicherweise)
+unterschiedlichen Typs bestehen
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #707183;">(</span> 1<span style="color: #006FE0;">,</span> <span style="color: #008000;">"abc"</span> <span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>1<span style="color: #006FE0;">,</span><span style="color: #008000;">"abc"</span><span style="color: #707183;">)</span> <span style="color: #006FE0;">:</span> <span style="color: #707183;">(</span> number<span style="color: #006FE0;">,</span> <span style="color: #6434A3;">String</span> <span style="color: #707183;">)</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #707183;">(</span> 1<span style="color: #006FE0;">,</span> <span style="color: #008000;">"abc"</span><span style="color: #006FE0;">,</span> <span style="color: #7388D6;">(</span> <span style="color: #008000;">"Weltformel"</span><span style="color: #006FE0;">,</span> 42 <span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #707183;">(</span>1<span style="color: #006FE0;">,</span><span style="color: #008000;">"abc"</span><span style="color: #006FE0;">,</span><span style="color: #7388D6;">(</span><span style="color: #008000;">"Weltformel"</span><span style="color: #006FE0;">,</span>42<span style="color: #7388D6;">)</span><span style="color: #707183;">)</span>
+    <span style="color: #006FE0;">:</span> <span style="color: #707183;">(</span> number<span style="color: #006FE0;">,</span> <span style="color: #6434A3;">String</span><span style="color: #006FE0;">,</span> <span style="color: #7388D6;">(</span> <span style="color: #6434A3;">String</span><span style="color: #006FE0;">,</span> number1 <span style="color: #7388D6;">)</span> <span style="color: #707183;">)</span>
+
+<span style="color: #006FE0;">&gt;</span> trianglePerimeter <span style="color: #707183;">(</span> a<span style="color: #006FE0;">,</span> b<span style="color: #006FE0;">,</span> c <span style="color: #707183;">)</span> <span style="color: #006FE0;">=</span> a <span style="color: #006FE0;">+</span> b <span style="color: #006FE0;">+</span> c  
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #707183;">(</span> number<span style="color: #006FE0;">,</span> number<span style="color: #006FE0;">,</span> number <span style="color: #707183;">)</span> <span style="color: #006FE0;">-&gt;</span> number
+<span style="color: #8D8D84; font-style: italic;">-- Funktion erwartet 1 Argument, Destructuring</span>
+
+<span style="color: #006FE0;">&gt;</span> trianglePerimeter <span style="color: #707183;">(</span> 5<span style="color: #006FE0;">,</span> 4<span style="color: #006FE0;">,</span> 6 <span style="color: #707183;">)</span>
+15 <span style="color: #006FE0;">:</span> number
+
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb01a882" class="outline-4">
+<h4 id="orgb01a882">Records</h4>
+<div class="outline-text-4" id="text-orgb01a882">
+<ul class="org-ul">
+<li><p>
+Sammlung von Schlüssel-Wert-Paaren
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> <span style="color: #707183;">{</span> x <span style="color: #006FE0;">=</span> 3<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">=</span> 4 <span style="color: #707183;">}</span>
+    <span style="color: #006FE0;">:</span> <span style="color: #707183;">{</span> x <span style="color: #006FE0;">:</span> number<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">:</span> number1 <span style="color: #707183;">}</span>
+
+<span style="color: #006FE0;">&gt;</span> point3D <span style="color: #006FE0;">=</span>
+  <span style="color: #707183;">{</span> x <span style="color: #006FE0;">=</span> 3
+  <span style="color: #0000FF;">,</span> y <span style="color: #006FE0;">=</span> 4
+  <span style="color: #0000FF;">,</span> z <span style="color: #006FE0;">=</span> 12
+  <span style="color: #707183;">}</span>
+<span style="color: #707183;">{</span> x <span style="color: #006FE0;">=</span> 3<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">=</span> 4<span style="color: #006FE0;">,</span> z <span style="color: #006FE0;">=</span> 12 <span style="color: #707183;">}</span>
+    <span style="color: #006FE0;">:</span> <span style="color: #707183;">{</span> x <span style="color: #006FE0;">:</span> number<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">:</span> number1<span style="color: #006FE0;">,</span> z <span style="color: #006FE0;">:</span> number2 <span style="color: #707183;">}</span>
+
+<span style="color: #006FE0;">&gt;</span> daniel <span style="color: #006FE0;">=</span> <span style="color: #707183;">{</span> name <span style="color: #006FE0;">=</span> <span style="color: #008000;">"D&#252;sentrieb"</span><span style="color: #006FE0;">,</span> alter <span style="color: #006FE0;">=</span> 85 <span style="color: #707183;">}</span>
+<span style="color: #707183;">{</span> alter <span style="color: #006FE0;">=</span> 85<span style="color: #006FE0;">,</span> name <span style="color: #006FE0;">=</span> <span style="color: #008000;">"D&#252;sentrieb"</span> <span style="color: #707183;">}</span>
+    <span style="color: #006FE0;">:</span> <span style="color: #707183;">{</span> alter <span style="color: #006FE0;">:</span> number<span style="color: #006FE0;">,</span> name <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span> <span style="color: #707183;">}</span>
+
+<span style="color: #006FE0;">&gt;</span> point3D<span style="color: #006FE0;">.</span>z
+12 <span style="color: #006FE0;">:</span> number
+<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">.</span>z point3D
+12 <span style="color: #006FE0;">:</span> number
+<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">.</span>age daniel
+85 <span style="color: #006FE0;">:</span> number
+
+<span style="color: #8D8D84; font-style: italic;">-- Pattern matching / Destructuring</span>
+
+<span style="color: #006FE0;">&gt;</span> hypotenuse <span style="color: #707183;">{</span>x<span style="color: #006FE0;">,</span>y<span style="color: #707183;">}</span> <span style="color: #006FE0;">=</span>
+    sqrt <span style="color: #707183;">(</span>x<span style="color: #006FE0;">^</span>2 <span style="color: #006FE0;">+</span> y<span style="color: #006FE0;">^</span>2<span style="color: #707183;">)</span>
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #707183;">{</span> a <span style="color: #006FE0;">|</span> x <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span><span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span> <span style="color: #707183;">}</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Float</span>
+
+<span style="color: #006FE0;">&gt;</span> hypotenuse point3D
+5 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span>
+
+<span style="color: #006FE0;">&gt;</span> hypotenuse <span style="color: #707183;">{</span> x <span style="color: #006FE0;">=</span> 3<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">=</span> 4 <span style="color: #707183;">}</span>
+5 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span>
+
+<span style="color: #8D8D84; font-style: italic;">-- Updating</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #707183;">{</span> point3D <span style="color: #006FE0;">|</span> x <span style="color: #006FE0;">=</span> 0<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">=</span> 0 <span style="color: #707183;">}</span>
+<span style="color: #707183;">{</span> x <span style="color: #006FE0;">=</span> 0<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">=</span> 0<span style="color: #006FE0;">,</span> z <span style="color: #006FE0;">=</span> 12 <span style="color: #707183;">}</span>
+    <span style="color: #006FE0;">:</span> <span style="color: #707183;">{</span> x <span style="color: #006FE0;">:</span> number<span style="color: #006FE0;">,</span> y <span style="color: #006FE0;">:</span> number1<span style="color: #006FE0;">,</span> z <span style="color: #006FE0;">:</span> number2 <span style="color: #707183;">}</span>
+
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0eff2da" class="outline-3">
+<h3 id="org0eff2da">Typen</h3>
+<div class="outline-text-3" id="text-org0eff2da">
+</div>
+<div id="outline-container-orga43b4fa" class="outline-4">
+<h4 id="orga43b4fa">Typinferenz</h4>
+<div class="outline-text-4" id="text-orga43b4fa">
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> toFullName person <span style="color: #006FE0;">=</span> person<span style="color: #006FE0;">.</span>firstName <span style="color: #006FE0;">++</span> <span style="color: #008000;">" "</span> <span style="color: #006FE0;">++</span> person<span style="color: #006FE0;">.</span>lastName
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #707183;">{</span> a <span style="color: #006FE0;">|</span> firstName <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span><span style="color: #006FE0;">,</span> lastName <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span> <span style="color: #707183;">}</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">String</span>
+
+<span style="color: #006FE0;">&gt;</span> fullName <span style="color: #006FE0;">=</span> toFullName <span style="color: #707183;">{</span> firstName <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Gustav"</span><span style="color: #006FE0;">,</span> lastName <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Gans"</span> <span style="color: #707183;">}</span>
+<span style="color: #008000;">"Gustav Gans"</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span>
+
+<span style="color: #006FE0;">&gt;</span> fullName <span style="color: #006FE0;">=</span> toFullName <span style="color: #707183;">{</span> firstName <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Donald"</span><span style="color: #006FE0;">,</span> lstName <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Duck"</span> <span style="color: #707183;">}</span>
+<span style="color: #8D8D84; font-style: italic;">-- TYPE MISMATCH ---------------------------------------------------------- REPL</span>
+
+<span style="color: #6434A3;">The</span> 1st argument to <span style="color: #006FE0;">`toFullName`</span> is not what <span style="color: #6434A3;">I</span> expect<span style="color: #006FE0;">:</span>
+
+14<span style="color: #006FE0;">|</span> fullName <span style="color: #006FE0;">=</span> toFullName <span style="color: #707183;">{</span> firstName <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Gustav"</span><span style="color: #006FE0;">,</span> lstName <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Gans"</span> <span style="color: #707183;">}</span>
+                          <span style="color: #006FE0;">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span style="color: #6434A3;">This</span> argument is a record <span style="color: #0000FF;">of</span> <span style="color: #0000FF;">type</span><span style="color: #006FE0;">:</span>
+
+    <span style="color: #707183;">{</span> firstName <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span><span style="color: #006FE0;">,</span> lstName <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span> <span style="color: #707183;">}</span>
+
+<span style="color: #6434A3;">But</span> <span style="color: #006FE0;">`toFullName`</span> needs the 1st argument to be<span style="color: #006FE0;">:</span>
+
+    <span style="color: #707183;">{</span> a <span style="color: #006FE0;">|</span> firstName <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span><span style="color: #006FE0;">,</span> lastName <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span> <span style="color: #707183;">}</span>
+
+<span style="color: #6434A3;">Hint</span><span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Seems</span> like a record field typo<span style="color: #006FE0;">.</span> <span style="color: #6434A3;">Maybe</span> lastName should be lstName?
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org09e042f" class="outline-4">
+<h4 id="org09e042f">Typ-Annotationen</h4>
+<div class="outline-text-4" id="text-org09e042f">
+<ul class="org-ul">
+<li>zur Verbesserung von Fehlermeldungen</li>
+<li><p>
+zur Dokumentation
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006699;">hypotenuse</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Float</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Float</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Float</span>
+<span style="color: #006699;">hypotenuse</span> a b <span style="color: #006FE0;">=</span>
+  sqrt <span style="color: #707183;">(</span>a<span style="color: #006FE0;">^</span>2 <span style="color: #006FE0;">+</span> b<span style="color: #006FE0;">^</span>2<span style="color: #707183;">)</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7f6387e" class="outline-4">
+<h4 id="org7f6387e">Benennung von Typen</h4>
+<div class="outline-text-4" id="text-org7f6387e">
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #0000FF;">type</span> <span style="color: #0000FF;">alias</span> <span style="color: #6434A3;">Person</span> <span style="color: #006FE0;">=</span>
+    <span style="color: #707183;">{</span> name <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span>
+    <span style="color: #0000FF;">,</span> alter <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Int</span>
+    <span style="color: #707183;">}</span>
+
+<span style="color: #006699;">stimmberechtigt</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Person</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Bool</span>
+<span style="color: #006699;">stimmberechtigt</span> person <span style="color: #006FE0;">=</span>
+    person<span style="color: #006FE0;">.</span>alter <span style="color: #006FE0;">&gt;=</span> 18
+
+<span style="color: #006FE0;">&gt;</span> stimmberechtigt <span style="color: #707183;">{</span> name <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Clarissa"</span><span style="color: #006FE0;">,</span> alter <span style="color: #006FE0;">=</span> 20<span style="color: #707183;">}</span>
+<span style="color: #6434A3;">True</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Bool</span>
+
+<span style="color: #8D8D84; font-style: italic;">-- ohne type alias</span>
+<span style="color: #006699;">stimmberechtigt</span> <span style="color: #006FE0;">:</span> <span style="color: #707183;">{</span> name <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span><span style="color: #006FE0;">,</span> alter <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Int</span><span style="color: #707183;">}</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Bool</span>
+<span style="color: #006699;">stimmberechtigt</span> person <span style="color: #006FE0;">=</span>
+    person<span style="color: #006FE0;">.</span>alter <span style="color: #006FE0;">&gt;=</span> 18
+
+<span style="color: #8D8D84; font-style: italic;">-- Typvariablen f&#252;r Record-Typen dienen auch als Konstruktoren</span>
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">Person</span> <span style="color: #008000;">"Clarissa"</span> 20
+<span style="color: #707183;">{</span> alter <span style="color: #006FE0;">=</span> 20<span style="color: #006FE0;">,</span> name <span style="color: #006FE0;">=</span> <span style="color: #008000;">"Clarissa"</span> <span style="color: #707183;">}</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Person</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga63b2b4" class="outline-4">
+<h4 id="orga63b2b4">Typdefinitionen</h4>
+<div class="outline-text-4" id="text-orga63b2b4">
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> <span style="color: #0000FF;">type</span> <span style="color: #6434A3;">Gruss</span> <span style="color: #006FE0;">=</span> <span style="color: #6434A3;">Hallo</span> <span style="color: #006FE0;">|</span> <span style="color: #6434A3;">Moin</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">Hallo</span>
+<span style="color: #6434A3;">Hallo</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Gruss</span>
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">Moin</span>
+<span style="color: #6434A3;">Moin</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Gruss</span>
+
+<span style="color: #0000FF;">type</span> <span style="color: #6434A3;">Bool</span> <span style="color: #006FE0;">=</span> <span style="color: #6434A3;">False</span> <span style="color: #006FE0;">|</span> <span style="color: #6434A3;">True</span>
+
+<span style="color: #006699;">gruesse</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Gruss</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">String</span>
+<span style="color: #006699;">gruesse</span> gruss <span style="color: #006FE0;">=</span>
+    <span style="color: #0000FF;">case</span> gruss <span style="color: #0000FF;">of</span>
+        <span style="color: #6434A3;">Hallo</span> <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Tach zusammen"</span>
+        <span style="color: #6434A3;">Moin</span> <span style="color: #006FE0;">-&gt;</span>
+            <span style="color: #008000;">"Moin Moin"</span>
+
+<span style="color: #006FE0;">&gt;</span> gruesse
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Gruss</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">String</span>
+<span style="color: #006FE0;">&gt;</span> gruesse <span style="color: #6434A3;">Hallo</span>
+<span style="color: #008000;">"Tach zusammen"</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">String</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9583e6d" class="outline-4">
+<h4 id="org9583e6d">Typvariablen</h4>
+<div class="outline-text-4" id="text-org9583e6d">
+<ul class="org-ul">
+<li><p>
+In den folgenden Beispielen ist <code>a</code> eine Typvariable.
+</p>
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">List</span><span style="color: #006FE0;">.</span>append
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">List</span> a <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">List</span> a <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">List</span> a
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #0000FF;">type</span> <span style="color: #6434A3;">Maybe</span> a <span style="color: #006FE0;">=</span> <span style="color: #6434A3;">Just</span> a <span style="color: #006FE0;">|</span> <span style="color: #6434A3;">Nothing</span>
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">Just</span> 5
+<span style="color: #6434A3;">Just</span> 5 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> number
+
+<span style="color: #006FE0;">&gt;</span> <span style="color: #6434A3;">Nothing</span>
+<span style="color: #6434A3;">Nothing</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> a
+
+<span style="color: #006699;">divide</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Int</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Int</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Maybe</span> <span style="color: #6434A3;">Int</span> 
+<span style="color: #006699;">divide</span> dvd dvs <span style="color: #006FE0;">=</span>
+    <span style="color: #0000FF;">case</span> dvs <span style="color: #0000FF;">of</span>
+        0 <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Nothing</span>
+        _   <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Just</span> <span style="color: #707183;">(</span>dvd <span style="color: #006FE0;">//</span> dvs<span style="color: #707183;">)</span>
+
+<span style="color: #006FE0;">&gt;</span> divide
+<span style="color: #006FE0;">&lt;</span>function<span style="color: #006FE0;">&gt;</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Int</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Int</span> <span style="color: #006FE0;">-&gt;</span> <span style="color: #6434A3;">Maybe</span> <span style="color: #6434A3;">Int</span>
+
+<span style="color: #006FE0;">&gt;</span> divide 8 7
+<span style="color: #6434A3;">Just</span> 1 <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> <span style="color: #6434A3;">Int</span>
+<span style="color: #006FE0;">&gt;</span> divide 8 0
+<span style="color: #6434A3;">Nothing</span> <span style="color: #006FE0;">:</span> <span style="color: #6434A3;">Maybe</span> <span style="color: #6434A3;">Int</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org830322c" class="outline-2">
+<h2 id="org830322c">Einfache Web-Seite mit Elm</h2>
+<div class="outline-text-2" id="text-org830322c">
+<div class="org-src-container">
+<pre class="src src-shell">bash-3.2$ elm init
+
+Hello! Elm projects always start with an elm.json file. I can create them!
+
+Now you may be wondering, what will be<span style="color: #0000FF;"> in</span> this file? How do I add Elm files to
+my project? How do I see it<span style="color: #0000FF;"> in</span> the browser? How will my code grow? Do I need
+more directories? What about tests? Etc.
+
+Check out <a href="https://elm-lang.org/0.19.1/init&gt; for all the answers!
+
+Knowing all that, would you like me to create an elm.json file now?
+[Y/n]: Y
+
+Okay, I created it. Now read that link!
+
+bash-3.2$ l
+total 8
+drwxr-xr-x@  4 jb  staff  128 Aug 19 13:57 ./
+drwxr-xr-x@ 20 jb  staff  640 Aug 19 13:55 ../
+-rw-r--r--@  1 jb  staff  517 Aug 19 13:57 elm.json
+drwxr-xr-x@  2 jb  staff   64 Aug 19 13:57 src/
+bash-3.2$ l src
+total 0
+drwxr-xr-x@ 2 jb  staff   64 Aug 19 13:57 ./
+drwxr-xr-x@ 4 jb  staff  128 Aug 19 13:57 ../
+
+bash-3.2$ elm make src/ReactiveProgramming.elm --output elm.js
+Starting downloads...
+
+  &#9679; elm/json 1.1.3
+  &#9679; elm/browser 1.0.2
+  &#9679; elm/core 1.0.5
+
+Dependencies ready!
+Success! Compiled 1 module.
+
+    ReactiveProgramming &#9472;&#9472;&#9472;">&lt;https://elm-lang.org/0.19.1/init&gt; for all the answers!
+
+Knowing all that, would you like me to create an elm.json file now?
+</a><span style="color: #707183;"><a href="https://elm-lang.org/0.19.1/init&gt; for all the answers!
+
+Knowing all that, would you like me to create an elm.json file now?
+[Y/n]: Y
+
+Okay, I created it. Now read that link!
+
+bash-3.2$ l
+total 8
+drwxr-xr-x@  4 jb  staff  128 Aug 19 13:57 ./
+drwxr-xr-x@ 20 jb  staff  640 Aug 19 13:55 ../
+-rw-r--r--@  1 jb  staff  517 Aug 19 13:57 elm.json
+drwxr-xr-x@  2 jb  staff   64 Aug 19 13:57 src/
+bash-3.2$ l src
+total 0
+drwxr-xr-x@ 2 jb  staff   64 Aug 19 13:57 ./
+drwxr-xr-x@ 4 jb  staff  128 Aug 19 13:57 ../
+
+bash-3.2$ elm make src/ReactiveProgramming.elm --output elm.js
+Starting downloads...
+
+  &#9679; elm/json 1.1.3
+  &#9679; elm/browser 1.0.2
+  &#9679; elm/core 1.0.5
+
+Dependencies ready!
+Success! Compiled 1 module.
+
+    ReactiveProgramming &#9472;&#9472;&#9472;">[</a></span><a href="https://elm-lang.org/0.19.1/init&gt; for all the answers!
+
+Knowing all that, would you like me to create an elm.json file now?
+[Y/n]: Y
+
+Okay, I created it. Now read that link!
+
+bash-3.2$ l
+total 8
+drwxr-xr-x@  4 jb  staff  128 Aug 19 13:57 ./
+drwxr-xr-x@ 20 jb  staff  640 Aug 19 13:55 ../
+-rw-r--r--@  1 jb  staff  517 Aug 19 13:57 elm.json
+drwxr-xr-x@  2 jb  staff   64 Aug 19 13:57 src/
+bash-3.2$ l src
+total 0
+drwxr-xr-x@ 2 jb  staff   64 Aug 19 13:57 ./
+drwxr-xr-x@ 4 jb  staff  128 Aug 19 13:57 ../
+
+bash-3.2$ elm make src/ReactiveProgramming.elm --output elm.js
+Starting downloads...
+
+  &#9679; elm/json 1.1.3
+  &#9679; elm/browser 1.0.2
+  &#9679; elm/core 1.0.5
+
+Dependencies ready!
+Success! Compiled 1 module.
+
+    ReactiveProgramming &#9472;&#9472;&#9472;">Y/n</a><span style="color: #707183;"><a href="https://elm-lang.org/0.19.1/init&gt; for all the answers!
+
+Knowing all that, would you like me to create an elm.json file now?
+[Y/n]: Y
+
+Okay, I created it. Now read that link!
+
+bash-3.2$ l
+total 8
+drwxr-xr-x@  4 jb  staff  128 Aug 19 13:57 ./
+drwxr-xr-x@ 20 jb  staff  640 Aug 19 13:55 ../
+-rw-r--r--@  1 jb  staff  517 Aug 19 13:57 elm.json
+drwxr-xr-x@  2 jb  staff   64 Aug 19 13:57 src/
+bash-3.2$ l src
+total 0
+drwxr-xr-x@ 2 jb  staff   64 Aug 19 13:57 ./
+drwxr-xr-x@ 4 jb  staff  128 Aug 19 13:57 ../
+
+bash-3.2$ elm make src/ReactiveProgramming.elm --output elm.js
+Starting downloads...
+
+  &#9679; elm/json 1.1.3
+  &#9679; elm/browser 1.0.2
+  &#9679; elm/core 1.0.5
+
+Dependencies ready!
+Success! Compiled 1 module.
+
+    ReactiveProgramming &#9472;&#9472;&#9472;">]</a></span><a href="https://elm-lang.org/0.19.1/init&gt; for all the answers!
+
+Knowing all that, would you like me to create an elm.json file now?
+[Y/n]: Y
+
+Okay, I created it. Now read that link!
+
+bash-3.2$ l
+total 8
+drwxr-xr-x@  4 jb  staff  128 Aug 19 13:57 ./
+drwxr-xr-x@ 20 jb  staff  640 Aug 19 13:55 ../
+-rw-r--r--@  1 jb  staff  517 Aug 19 13:57 elm.json
+drwxr-xr-x@  2 jb  staff   64 Aug 19 13:57 src/
+bash-3.2$ l src
+total 0
+drwxr-xr-x@ 2 jb  staff   64 Aug 19 13:57 ./
+drwxr-xr-x@ 4 jb  staff  128 Aug 19 13:57 ../
+
+bash-3.2$ elm make src/ReactiveProgramming.elm --output elm.js
+Starting downloads...
+
+  &#9679; elm/json 1.1.3
+  &#9679; elm/browser 1.0.2
+  &#9679; elm/core 1.0.5
+
+Dependencies ready!
+Success! Compiled 1 module.
+
+    ReactiveProgramming &#9472;&#9472;&#9472;">: Y
+
+Okay, I created it. Now read that link!
+
+bash-3.2$ l
+total 8
+drwxr-xr-x@  4 jb  staff  128 Aug 19 13:57 ./
+drwxr-xr-x@ 20 jb  staff  640 Aug 19 13:55 ../
+-rw-r--r--@  1 jb  staff  517 Aug 19 13:57 elm.json
+drwxr-xr-x@  2 jb  staff   64 Aug 19 13:57 src/
+bash-3.2$ l src
+total 0
+drwxr-xr-x@ 2 jb  staff   64 Aug 19 13:57 ./
+drwxr-xr-x@ 4 jb  staff  128 Aug 19 13:57 ../
+
+bash-3.2$ elm make src/ReactiveProgramming.elm --output elm.js
+Starting downloads...
+
+  &#9679; elm/json 1.1.3
+  &#9679; elm/browser 1.0.2
+  &#9679; elm/core 1.0.5
+
+Dependencies ready!
+Success! Compiled 1 module.
+
+    ReactiveProgramming &#9472;&#9472;&#9472;&gt;</a> elm.js
+</pre>
+</div>
+</div>
+<div id="outline-container-org6033344" class="outline-3">
+<h3 id="org6033344">ReactiveProgramming.elm</h3>
+<div class="outline-text-3" id="text-org6033344">
+<div class="org-src-container">
+<pre class="src src-elm"><span style="color: #0000FF;">module</span> <span style="color: #6434A3;">ReactiveProgramming</span> <span style="color: #0000FF;">exposing</span> <span style="color: #707183;">(</span>main<span style="color: #707183;">)</span>
+
+<span style="color: #0000FF;">import</span> <span style="color: #6434A3;">Html</span> <span style="color: #0000FF;">exposing</span> <span style="color: #707183;">(</span><span style="color: #006FE0;">..</span><span style="color: #707183;">)</span>
+<span style="color: #0000FF;">import</span> <span style="color: #6434A3;">Html</span><span style="color: #006FE0;">.</span><span style="color: #6434A3;">Attributes</span> <span style="color: #0000FF;">exposing</span> <span style="color: #707183;">(</span><span style="color: #006FE0;">..</span><span style="color: #707183;">)</span>
+
+
+<span style="color: #006699;">view</span> model <span style="color: #006FE0;">=</span>
+    div <span style="color: #707183;">[]</span>
+        <span style="color: #707183;">[</span>div <span style="color: #7388D6;">[</span> class <span style="color: #008000;">"myCss"</span> <span style="color: #7388D6;">]</span>
+             <span style="color: #7388D6;">[</span> h1 <span style="color: #909183;">[]</span> <span style="color: #909183;">[</span> text <span style="color: #008000;">"Willkommen im Modul Reaktive Programmierung"</span> <span style="color: #909183;">]</span>
+             <span style="color: #0000FF;">,</span> p <span style="color: #909183;">[]</span> <span style="color: #909183;">[</span> text <span style="color: #008000;">"Dozenten: Chhristopher Karow, Johannes Brauer"</span>
+            <span style="color: #909183;">]</span>
+        <span style="color: #7388D6;">]</span><span style="color: #006FE0;">,</span>
+         h3 <span style="color: #7388D6;">[]</span> <span style="color: #7388D6;">[</span>text <span style="color: #008000;">"Teilnehmer*Innen"</span><span style="color: #7388D6;">]</span><span style="color: #707183;">]</span>
+
+
+<span style="color: #006699;">main</span> <span style="color: #006FE0;">=</span>
+    view <span style="color: #008000;">"dummy model"</span>
+</pre>
+</div>
+<p>
+<a href="file:///Users/jb/Dropbox/FunctionalReactiveProgramming/Elm/repr.html">repr.html</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd890faa" class="outline-2">
+<h2 id="orgd890faa">Die Elm-Architecture</h2>
+<div class="outline-text-2" id="text-orgd890faa">
+<ul class="org-ul">
+<li>Drei Bestandteile
+<ul class="org-ul">
+<li>Model: beinhaltet den Weltzustand</li>
+<li>View: verwandelt den Weltzustand in HTML</li>
+<li>Update: berechnet einen neuen Weltzustand als Reaktion auf Nachrichten</li>
+</ul></li>
+</ul>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="./Abbildungen/architecture.svg" class="org-svg" width="650px">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Abbildung 1: </span>entnommen aus <a href="https://guide.elm-lang.org/architecture/">https://guide.elm-lang.org/architecture/</a></p>
+</div>
+
+<p>
+<a href="https://ellie-app.com/new">Elementares Beispiel: Counter</a>
+</p>
+
+<p>
+weitere Beispiele in <a href="https://elm-lang.org/try">https://elm-lang.org/try</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org9e29b8d" class="outline-2">
+<h2 id="bibliography">Literaturverzeichnis</h2>
+<div class="outline-text-2" id="text-bibliography">
+<ul class='org-ref-bib'><li><a id="Elm2020">[Elm2020] Richard Feldman, Elm in Action, Manning Publications Co. (2020).</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Datum: 21. 08. 2021</p>
+<p class="author">Autor: Christopher Karow, Johannes Brauer</p>
+<p class="date">Created: 2021-08-21 Sat 16:58</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

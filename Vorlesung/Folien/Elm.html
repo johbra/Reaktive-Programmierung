@@ -19,13 +19,13 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Elm</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">21. 08. 2021</h3>
+<h1 class="title">Elm</h1><h3 class="subtitle">Reaktive Programmierung</h3><h2 class="author">Christopher Karow, Johannes Brauer</h2><h3 class="date">22. 08. 2021</h3>
 </section>
 
 
 <section>
-<section id="slide-orge48017c">
-<h2 id="orge48017c">Ziel</h2>
+<section id="slide-org5314c46">
+<h2 id="org5314c46">Ziel</h2>
 <ul>
 <li>Erstes Kennenlernen von <a href="https://elm-lang.org">Elm</a></li>
 <li>Beispiele teilweise entnommen aus <a href="https://elmprogramming.com">Beginning Elm</a></li>
@@ -33,8 +33,8 @@
 
 </ul>
 </section>
-<section id="slide-org8824e04">
-<h3 id="org8824e04">Elm &#x2026;</h3>
+<section id="slide-orgf1ceea3">
+<h3 id="orgf1ceea3">Elm &#x2026;</h3>
 <p>
 &#x2026;
 </p>
@@ -53,13 +53,13 @@
 </section>
 </section>
 <section>
-<section id="slide-org82b3b9a">
-<h2 id="org82b3b9a">Die Sprache</h2>
-<div class="outline-text-2" id="text-org82b3b9a">
+<section id="slide-org522b914">
+<h2 id="org522b914">Die Sprache</h2>
+<div class="outline-text-2" id="text-org522b914">
 </div>
 </section>
-<section id="slide-org1613591">
-<h3 id="org1613591">Werte</h3>
+<section id="slide-org4c0d0f6">
+<h3 id="org4c0d0f6">Werte</h3>
 <ul>
 <li><p>
 Es gibt die Zahlentypen <code>Int</code>, <code>Float</code> 
@@ -162,8 +162,8 @@ Es gibt Zeichen (<code>Char</code>) und Zeichenketten (<code>String</code>)
 
 </ul>
 </section>
-<section id="slide-org174abcd">
-<h3 id="org174abcd">Konstanten (aka Variablen)</h3>
+<section id="slide-org207095b">
+<h3 id="org207095b">Konstanten (aka Variablen)</h3>
 <div class="org-src-container">
 
 <pre><code class="elm" >&gt; x = (7 + 5) / 3
@@ -198,8 +198,8 @@ especially if you actually do need a recursive value.
 </code></pre>
 </div>
 </section>
-<section id="slide-org04dd593">
-<h3 id="org04dd593">Funktionen</h3>
+<section id="slide-org8d6a634">
+<h3 id="org8d6a634">Funktionen</h3>
 <ul>
 <li><p>
 Funktionsdefinitionen sehen ähnlich aus wie Konstantendefinitionen
@@ -292,8 +292,8 @@ lokale Variablen
 
 </ul>
 </section>
-<section id="slide-org43cf589">
-<h3 id="org43cf589">Fallunterscheidungen</h3>
+<section id="slide-org959aa64">
+<h3 id="org959aa64">Fallunterscheidungen</h3>
 <ul>
 <li><p>
 <code>if</code>
@@ -383,13 +383,13 @@ besser:
 
 </ul>
 </section>
-<section id="slide-org499b7a4">
-<h3 id="org499b7a4">Strukturen</h3>
-<div class="outline-text-3" id="text-org499b7a4">
+<section id="slide-orgb40cf56">
+<h3 id="orgb40cf56">Strukturen</h3>
+<div class="outline-text-3" id="text-orgb40cf56">
 </div>
 </section>
-<section id="slide-org737b950">
-<h4 id="org737b950">Listen</h4>
+<section id="slide-orga564b37">
+<h4 id="orga564b37">Listen</h4>
 <ul>
 <li>Syntax: <code>[value1,value2,value3.....valuen]</code></li>
 <li>alle Elemente müssen vom gleichen Typ sein</li>
@@ -445,8 +445,8 @@ List.filter (\n -&gt; (remainderBy 2 n) == 0) [10,20,30,55]
 
 </ul>
 </section>
-<section id="slide-org1ad9826">
-<h4 id="org1ad9826">Arrays</h4>
+<section id="slide-org5540988">
+<h4 id="org5540988">Arrays</h4>
 <ul>
 <li>vergleichbar mit Vektoren in Clojure</li>
 <li><p>
@@ -468,8 +468,8 @@ Nothing : Maybe
 
 </ul>
 </section>
-<section id="slide-orgcffe54a">
-<h4 id="orgcffe54a">Tuples</h4>
+<section id="slide-orgff81501">
+<h4 id="orgff81501">Tuples</h4>
 <ul>
 <li><p>
 Strukturen, die aus zwei oder drei Elementen (möglicherweise)
@@ -496,8 +496,8 @@ unterschiedlichen Typs bestehen
 
 </ul>
 </section>
-<section id="slide-org7ef3424">
-<h4 id="org7ef3424">Records</h4>
+<section id="slide-org22438fe">
+<h4 id="org22438fe">Records</h4>
 <ul>
 <li><p>
 Sammlung von Schlüssel-Wert-Paaren
@@ -549,13 +549,13 @@ Sammlung von Schlüssel-Wert-Paaren
 
 </ul>
 </section>
-<section id="slide-org9e3af0d">
-<h3 id="org9e3af0d">Typen</h3>
-<div class="outline-text-3" id="text-org9e3af0d">
+<section id="slide-org1b8a5fa">
+<h3 id="org1b8a5fa">Typen</h3>
+<div class="outline-text-3" id="text-org1b8a5fa">
 </div>
 </section>
-<section id="slide-orgbe1c6a3">
-<h4 id="orgbe1c6a3">Typinferenz</h4>
+<section id="slide-org55702d6">
+<h4 id="org55702d6">Typinferenz</h4>
 <div class="org-src-container">
 
 <pre><code class="elm" >&gt; toFullName person = person.firstName ++ " " ++ person.lastName
@@ -583,8 +583,8 @@ Hint: Seems like a record field typo. Maybe lastName should be lstName?
 </code></pre>
 </div>
 </section>
-<section id="slide-org9e968c9">
-<h4 id="org9e968c9">Typ-Annotationen</h4>
+<section id="slide-org1b1c0fc">
+<h4 id="org1b1c0fc">Typ-Annotationen</h4>
 <ul>
 <li>zur Verbesserung von Fehlermeldungen</li>
 <li><p>
@@ -600,8 +600,8 @@ hypotenuse a b =
 
 </ul>
 </section>
-<section id="slide-orgde7b756">
-<h4 id="orgde7b756">Benennung von Typen</h4>
+<section id="slide-orga6524eb">
+<h4 id="orga6524eb">Benennung von Typen</h4>
 <div class="org-src-container">
 
 <pre><code class="elm" >type alias Person =
@@ -627,8 +627,8 @@ stimmberechtigt person =
 </code></pre>
 </div>
 </section>
-<section id="slide-org24a8824">
-<h4 id="org24a8824">Typdefinitionen</h4>
+<section id="slide-orgf47bb7b">
+<h4 id="orgf47bb7b">Typdefinitionen</h4>
 <div class="org-src-container">
 
 <pre><code class="elm" >&gt; type Gruss = Hallo | Moin
@@ -655,8 +655,8 @@ gruesse gruss =
 </code></pre>
 </div>
 </section>
-<section id="slide-org9a91f32">
-<h4 id="org9a91f32">Typvariablen</h4>
+<section id="slide-orgd08d9de">
+<h4 id="orgd08d9de">Typvariablen</h4>
 <ul>
 <li><p>
 In den folgenden Beispielen ist <code>a</code> eine Typvariable.
@@ -694,8 +694,8 @@ Nothing : Maybe Int
 </section>
 </section>
 <section>
-<section id="slide-org0341ed7">
-<h2 id="org0341ed7">Einfache Web-Seite mit Elm</h2>
+<section id="slide-org5082e44">
+<h2 id="org5082e44">Einfache Web-Seite mit Elm</h2>
 <div class="org-src-container">
 
 <pre><code class="shell" >bash-3.2$ elm init
@@ -738,8 +738,8 @@ Success! Compiled 1 module.
 </code></pre>
 </div>
 </section>
-<section id="slide-orgf808858">
-<h3 id="orgf808858">ReactiveProgramming.elm</h3>
+<section id="slide-org4da3858">
+<h3 id="org4da3858">ReactiveProgramming.elm</h3>
 <div class="org-src-container">
 
 <pre><code class="elm" >module ReactiveProgramming exposing (main)
@@ -763,13 +763,13 @@ main =
 </code></pre>
 </div>
 <p>
-<a href="file:///Users/jb/Dropbox/FunctionalReactiveProgramming/Elm/repr.html">repr.html</a>
+(repr.html)
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgb926373">
-<h2 id="orgb926373">Die Elm-Architecture</h2>
+<section id="slide-org60ecdae">
+<h2 id="org60ecdae">Die Elm-Architecture</h2>
 <ul>
 <li>Drei Bestandteile
 <ul>
@@ -794,6 +794,12 @@ Sorry, your browser does not support SVG.</object>
 
 <p>
 weitere Beispiele in <a href="https://elm-lang.org/try">https://elm-lang.org/try</a>
+</p>
+</section>
+<section id="slide-orgb607dd4">
+<h3 id="orgb607dd4">ReactiveProgramming3.elm</h3>
+<p>
+Demo
 </p>
 
 
